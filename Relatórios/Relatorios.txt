@@ -1,0 +1,31 @@
+# · Tantos arquivos RELATORIO-nome.TXT quantos forem os membros do grupo. 
+# O tema nome deve identificar o membro do grupo ao qual se refere o relatório. 
+# Estes arquivos devem conter uma tabela de registro de trabalho organizada 
+# como a seguir: 
+# Data | Horas Trabalhadas | Tipo Tarefa | Descrição da Tarefa Realizada 
+# Na descrição da tarefa redija uma explicação breve sobre o que o componente 
+# do grupo fez. Esta descrição deve estar de acordo com o Tipo Tarefa. Cada Tipo 
+# Tarefa identifica uma natureza de atividade que deverá ser discriminada 
+# explicitamente, mesmo que, durante uma mesma sessão de trabalho tenham 
+# sido realizadas diversas tarefas. Os tipos de tarefa são: 
+# - estudar aulas e laboratórios relacionados 
+# - especificar os módulos 
+# - especificar as funções 
+# - revisar especificações 
+# - projetar 
+# - fazer diagramas 
+# - revisar projetos 
+# - codificar módulo 
+# - Rodar o verificador estático e retirar warnings 
+# - revisar código do módulo 
+# - redigir casos de teste 
+# - revisar casos de teste 
+# - realizar os testes 
+# - instrumentar verificando a cobertura 
+# - documentar com Doxygen 
+# - gerenciar a construção do software 
+# Observações: 
+# - Dica: Preencha esta tabela de atividades ao longo do processo. NÃO DEIXE 
+# PARA ÚLTIMA HORA, POIS VOCÊ NÃO SE LEMBRARÁ DO QUE FEZ TAL 
+# DIA, TAL HORA. Com relatórios similares a esse você aprende a planejar o seu 
+# trabalho
