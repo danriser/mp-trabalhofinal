@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_06_17_184737) do
+ActiveRecord::Schema[7.0].define(version: 2023_06_17_212507) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -18,7 +18,14 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_17_184737) do
     t.string "type"
     t.string "group_name"
     t.text "description"
-    t.integer "preference_id"
+    t.string "preference_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "matches", force: :cascade do |t|
+    t.string "id_usuarios"
+    t.integer "match_grade"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

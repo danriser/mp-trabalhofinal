@@ -1,8 +1,8 @@
 FactoryBot.define do
   factory :group do
-    type { "" }
+    type { "MyString" }
     group_name { "MyString" }
     description { "MyText" }
-    preference_id { 1 }
+    preference_id { "MyString" }
   end
 end
