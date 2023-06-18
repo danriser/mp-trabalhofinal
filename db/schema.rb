@@ -10,9 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_06_18_172632) do
+ActiveRecord::Schema[7.0].define(version: 2023_06_18_174534) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "groups", force: :cascade do |t|
+    t.string "nome"
+    t.string "tipo"
+    t.text "descricao"
+    t.bigint "preference_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["preference_id"], name: "index_groups_on_preference_id"
+  end
 
   create_table "list_preferences", force: :cascade do |t|
     t.bigint "user_id", null: false
@@ -46,6 +56,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_18_172632) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "groups", "preferences"
   add_foreign_key "list_preferences", "preferences"
   add_foreign_key "list_preferences", "users"
   add_foreign_key "matches", "users"
