@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_06_18_183800) do
+ActiveRecord::Schema[7.0].define(version: 2023_06_18_184500) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -58,6 +58,17 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_18_183800) do
     t.index ["user_id"], name: "index_matches_on_user_id"
   end
 
+  create_table "messages", force: :cascade do |t|
+    t.bigint "chat_id", null: false
+    t.bigint "user_id", null: false
+    t.datetime "hora_de_envio"
+    t.text "conteudo"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["chat_id"], name: "index_messages_on_chat_id"
+    t.index ["user_id"], name: "index_messages_on_user_id"
+  end
+
   create_table "preferences", force: :cascade do |t|
     t.string "tipo"
     t.string "descricao"
@@ -81,4 +92,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_18_183800) do
   add_foreign_key "list_preferences", "users"
   add_foreign_key "matches", "users"
   add_foreign_key "matches", "users", column: "user_id2"
+  add_foreign_key "messages", "chats"
+  add_foreign_key "messages", "users"
 end
