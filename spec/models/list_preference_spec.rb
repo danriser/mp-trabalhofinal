@@ -39,4 +39,14 @@ RSpec.describe ListPreference, type: :model do
     end
   end
 
+  context "validating user with multiple preferences" do
+    it "should be valid if uses has 2 or more preferences" do
+      create(:user,id:1,nome:"david",senha:"herbert")
+      create(:preference,id:1,tipo:"teste",descricao:"teste")
+      create(:preference,id:2,tipo:"filme",descricao:"filme")
+      create(:list_preference,user_id:1,preference_id:1)
+      expect(build(:list_preference,user_id:1,preference_id:2)).to be_valid
+    end
+  end
+
 end
