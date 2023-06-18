@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_06_18_143345) do
+ActiveRecord::Schema[7.0].define(version: 2023_06_18_144416) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -19,6 +19,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_18_143345) do
     t.string "match_grade"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "user_id2"
     t.index ["user_id"], name: "index_matches_on_user_id"
   end
 
@@ -30,4 +31,5 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_18_143345) do
   end
 
   add_foreign_key "matches", "users"
+  add_foreign_key "matches", "users", column: "user_id2"
 end
