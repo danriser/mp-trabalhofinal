@@ -8,6 +8,9 @@ Rails.application.routes.draw do
         post "create", to: "user#create"
         delete "delete/:id", to: "user#delete"
       end
+      scope "preference" do
+        get "index", to: "preference#index"
+      end
     end
   end
 end
