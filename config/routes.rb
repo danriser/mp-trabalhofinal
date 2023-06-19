@@ -4,6 +4,8 @@ Rails.application.routes.draw do
     namespace "v1" do
       scope "user" do
         get "index", to: "user#index"
+        get "show/:id", to: "user#show"
+        post "create", to: "user#create"
       end
     end
   end
