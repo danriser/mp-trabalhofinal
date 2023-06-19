@@ -99,4 +99,24 @@ RSpec.describe "Api::V1::Users", type: :request do
 
   end
 
+  describe "DELETE /delete" do
+
+    let(:user) {create(:user)}
+
+    context "user exists" do
+      it "should return http status ok" do
+        delete "/api/v1/user/delete/#{user.id}"
+        expect(response).to have_http_status(:ok)
+      end
+    end
+
+    context "user does not exist" do
+      it "should return http status bad_request" do
+        delete "/api/v1/user/delete/-1"
+        expect(response).to have_http_status(:bad_request)
+      end
+    end
+
+  end
+
 end

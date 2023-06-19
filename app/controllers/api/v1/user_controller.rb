@@ -19,6 +19,13 @@ class Api::V1::UserController < ApplicationController
         render json: e, status: :bad_request
     end
 
+    def delete
+        user=User.find(params[:id])
+        user.destroy!
+        render json: user, status: :ok
+    rescue StandardError => e
+        render json: e, status: :bad_request
+    end
 
 
     private

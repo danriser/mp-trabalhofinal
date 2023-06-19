@@ -6,6 +6,7 @@ Rails.application.routes.draw do
         get "index", to: "user#index"
         get "show/:id", to: "user#show"
         post "create", to: "user#create"
+        delete "delete/:id", to: "user#delete"
       end
     end
   end
