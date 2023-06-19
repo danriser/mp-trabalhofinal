@@ -48,21 +48,15 @@ RSpec.describe "Api::V1::Users", type: :request do
     end
 
     context "user exists" do
-      before do
-        get "/api/v1/user/show/2"
-      end
       it "should return http status ok" do
+        get "/api/v1/user/show/2"
         expect(response).to have_http_status(:ok)
       end
     end
 
     context "user not found" do
-
-      before do
-        get "/api/v1/user/show/-1"
-      end
-
       it "should return http status not found" do
+        get "/api/v1/user/show/-1"
         expect(response).to have_http_status(:not_found)
       end
     end

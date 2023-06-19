@@ -10,6 +10,9 @@ Rails.application.routes.draw do
       end
       scope "preference" do
         get "index", to: "preference#index"
+        get "show/:id", to: "preference#show"
+        post "create", to: "preference#create"
+        delete "delete/:id", to: "preference#delete"
       end
     end
   end
