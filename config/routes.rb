@@ -23,6 +23,9 @@ Rails.application.routes.draw do
         post "create", to: "group#create"
         patch "update/:id", to: "group#update"
       end
+      scope "match" do
+        get "index", to: "match#index"
+      end
     end
   end
 end
