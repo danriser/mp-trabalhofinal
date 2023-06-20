@@ -20,4 +20,7 @@ class Api::V1::GroupController < ApplicationController
         render json: e, status: :bad_request
     end
 
+    def group_params
+        params.require(:group).permit()
+
 end
