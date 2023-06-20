@@ -21,4 +21,28 @@ RSpec.describe "Api::V1::Groups", type: :request do
 
   end
 
+  describe "GET /show" do
+
+    before do
+      create(:preference,id:3,tipo:"c",descricao:"c")
+      create(:group,id:3,nome:"c",tipo:"c",descricao:"c",preference_id:3)
+    end
+
+    context "group exists" do
+      it "should return http status ok" do
+        get "/api/v1/group/show/3"
+        expect(response).to have_http_status(:ok)
+      end
+    end
+
+    context "group does not exist" do
+      it "should return http status not_found" do
+        get "/api/v1/group/show/-1"
+        expect(response).to have_http_status(:not_found)
+      end
+    end
+
+  end
+
+
 end

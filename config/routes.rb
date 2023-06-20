@@ -16,6 +16,7 @@ Rails.application.routes.draw do
       end
       scope "group" do
         get "index", to: "group#index"
+        get "show/:id", to: "group#show"
       end
     end
   end
