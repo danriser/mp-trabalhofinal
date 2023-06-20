@@ -67,5 +67,44 @@ RSpec.describe "Api::V1::Groups", type: :request do
 
   end
 
+  describe "POST /create" do
+
+    before do
+      create(:preference,id:3,tipo:"c",descricao:"c")
+      create(:preference,id:4,tipo:"d",descricao:"d")
+
+    end
+    
+    context "params are ok" do
+      it "should return http status created" do
+        post "/api/v1/group/create", params: {group: {nome:"c",tipo:"c",descricao:"c",preference_id:3}}
+        expect(response).to have_http_status(:created)
+      end
+    end
+
+    context "params are invalid" do
+      it "should return http status bad_request" do
+        post "/api/v1/group/create", params: {group:nil}
+        expect(response).to have_http_status(:bad_request)
+      end
+    end
+
+    context "preference_id is invalid" do
+      it "should return http status bad_request" do
+        post "/api/v1/group/create", params: {group: {nome:"c",tipo:"c",descricao:"c",preference_id:-1}}
+        expect(response).to have_http_status(:bad_request)
+      end
+    end
+
+    context "name is repeated" do
+      it "should return http status bad_request" do
+        post "/api/v1/group/create", params: {group: {nome:"c",tipo:"c",descricao:"c",preference_id:3}}
+        post "/api/v1/group/create", params: {group: {nome:"c",tipo:"c",descricao:"c",preference_id:4}}
+        expect(response).to have_http_status(:bad_request)
+      end
+    end
+
+  end
+
 
 end

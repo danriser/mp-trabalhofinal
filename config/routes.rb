@@ -18,6 +18,7 @@ Rails.application.routes.draw do
         get "index", to: "group#index"
         get "show/:id", to: "group#show"
         delete "delete/:id", to: "group#delete"
+        post "create", to: "group#create"
       end
     end
   end
