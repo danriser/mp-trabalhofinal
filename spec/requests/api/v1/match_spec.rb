@@ -68,5 +68,35 @@ RSpec.describe "Api::V1::Matches", type: :request do
 
   end
 
+  describe "POST /create" do
+
+    before do
+      create(:user,id:1,nome:"a",senha:"a")
+      create(:user,id:2,nome:"b",senha:"b")
+    end
+
+    context "params are ok" do
+      it "should return http status created" do
+        post "/api/v1/match/create", params: {match: {user_id:1,user_id2:2,match_grade:"3"}}
+        expect(response).to have_http_status(:created)
+      end
+    end
+
+    context "params are invalid" do
+      it "should return http status bad_request" do
+        post "/api/v1/match/create", params: {match:nil}
+        expect(response).to have_http_status(:bad_request)
+      end
+    end
+
+    context "user_id is invalid" do
+      it "should return http status bad_request" do
+        post "/api/v1/match/create", params: {match: {user_id:0,user_id2:2,match_grade:"3"}}
+        expect(response).to have_http_status(:bad_request)
+      end
+    end
+
+  end
+
 
 end

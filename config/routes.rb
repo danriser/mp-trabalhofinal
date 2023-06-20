@@ -26,6 +26,7 @@ Rails.application.routes.draw do
       scope "match" do
         get "index", to: "match#index"
         get "show/:id",to: "match#show"
+        post "create", to: "match#create"
       end
     end
   end

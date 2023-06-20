@@ -11,4 +11,19 @@ class Api::V1::MatchController < ApplicationController
     rescue StandardError => e
         render json: e, status: :not_found
     end
+
+    def create
+        match=Match.new(match_params)
+        match.save!
+        render json: match, status: :created
+    rescue StandardError => e
+        render json: e, status: :bad_request
+    end
+
+
+    private
+        def match_params
+            params.require(:match).permit(:user_id,:user_id2,:match_grade)
+        end
+            
 end
