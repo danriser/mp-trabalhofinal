@@ -25,6 +25,7 @@ Rails.application.routes.draw do
       end
       scope "match" do
         get "index", to: "match#index"
+        get "show/:id",to: "match#show"
       end
     end
   end

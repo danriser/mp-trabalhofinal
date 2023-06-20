@@ -40,7 +40,33 @@ RSpec.describe "Api::V1::Matches", type: :request do
 
     end
 
+  end
+
+  describe "GET /show" do
+
+    before do
+      create(:user,id:1,nome:"a",senha:"a")
+      create(:user,id:2,nome:"b",senha:"b")
+      create(:user,id:3,nome:"c",senha:"c")
+      create(:match,id:1,user_id:1,user_id2:2,match_grade:"3")
+      create(:match,id:2,user_id:2,user_id2:3,match_grade:"2")
+    end
+
+    context "match exists" do
+      it "should return http status ok" do
+        get "/api/v1/match/show/1"
+        expect(response).to have_http_status(:ok)
+      end
+    end
+
+    context "user does not exist" do
+      it "should return http status not_found" do
+        get "/api/v1/match/show/-1"
+        expect(response).to have_http_status(:not_found)
+      end
+    end
 
   end
+
 
 end
