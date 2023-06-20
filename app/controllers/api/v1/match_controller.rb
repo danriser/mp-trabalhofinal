@@ -20,6 +20,13 @@ class Api::V1::MatchController < ApplicationController
         render json: e, status: :bad_request
     end
 
+    def delete
+        match=Match.find(params[:id])
+        match.destroy!
+        render json: match, status: :ok
+    rescue StandardError => e
+        render json: e, status: :bad_request
+    end
 
     private
         def match_params

@@ -27,6 +27,7 @@ Rails.application.routes.draw do
         get "index", to: "match#index"
         get "show/:id",to: "match#show"
         post "create", to: "match#create"
+        delete "delete/:id", to: "match#delete"
       end
     end
   end
