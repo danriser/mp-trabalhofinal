@@ -14,6 +14,9 @@ Rails.application.routes.draw do
         post "create", to: "preference#create"
         delete "delete/:id", to: "preference#delete"
       end
+      scope "group" do
+        get "index", to: "group#index"
+      end
     end
   end
 end
