@@ -27,6 +27,14 @@ class Api::V1::UserController < ApplicationController
         render json: e, status: :bad_request
     end
 
+    def update
+        user=User.find(params[:id])
+        user.update!(user_params)
+        render json: user, status: :ok
+    rescue StandardError => e
+        render json: e, status: :bad_request
+    end
+
 
     private
         def user_params

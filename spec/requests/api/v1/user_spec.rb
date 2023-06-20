@@ -113,4 +113,41 @@ RSpec.describe "Api::V1::Users", type: :request do
 
   end
 
+  describe "PATCH /update" do
+
+    before do
+      create(:user,id:1,nome:"a",senha:"a")
+      create(:user,id:2,nome:"b",senha:"b")
+    end
+
+    context "params are ok" do
+      it "should return http status ok" do
+        patch "/api/v1/user/update/1", params: {user: {nome:"c",senha:"c"}}
+        expect(response).to have_http_status(:ok)
+      end
+    end
+
+    context "params are invalid" do
+      it "should return http status ok" do
+        patch "/api/v1/user/update/1", params: {user:nil}
+        expect(response).to have_http_status(:bad_request)
+      end
+    end
+
+    context "name already taken" do
+      it "should return http status bad_request" do
+        patch "/api/v1/user/update/1", params: {user:{nome:"b",senha:"b"}}
+        expect(response).to have_http_status(:bad_request)
+      end
+    end
+
+    context "user does not exist" do
+      it "should return http status bad_request" do
+        patch "/api/v1/user/update/-1", params: {user:{nome:"d",senha:"d"}}
+        expect(response).to have_http_status(:bad_request)
+      end
+    end
+
+  end
+
 end

@@ -7,6 +7,7 @@ Rails.application.routes.draw do
         get "show/:id", to: "user#show"
         post "create", to: "user#create"
         delete "delete/:id", to: "user#delete"
+        patch "update/:id", to: "user#update"
       end
       scope "preference" do
         get "index", to: "preference#index"
