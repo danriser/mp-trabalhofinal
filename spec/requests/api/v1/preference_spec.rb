@@ -114,5 +114,41 @@ RSpec.describe "Api::V1::Preferences", type: :request do
 
   end
 
+  describe "PATCH /update" do
+    
+    before do
+      create(:preference,id:3,tipo:"c",descricao:"c")
+      create(:preference,id:4,tipo:"d",descricao:"d")
+    end
+
+    context "params are ok" do
+      it "should return http status ok" do
+        patch "/api/v1/preference/update/3", params:{preference: {tipo:"teste",descricao:"teste"}}
+        expect(response).to have_http_status(:ok)
+      end
+    end
+
+    context "params are invalid" do
+      it "should return http status bad_request" do
+        patch "/api/v1/preference/update/3", params:{preference:nil}
+        expect(response).to have_http_status(:bad_request)
+      end
+    end
+
+    context "tipo is repeated" do
+      it "should return http status bad_request" do
+        patch "/api/v1/preference/update/3", params:{preference: {tipo:"d",descricao:"d"}}
+        expect(response).to have_http_status(:bad_request)
+      end
+    end
+
+    context "preference does not exist" do
+      it "should return http status bad_request" do
+        patch "/api/v1/preference/update/-1", params:{preference: {tipo:"ola",descricao:"mundo"}}
+        expect(response).to have_http_status(:bad_request)
+      end
+    end
+
+  end
 
 end

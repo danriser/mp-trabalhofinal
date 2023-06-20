@@ -28,6 +28,14 @@ class Api::V1::PreferenceController < ApplicationController
         render json: e, status: :bad_request
     end
 
+    def update
+        preference=Preference.find(params[:id])
+        preference.update!(preference_params)
+        render json: preference, status: :ok
+    rescue StandardError => e
+        render json:e, status: :bad_request
+    end
+
     private
         def preference_params
             params.require(:preference).permit(:tipo,:descricao)

@@ -13,6 +13,7 @@ Rails.application.routes.draw do
         get "show/:id", to: "preference#show"
         post "create", to: "preference#create"
         delete "delete/:id", to: "preference#delete"
+        patch "update/:id", to: "preference#update"
       end
       scope "group" do
         get "index", to: "group#index"
