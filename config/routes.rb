@@ -20,6 +20,7 @@ Rails.application.routes.draw do
         get "show/:id", to: "group#show"
         delete "delete/:id", to: "group#delete"
         post "create", to: "group#create"
+        patch "update/:id", to: "group#update"
       end
     end
   end

@@ -28,6 +28,14 @@ class Api::V1::GroupController < ApplicationController
         render json: e, status: :bad_request
     end
 
+    def update
+        group=Group.find(params[:id])
+        group.update!(group_params)
+        render json: group, status: :ok
+    rescue StandardError => e
+        render json: e, status: :bad_request
+    end
+
     private
         def group_params
             params.require(:group).permit(:nome,:tipo,:descricao,:preference_id)

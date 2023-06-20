@@ -72,7 +72,6 @@ RSpec.describe "Api::V1::Groups", type: :request do
     before do
       create(:preference,id:3,tipo:"c",descricao:"c")
       create(:preference,id:4,tipo:"d",descricao:"d")
-
     end
     
     context "params are ok" do
@@ -100,6 +99,53 @@ RSpec.describe "Api::V1::Groups", type: :request do
       it "should return http status bad_request" do
         post "/api/v1/group/create", params: {group: {nome:"c",tipo:"c",descricao:"c",preference_id:3}}
         post "/api/v1/group/create", params: {group: {nome:"c",tipo:"c",descricao:"c",preference_id:4}}
+        expect(response).to have_http_status(:bad_request)
+      end
+    end
+
+  end
+
+  describe "PATCH /update" do
+
+    before do
+      create(:preference,id:1,tipo:"t1",descricao:"a")
+      create(:preference,id:2,tipo:"t2",descricao:"b")
+      create(:preference,id:3,tipo:"t3",descricao:"c")
+      create(:group,id:1,nome:"g1",tipo:"a",descricao:"a",preference_id:1)
+      create(:group,id:2,nome:"g2",tipo:"b",descricao:"b",preference_id:2)
+    end
+
+    context "params are ok" do
+      it "should return http status ok" do
+        patch "/api/v1/group/update/1", params: {group:{nome:"test",tipo:"test",descricao:"test",preference_id:3}}
+        expect(response).to have_http_status(:ok)
+      end
+    end
+
+    context "params are invalid" do
+      it "should return http status bad_request" do
+        patch "/api/v1/group/update/1", params: {group:nil}
+        expect(response).to have_http_status(:bad_request)
+      end
+    end
+
+    context "group does not exist" do
+      it "should return http status bad_request" do
+        patch "/api/v1/group/update/-1", params: {group:{nome:"test2",tipo:"test2",descricao:"tes2",preference_id:3}}
+        expect(response).to have_http_status(:bad_request)
+      end
+    end
+
+    context "group name already taken" do
+      it "should return http status bad_request" do
+        patch "/api/v1/group/update/1", params: {group:{nome:"g2",tipo:"g2",descricao:"g2",preference_id:3}}
+        expect(response).to have_http_status(:bad_request)
+      end
+    end
+  
+    context "preference_id already taken" do
+      it "should return http status bad_request" do
+        patch "/api/v1/group/update/1", params: {group:{nome:"g3",tipo:"g3",descricao:"g3",preference_id:2}}
         expect(response).to have_http_status(:bad_request)
       end
     end
