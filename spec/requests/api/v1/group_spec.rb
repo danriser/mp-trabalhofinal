@@ -44,5 +44,28 @@ RSpec.describe "Api::V1::Groups", type: :request do
 
   end
 
+  describe "DELETE /delete" do
+
+    before do
+      create(:preference,id:3,tipo:"c",descricao:"c")
+      create(:group,id:3,nome:"c",tipo:"c",descricao:"c",preference_id:3)
+    end
+
+    context "group exists" do
+      it "should return http status ok" do
+        delete "/api/v1/group/delete/3"
+        expect(response).to have_http_status(:ok)
+      end
+    end
+
+    context "group does not exist" do
+      it "should return http status bad_request" do
+        delete "/api/v1/group/delete/-1"
+        expect(response).to have_http_status(:bad_request)
+      end
+    end
+
+  end
+
 
 end

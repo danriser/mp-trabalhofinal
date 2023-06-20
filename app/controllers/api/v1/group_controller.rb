@@ -12,5 +12,12 @@ class Api::V1::GroupController < ApplicationController
         render json: e, status: :not_found
     end
 
+    def delete
+        group=Group.find(params[:id])
+        group.destroy!
+        render json: group, status: :ok
+    rescue StandardError => e
+        render json: e, status: :bad_request
+    end
 
 end

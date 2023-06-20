@@ -17,6 +17,7 @@ Rails.application.routes.draw do
       scope "group" do
         get "index", to: "group#index"
         get "show/:id", to: "group#show"
+        delete "delete/:id", to: "group#delete"
       end
     end
   end
