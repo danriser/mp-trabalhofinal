@@ -30,6 +30,26 @@ Rails.application.routes.draw do
         delete "delete/:id", to: "match#delete"
         patch "update/:id", to: "match#update"
       end
+      scope "list_prefs" do
+        get "index",to: "list_prefs#index"
+        get "show/:user_id",to: "list_prefs#show"
+        post "create", to: "list_prefs#create"
+        delete "delete/:id",to: "list_prefs#delete"
+        delete "delete_user_prefs/:user_id",to: "list_prefs#delete_user_prefs"
+      end
+      scope "list_groups" do
+        get "index",to: "list_groups#index"
+        get "user_groups/:user_id",to: "list_groups#user_groups"
+        get "group_users/:group_id", to:"list_groups#group_users"
+        post "create",to: "list_groups#create"
+        delete "delete/:id",to: "list_groups#delete"
+      end
+      scope "chat" do
+        get "index",to: "chat#index"
+        get "show/:id",to: "chat#show"
+        delete "delete/:id",to: "chat#delete"
+        post "create",to: "chat#create"
+      end
     end
   end
 end
