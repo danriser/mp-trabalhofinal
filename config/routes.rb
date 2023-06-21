@@ -44,6 +44,9 @@ Rails.application.routes.draw do
         post "create",to: "list_groups#create"
         delete "delete/:id",to: "list_groups#delete"
       end
+      scope "chat" do
+        get "index",to: "chat#index"
+      end
     end
   end
 end
