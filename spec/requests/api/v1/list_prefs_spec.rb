@@ -39,5 +39,31 @@ RSpec.describe "Api::V1::ListPrefs", type: :request do
 
   end
 
+  describe "GET /show" do
+    
+    before do
+      create(:user,id:1,nome:"a",senha:"a")
+      create(:preference,id:1,tipo:"a",descricao:"a")
+      create(:preference,id:2,tipo:"b",descricao:"b")
+      create(:list_preference,id:1,user_id:1,preference_id:1)
+      create(:list_preference,id:2,user_id:1,preference_id:2)
+    end
+
+    context "records exist" do
+      it "should return http status ok" do
+        get "/api/v1/list_prefs/show/1"
+        expect(response).to have_http_status(:ok)
+      end
+    end
+
+    context "records dont exist" do
+      it "should return http status not_found" do
+        get "/api/v1/list_prefs/show/-1"
+        expect(response).to have_http_status(:not_found)
+      end
+    end
+
+  end
+
 
 end

@@ -32,6 +32,7 @@ Rails.application.routes.draw do
       end
       scope "list_prefs" do
         get "index",to: "list_prefs#index"
+        get "show/:user_id",to: "list_prefs#show"
       end
     end
   end
