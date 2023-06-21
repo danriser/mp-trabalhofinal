@@ -42,6 +42,7 @@ Rails.application.routes.draw do
         get "user_groups/:user_id",to: "list_groups#user_groups"
         get "group_users/:group_id", to:"list_groups#group_users"
         post "create",to: "list_groups#create"
+        delete "delete/:id",to: "list_groups#delete"
       end
     end
   end

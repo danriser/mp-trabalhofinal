@@ -27,6 +27,14 @@ class Api::V1::ListGroupsController < ApplicationController
         render json:e, status: :bad_request
     end
 
+    def delete
+        list_group=ListGroupUser.find(params[:id])
+        list_group.destroy!
+        render json: list_group, status: :ok
+    rescue StandardError => e
+        render json: e, status: :bad_request
+    end
+
 
 
     private
