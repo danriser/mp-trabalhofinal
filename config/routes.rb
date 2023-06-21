@@ -50,6 +50,9 @@ Rails.application.routes.draw do
         delete "delete/:id",to: "chat#delete"
         post "create",to: "chat#create"
       end
+      scope "message" do
+        get "index",to: "message#index"
+      end
     end
   end
 end
