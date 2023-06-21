@@ -12,5 +12,13 @@ class Api::V1::ChatController < ApplicationController
         render json: e, status: :not_found
     end
 
+    def delete
+        chat=Chat.find(params[:id])
+        chat.destroy!
+        render json: chat, status: :ok
+    rescue StandardError => e
+        render json: e, status: :bad_request
+    end
+
 
 end
