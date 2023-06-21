@@ -46,6 +46,7 @@ Rails.application.routes.draw do
       end
       scope "chat" do
         get "index",to: "chat#index"
+        get "show/:id",to: "chat#show"
       end
     end
   end
