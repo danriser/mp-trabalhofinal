@@ -28,6 +28,14 @@ class Api::V1::ListPrefsController < ApplicationController
         render json: e, status: :bad_request
     end
 
+    def delete_user_prefs
+        list_pref=ListPreference.find(params[:user_id])
+        list_pref.destroy!
+        render json: list_pref, status: :ok
+    rescue StandardError => e
+        render json: e,status: :bad_request
+    end
+
     private
         def list_pref_params
             params.require(:list_preference).permit(:user_id,:preference_id)

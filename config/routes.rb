@@ -35,6 +35,7 @@ Rails.application.routes.draw do
         get "show/:user_id",to: "list_prefs#show"
         post "create", to: "list_prefs#create"
         delete "delete/:id",to: "list_prefs#delete"
+        delete "delete_user_prefs/:user_id",to: "list_prefs#delete_user_prefs"
       end
     end
   end
