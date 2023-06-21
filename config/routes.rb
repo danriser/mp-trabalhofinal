@@ -40,6 +40,8 @@ Rails.application.routes.draw do
       scope "list_groups" do
         get "index",to: "list_groups#index"
         get "user_groups/:user_id",to: "list_groups#user_groups"
+        get "group_users/:group_id", to:"list_groups#group_users"
+        post "create",to: "list_groups#create"
       end
     end
   end
