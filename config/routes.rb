@@ -30,6 +30,9 @@ Rails.application.routes.draw do
         delete "delete/:id", to: "match#delete"
         patch "update/:id", to: "match#update"
       end
+      scope "list_prefs" do
+        get "index",to: "list_prefs#index"
+      end
     end
   end
 end
