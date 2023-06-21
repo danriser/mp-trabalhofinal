@@ -58,3 +58,5 @@ gem 'rubocop-rails', require: false
 gem 'rubocop-rspec', require: false
 gem "figaro"
 
+gem "devise"
+gem "simple_token_authentication"
