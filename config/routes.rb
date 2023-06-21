@@ -37,6 +37,10 @@ Rails.application.routes.draw do
         delete "delete/:id",to: "list_prefs#delete"
         delete "delete_user_prefs/:user_id",to: "list_prefs#delete_user_prefs"
       end
+      scope "list_groups" do
+        get "index",to: "list_groups#index"
+        get "user_groups/:user_id",to: "list_groups#user_groups"
+      end
     end
   end
 end
