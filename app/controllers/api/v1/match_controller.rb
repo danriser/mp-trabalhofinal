@@ -28,6 +28,14 @@ class Api::V1::MatchController < ApplicationController
         render json: e, status: :bad_request
     end
 
+    def update
+        match=Match.find(params[:id])
+        match.update!(match_params)
+        render json: match, status: :ok
+    rescue StandardError => e
+        render json: e, status: :bad_request
+    end
+
     private
         def match_params
             params.require(:match).permit(:user_id,:user_id2,:match_grade)

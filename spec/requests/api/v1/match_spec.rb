@@ -124,5 +124,38 @@ RSpec.describe "Api::V1::Matches", type: :request do
 
   end
 
+  describe "PATCH /update" do
+
+    before do
+      create(:user,id:1,nome:"a",senha:"a")
+      create(:user,id:2,nome:"b",senha:"b")
+      create(:user,id:3,nome:"c",senha:"c")
+      create(:match,id:1,user_id:1,user_id2:2,match_grade:"3")
+      create(:match,id:2,user_id:2,user_id2:3,match_grade:"2")
+    end
+
+    context "params are ok" do
+      it "should return http status ok" do
+        patch "/api/v1/match/update/1", params: {match: {match_grade:"5"}}
+        expect(response).to have_http_status(:ok)
+      end
+    end
+
+    context "params are invalid" do
+      it "should return http status bad_request" do
+        patch "/api/v1/match/update/1", params: {match:nil}
+        expect(response).to have_http_status(:bad_request)
+      end
+    end
+
+    context "match does not exist" do
+      it "should return http status bad_request" do
+        patch "/api/v1/match/update/-1", params: {match:{match_grade:"27"}}
+        expect(response).to have_http_status(:bad_request)
+      end
+    end
+
+  end
+
 
 end

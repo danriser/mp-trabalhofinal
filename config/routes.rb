@@ -28,6 +28,7 @@ Rails.application.routes.draw do
         get "show/:id",to: "match#show"
         post "create", to: "match#create"
         delete "delete/:id", to: "match#delete"
+        patch "update/:id", to: "match#update"
       end
     end
   end
