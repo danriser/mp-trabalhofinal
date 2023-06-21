@@ -33,6 +33,8 @@ Rails.application.routes.draw do
       scope "list_prefs" do
         get "index",to: "list_prefs#index"
         get "show/:user_id",to: "list_prefs#show"
+        post "create", to: "list_prefs#create"
+        delete "delete/:id",to: "list_prefs#delete"
       end
     end
   end

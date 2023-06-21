@@ -65,5 +65,66 @@ RSpec.describe "Api::V1::ListPrefs", type: :request do
 
   end
 
+  describe "POST /create" do
+
+    before do
+      create(:user,id:1,nome:"a",senha:"a")
+      create(:preference,id:1,tipo:"a",descricao:"a")
+    end
+
+    context "params are valid" do
+      it "should return http status created" do
+        post "/api/v1/list_prefs/create", params: {list_preference: {user_id:1,preference_id:1}}
+        expect(response).to have_http_status(:created)
+      end
+    end
+
+    context "params are invalid" do
+      it "should return http status bad_request" do
+        post "/api/v1/list_prefs/create", params: {list_preference:nil}
+        expect(response).to have_http_status(:bad_request)
+      end
+    end
+
+    context "user does not exist" do
+      it "should return http status bad_request" do
+        post "/api/v1/list_prefs/create", params: {list_preference: {user_id:2,preference_id:1}}
+        expect(response).to have_http_status(:bad_request)
+      end
+    end
+
+    context "preference does not exist" do
+      it "should return http status bad_request" do
+        post "/api/v1/list_prefs/create", params: {list_preference: {user_id:1,preference_id:2}}
+        expect(response).to have_http_status(:bad_request)
+      end
+    end
+
+  end
+
+  describe "DELETE /delete" do
+
+    before do
+      create(:user,id:1,nome:"a",senha:"a")
+      create(:preference,id:1,tipo:"a",descricao:"a")
+      create(:list_preference,id:1,user_id:1,preference_id:1)
+    end
+
+    context "record exists" do
+      it "should return http status ok" do
+        delete "/api/v1/list_prefs/delete/1"
+        expect(response).to have_http_status(:ok)
+      end
+    end
+
+    context "record does not exist" do
+      it "should return http status bad_request" do
+        delete "/api/v1/list_prefs/delete/-1"
+        expect(response).to have_http_status(:bad_request)
+      end
+    end
+
+  end
+
 
 end
