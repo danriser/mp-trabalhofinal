@@ -48,6 +48,7 @@ Rails.application.routes.draw do
         get "index",to: "chat#index"
         get "show/:id",to: "chat#show"
         delete "delete/:id",to: "chat#delete"
+        post "create",to: "chat#create"
       end
     end
   end

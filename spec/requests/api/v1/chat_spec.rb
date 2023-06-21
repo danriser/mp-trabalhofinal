@@ -79,5 +79,33 @@ RSpec.describe "Api::V1::Chats", type: :request do
 
   end
 
+  describe "POST /create" do
+
+    before do
+      create(:user,id:1,nome:"a",senha:"a")
+      create(:user,id:2,nome:"b",senha:"b")
+      create(:preference,id:1,tipo:"a",descricao:"a")
+      create(:group,id:1,nome:"a",preference_id:1,tipo:"a",descricao:"a")
+      create(:match,id:1,user_id:1,user_id2:2,match_grade:"3")
+    end
+
+    context "params are ok" do
+      it "should return http status created" do
+        post "/api/v1/chat/create", params: {chat: {id_match:1,id_group:nil}}
+        expect(response).to have_http_status(:created)
+        post "/api/v1/chat/create", params: {chat: {id_match:nil,id_group:1}}
+        expect(response).to have_http_status(:created)
+      end
+    end
+
+    context "params are invalid" do
+      it "should return http status bad_request" do
+        post "/api/v1/chat/create", params: {chat:nil}
+        expect(response).to have_http_status(:bad_request)
+      end
+    end
+
+  end
+
 
 end

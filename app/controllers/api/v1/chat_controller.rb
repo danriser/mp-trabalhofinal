@@ -20,5 +20,19 @@ class Api::V1::ChatController < ApplicationController
         render json: e, status: :bad_request
     end
 
+    def create 
+        chat=Chat.new(chat_params)
+        chat.save!
+        render json: chat, status: :created
+    rescue StandardError => e
+        render json: e, status: :bad_request
+    end
+
+
+    private
+        def chat_params
+            params.require(:chat).permit(:id_match,:id_group)
+        end
+
 
 end
