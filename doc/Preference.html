@@ -103,7 +103,20 @@
   
 </div>
 
+<h2>Overview</h2><div class="docstring">
+  <div class="discussion">
+    
+<p>Model <span class='object_link'><a href="" title="Preference (class)">Preference</a></span> </p>
 
+<p>Responsável por armazenar os dados de uma preferencia</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div>
 
 
 
@@ -113,7 +126,7 @@
       <li class="public ">
   <span class="summary_signature">
     
-      <a href="#descricao-instance_method" title="#descricao (instance method)">#<strong>descricao</strong>  &#x21d2; Object </a>
+      <a href="#descricao-instance_method" title="#descricao (instance method)">#<strong>descricao</strong>  &#x21d2; String </a>
     
 
     
@@ -122,8 +135,6 @@
   
   
     
-      <span class="note title readonly">readonly</span>
-    
     
   
   
@@ -132,7 +143,9 @@
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'>
+<p>Descricao de uma preferencia.</p>
+</div></span>
   
 </li>
 
@@ -140,7 +153,7 @@
       <li class="public ">
   <span class="summary_signature">
     
-      <a href="#tipo-instance_method" title="#tipo (instance method)">#<strong>tipo</strong>  &#x21d2; Object </a>
+      <a href="#id-instance_method" title="#id (instance method)">#<strong>id</strong>  &#x21d2; int </a>
     
 
     
@@ -149,7 +162,32 @@
   
   
     
-      <span class="note title readonly">readonly</span>
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Id da preferencia.</p>
+</div></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#tipo-instance_method" title="#tipo (instance method)">#<strong>tipo</strong>  &#x21d2; String </a>
+    
+
+    
+  </span>
+  
+  
+  
     
     
   
@@ -159,7 +197,9 @@
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'>
+<p>Tipo de preferencia.</p>
+</div></span>
   
 </li>
 
@@ -168,70 +208,6 @@
 
 
 
-
-  
-    <h2>
-      Has many
-      <small><a href="#" class="summary_toggle">collapse</a></small>
-    </h2>
-
-    <ul class="summary">
-      
-        <li class="public ">
-  <span class="summary_signature">
-    
-      <a href="#list_preferences-instance_method" title="#list_preferences (instance method)">#<strong>list_preferences</strong>  &#x21d2; ActiveRecord::Relation&lt;ListPreference&gt; </a>
-    
-
-    
-  </span>
-  
-  
-  
-  
-  
-  
-  
-
-  
-    <span class="summary_desc"><div class='inline'></div></span>
-  
-</li>
-
-      
-    </ul>
-  
-    <h2>
-      Has one
-      <small><a href="#" class="summary_toggle">collapse</a></small>
-    </h2>
-
-    <ul class="summary">
-      
-        <li class="public ">
-  <span class="summary_signature">
-    
-      <a href="#groups-instance_method" title="#groups (instance method)">#<strong>groups</strong>  &#x21d2; Groups </a>
-    
-
-    
-  </span>
-  
-  
-  
-  
-  
-  
-  
-
-  
-    <span class="summary_desc"><div class='inline'></div></span>
-  
-</li>
-
-      
-    </ul>
-  
 
 
   
@@ -245,72 +221,145 @@
     <h2>Instance Attribute Details</h2>
     
       
-      <span id=""></span>
+      <span id="descricao=-instance_method"></span>
       <div class="method_details first">
   <h3 class="signature first" id="descricao-instance_method">
   
-    #<strong>descricao</strong>  &#x21d2; <tt>Object</tt>  <span class="extras">(readonly)</span>
+    #<strong>descricao</strong>  &#x21d2; <tt>String</tt> 
   
 
   
 
   
-</h3><table class="source_code">
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Returns descricao de uma preferencia.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>descricao de uma preferencia</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-5</pre>
+16
+17
+18
+19
+20
+21</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/preference.rb', line 5</span>
+      <pre class="code"><span class="info file"># File 'app/models/preference.rb', line 16</span>
 
-<span class='id identifier rubyid_validates'>validates</span> <span class='symbol'>:descricao</span><span class='comma'>,</span> <span class='label'>presence:</span> <span class='symbol'>:true</span></pre>
+<span class='kw'>class</span> <span class='const'><span class='object_link'><a href="" title="Preference (class)">Preference</a></span></span> <span class='op'>&lt;</span> <span class='const'><span class='object_link'><a href="ApplicationRecord.html" title="ApplicationRecord (class)">ApplicationRecord</a></span></span>
+    <span class='id identifier rubyid_has_many'>has_many</span> <span class='symbol'>:list_preferences</span>
+    <span class='id identifier rubyid_has_one'>has_one</span> <span class='symbol'>:groups</span>
+    <span class='id identifier rubyid_validates'>validates</span> <span class='symbol'>:tipo</span><span class='comma'>,</span> <span class='label'>presence:</span> <span class='symbol'>:true</span><span class='comma'>,</span> <span class='label'>uniqueness:</span> <span class='symbol'>:true</span>
+    <span class='id identifier rubyid_validates'>validates</span> <span class='symbol'>:descricao</span><span class='comma'>,</span> <span class='label'>presence:</span> <span class='symbol'>:true</span>
+<span class='kw'>end</span></pre>
     </td>
   </tr>
 </table>
 </div>
     
       
-      <span id=""></span>
+      <span id="id=-instance_method"></span>
+      <div class="method_details ">
+  <h3 class="signature " id="id-instance_method">
+  
+    #<strong>id</strong>  &#x21d2; <tt>int</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Returns id da preferencia.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>int</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>id da preferencia</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+16
+17
+18
+19
+20
+21</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'app/models/preference.rb', line 16</span>
+
+<span class='kw'>class</span> <span class='const'><span class='object_link'><a href="" title="Preference (class)">Preference</a></span></span> <span class='op'>&lt;</span> <span class='const'><span class='object_link'><a href="ApplicationRecord.html" title="ApplicationRecord (class)">ApplicationRecord</a></span></span>
+    <span class='id identifier rubyid_has_many'>has_many</span> <span class='symbol'>:list_preferences</span>
+    <span class='id identifier rubyid_has_one'>has_one</span> <span class='symbol'>:groups</span>
+    <span class='id identifier rubyid_validates'>validates</span> <span class='symbol'>:tipo</span><span class='comma'>,</span> <span class='label'>presence:</span> <span class='symbol'>:true</span><span class='comma'>,</span> <span class='label'>uniqueness:</span> <span class='symbol'>:true</span>
+    <span class='id identifier rubyid_validates'>validates</span> <span class='symbol'>:descricao</span><span class='comma'>,</span> <span class='label'>presence:</span> <span class='symbol'>:true</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      
+      <span id="tipo=-instance_method"></span>
       <div class="method_details ">
   <h3 class="signature " id="tipo-instance_method">
   
-    #<strong>tipo</strong>  &#x21d2; <tt>Object</tt>  <span class="extras">(readonly)</span>
-  
-
-  
-
-  
-</h3><table class="source_code">
-  <tr>
-    <td>
-      <pre class="lines">
-
-
-4</pre>
-    </td>
-    <td>
-      <pre class="code"><span class="info file"># File 'app/models/preference.rb', line 4</span>
-
-<span class='id identifier rubyid_validates'>validates</span> <span class='symbol'>:tipo</span><span class='comma'>,</span> <span class='label'>presence:</span> <span class='symbol'>:true</span><span class='comma'>,</span> <span class='label'>uniqueness:</span> <span class='symbol'>:true</span></pre>
-    </td>
-  </tr>
-</table>
-</div>
-    
-  </div>
-
-
-  <div id="instance_method_details" class="method_details_list">
-    <h2>Instance Method Details</h2>
-
-    
-      <div class="method_details first">
-  <h3 class="signature first" id="groups-instance_method">
-  
-    #<strong>groups</strong>  &#x21d2; <tt>Groups</tt> 
+    #<strong>tipo</strong>  &#x21d2; <tt>String</tt> 
   
 
   
@@ -319,6 +368,8 @@
 </h3><div class="docstring">
   <div class="discussion">
     
+<p>Returns tipo de preferencia.</p>
+
 
   </div>
 </div>
@@ -330,20 +381,18 @@
     <li>
       
       
-        <span class='type'>(<tt>Groups</tt>)</span>
+        <span class='type'>(<tt>String</tt>)</span>
       
       
+      
+        &mdash;
+        <div class='inline'>
+<p>tipo de preferencia</p>
+</div>
       
     </li>
   
 </ul>
-
-  <p class="tag_title">See Also:</p>
-  <ul class="see">
-    
-      <li><a href="http://api.rubyonrails.org/classes/ActiveRecord/Associations/ClassMethods.html" target="_parent" title="ActiveRecord::Associations">ActiveRecord::Associations</a></li>
-    
-  </ul>
 
 </div><table class="source_code">
   <tr>
@@ -351,80 +400,36 @@
       <pre class="lines">
 
 
-3</pre>
+16
+17
+18
+19
+20
+21</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/preference.rb', line 3</span>
+      <pre class="code"><span class="info file"># File 'app/models/preference.rb', line 16</span>
 
-<span class='id identifier rubyid_has_one'>has_one</span> <span class='symbol'>:groups</span></pre>
-    </td>
-  </tr>
-</table>
-</div>
-    
-      <div class="method_details ">
-  <h3 class="signature " id="list_preferences-instance_method">
-  
-    #<strong>list_preferences</strong>  &#x21d2; <tt>ActiveRecord::Relation&lt;<span class='object_link'><a href="ListPreference.html" title="ListPreference (class)">ListPreference</a></span>&gt;</tt> 
-  
-
-  
-
-  
-</h3><div class="docstring">
-  <div class="discussion">
-    
-
-  </div>
-</div>
-<div class="tags">
-  
-<p class="tag_title">Returns:</p>
-<ul class="return">
-  
-    <li>
-      
-      
-        <span class='type'>(<tt>ActiveRecord::Relation&lt;<span class='object_link'><a href="ListPreference.html" title="ListPreference (class)">ListPreference</a></span>&gt;</tt>)</span>
-      
-      
-      
-    </li>
-  
-</ul>
-
-  <p class="tag_title">See Also:</p>
-  <ul class="see">
-    
-      <li><a href="http://api.rubyonrails.org/classes/ActiveRecord/Associations/ClassMethods.html" target="_parent" title="ActiveRecord::Associations">ActiveRecord::Associations</a></li>
-    
-  </ul>
-
-</div><table class="source_code">
-  <tr>
-    <td>
-      <pre class="lines">
-
-
-2</pre>
-    </td>
-    <td>
-      <pre class="code"><span class="info file"># File 'app/models/preference.rb', line 2</span>
-
-<span class='id identifier rubyid_has_many'>has_many</span> <span class='symbol'>:list_preferences</span></pre>
+<span class='kw'>class</span> <span class='const'><span class='object_link'><a href="" title="Preference (class)">Preference</a></span></span> <span class='op'>&lt;</span> <span class='const'><span class='object_link'><a href="ApplicationRecord.html" title="ApplicationRecord (class)">ApplicationRecord</a></span></span>
+    <span class='id identifier rubyid_has_many'>has_many</span> <span class='symbol'>:list_preferences</span>
+    <span class='id identifier rubyid_has_one'>has_one</span> <span class='symbol'>:groups</span>
+    <span class='id identifier rubyid_validates'>validates</span> <span class='symbol'>:tipo</span><span class='comma'>,</span> <span class='label'>presence:</span> <span class='symbol'>:true</span><span class='comma'>,</span> <span class='label'>uniqueness:</span> <span class='symbol'>:true</span>
+    <span class='id identifier rubyid_validates'>validates</span> <span class='symbol'>:descricao</span><span class='comma'>,</span> <span class='label'>presence:</span> <span class='symbol'>:true</span>
+<span class='kw'>end</span></pre>
     </td>
   </tr>
 </table>
 </div>
     
   </div>
+
 
 </div>
 
       <div id="footer">
-  Generated on Thu Jun 22 18:29:35 2023 by
+  Generated on Fri Jun 23 11:00:09 2023 by
   <a href="https://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.9.34 (ruby-3.2.2).
+  0.9.34 (ruby-3.0.0).
 </div>
 
     </div>
