@@ -101,7 +101,18 @@
   
 </div>
 
+<h2>Overview</h2><div class="docstring">
+  <div class="discussion">
+    
+<p>Enzo</p>
 
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div>
 
 
 
@@ -251,16 +262,16 @@
       <pre class="lines">
 
 
-15
 16
 17
 18
 19
 20
-21</pre>
+21
+22</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/controllers/api/v1/match_controller.rb', line 15</span>
+      <pre class="code"><span class="info file"># File 'app/controllers/api/v1/match_controller.rb', line 16</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_create'>create</span>
     <span class='id identifier rubyid_match'>match</span><span class='op'>=</span><span class='const'>Match</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='id identifier rubyid_match_params'>match_params</span><span class='rparen'>)</span>
@@ -289,16 +300,16 @@
       <pre class="lines">
 
 
-23
 24
 25
 26
 27
 28
-29</pre>
+29
+30</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/controllers/api/v1/match_controller.rb', line 23</span>
+      <pre class="code"><span class="info file"># File 'app/controllers/api/v1/match_controller.rb', line 24</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_delete'>delete</span>
     <span class='id identifier rubyid_match'>match</span><span class='op'>=</span><span class='const'>Match</span><span class='period'>.</span><span class='id identifier rubyid_find'>find</span><span class='lparen'>(</span><span class='id identifier rubyid_params'>params</span><span class='lbracket'>[</span><span class='symbol'>:id</span><span class='rbracket'>]</span><span class='rparen'>)</span>
@@ -327,13 +338,13 @@
       <pre class="lines">
 
 
-3
 4
 5
-6</pre>
+6
+7</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/controllers/api/v1/match_controller.rb', line 3</span>
+      <pre class="code"><span class="info file"># File 'app/controllers/api/v1/match_controller.rb', line 4</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_index'>index</span>
     <span class='id identifier rubyid_match'>match</span><span class='op'>=</span><span class='const'>Match</span><span class='period'>.</span><span class='id identifier rubyid_all'>all</span>
@@ -359,15 +370,15 @@
       <pre class="lines">
 
 
-8
 9
 10
 11
 12
-13</pre>
+13
+14</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/controllers/api/v1/match_controller.rb', line 8</span>
+      <pre class="code"><span class="info file"># File 'app/controllers/api/v1/match_controller.rb', line 9</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_show'>show</span>
     <span class='id identifier rubyid_match'>match</span><span class='op'>=</span><span class='const'>Match</span><span class='period'>.</span><span class='id identifier rubyid_find'>find</span><span class='lparen'>(</span><span class='id identifier rubyid_params'>params</span><span class='lbracket'>[</span><span class='symbol'>:id</span><span class='rbracket'>]</span><span class='rparen'>)</span>
@@ -395,16 +406,16 @@
       <pre class="lines">
 
 
-31
 32
 33
 34
 35
 36
-37</pre>
+37
+38</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/controllers/api/v1/match_controller.rb', line 31</span>
+      <pre class="code"><span class="info file"># File 'app/controllers/api/v1/match_controller.rb', line 32</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_update'>update</span>
     <span class='id identifier rubyid_match'>match</span><span class='op'>=</span><span class='const'>Match</span><span class='period'>.</span><span class='id identifier rubyid_find'>find</span><span class='lparen'>(</span><span class='id identifier rubyid_params'>params</span><span class='lbracket'>[</span><span class='symbol'>:id</span><span class='rbracket'>]</span><span class='rparen'>)</span>
@@ -423,7 +434,7 @@
 </div>
 
       <div id="footer">
-  Generated on Fri Jun 23 11:00:09 2023 by
+  Generated on Mon Jun 26 14:56:33 2023 by
   <a href="https://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.34 (ruby-3.0.0).
 </div>
