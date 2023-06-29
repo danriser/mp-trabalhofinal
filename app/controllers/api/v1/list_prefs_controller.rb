@@ -7,7 +7,11 @@ class Api::V1::ListPrefsController < ApplicationController
 
     def show
         list_pref=ListPreference.where("user_id = ?",params[:user_id])
-        render json: list_pref, status: :ok
+        return_http=:ok
+        if(list_pref.empty?)
+            return_http=:not_found
+        end
+        render json: list_pref, status: return_http
     rescue StandardError => e
         render json: e, status: :not_found
     end

@@ -7,7 +7,11 @@ class Api::V1::MessageController < ApplicationController
 
     def user_msgs
         message=Message.where("user_id = ?",params[:user_id])
-        render json: message, status: :ok
+        return_http=:ok
+        if(message.empty?)
+            return_http=:not_found
+        end
+        render json: message, status: return_http
     rescue StandardError => e
         render json: e, status: :not_found
     end
