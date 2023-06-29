@@ -6,7 +6,7 @@ class Api::V1::MessageController < ApplicationController
     end
 
     def user_msgs
-        message=Message.find(params[:user_id])
+        message=Message.where("user_id = ?",params[:user_id])
         render json: message, status: :ok
     rescue StandardError => e
         render json: e, status: :not_found
@@ -29,10 +29,17 @@ class Api::V1::MessageController < ApplicationController
 
     def user_msgs_delete
         message=Message.find(params[:user_id])
-        message.destroy!
+        Message.where("user_id = ?",message.user_id).destroy_all
         render json: message, status: :ok
     rescue StandardError => e
         render json: e, status: :bad_request
+    end
+
+    def chat_msgs
+        message=Message.where("chat_id = ?",params[:chat_id])
+        render json: message, status: :ok
+    rescue StandardError => e
+        render json: e, status: :not_found
     end
 
 end

@@ -6,14 +6,14 @@ class Api::V1::ListGroupsController < ApplicationController
     end
 
     def user_groups
-        list_group=ListGroupUser.find(params[:user_id])
+        list_group=ListGroupUser.where("user_id = ?",params[:user_id])
         render json: list_group, status: :ok
     rescue StandardError => e
         render json: e, status: :not_found
     end
 
     def group_users
-        list_group=ListGroupUser.find(params[:group_id])
+        list_group=ListGroupUser.where("group_id = ?",params[:group_id])
         render json: list_group, status: :ok
     rescue StandardError => e
         render json: e, status: :not_found

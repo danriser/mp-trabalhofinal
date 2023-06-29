@@ -6,7 +6,7 @@ class Api::V1::ListPrefsController < ApplicationController
     end
 
     def show
-        list_pref=ListPreference.find(params[:user_id])
+        list_pref=ListPreference.where("user_id = ?",params[:user_id])
         render json: list_pref, status: :ok
     rescue StandardError => e
         render json: e, status: :not_found
@@ -30,7 +30,7 @@ class Api::V1::ListPrefsController < ApplicationController
 
     def delete_user_prefs
         list_pref=ListPreference.find(params[:user_id])
-        list_pref.destroy!
+        ListPreference.where(user_id:(list_pref.user_id)).destroy_all
         render json: list_pref, status: :ok
     rescue StandardError => e
         render json: e,status: :bad_request
