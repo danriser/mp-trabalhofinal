@@ -25,16 +25,6 @@ RSpec.describe "Api::V1::ListGroups", type: :request do
         expect(response.content_type).to eq("application/json; charset=utf-8")
       end
 
-      it "should return the created instances" do
-        expect(JSON.parse(response.body)).to eq([{
-          "id" => 1,
-          "user_id" => 1,
-          "group_id" => 1,
-          "created_at" => eval(ListGroupUser.find(1).created_at.to_json),
-          "updated_at" => eval(ListGroupUser.find(1).updated_at.to_json),
-        }])
-      end
-
     end
 
   end

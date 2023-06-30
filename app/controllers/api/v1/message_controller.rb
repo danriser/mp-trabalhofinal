@@ -2,7 +2,7 @@ class Api::V1::MessageController < ApplicationController
 
     def index
         message=Message.all
-        render json: message, status: :ok
+        render json: array_serializer(message), status: :ok
     end
 
     def user_msgs
@@ -11,14 +11,14 @@ class Api::V1::MessageController < ApplicationController
         if(message.empty?)
             return_http=:not_found
         end
-        render json: message, status: return_http
+        render json: array_serializer(message), status: return_http
     rescue StandardError => e
         render json: e, status: :not_found
     end
 
     def show
         message=Message.find(params[:id])
-        render json: message, status: :ok
+        render json: serializer(message), status: :ok
     rescue StandardError => e
         render json: e, status: :not_found
     end
@@ -41,9 +41,32 @@ class Api::V1::MessageController < ApplicationController
 
     def chat_msgs
         message=Message.where("chat_id = ?",params[:chat_id])
-        render json: message, status: :ok
+        render json: array_serializer(message), status: :ok
     rescue StandardError => e
         render json: e, status: :not_found
     end
+
+    def create
+        message=Message.new(msg_params)
+        message.save!
+        render json: message, status: :created
+    rescue StandardError => e
+        render json: e, status: :bad_request
+    end
+
+    private 
+
+    def array_serializer(message)
+        Panko::ArraySerializer.new(message,each_serializer: MessageSerializer).to_json
+    end
+
+    def serializer(message)
+        MessageSerializer.new.serialize_to_json(message)
+    end
+
+    def msg_params
+        params.require(:message).permit(:chat_id,:user_id,:hora_de_envio,:conteudo)
+    end
+
 
 end

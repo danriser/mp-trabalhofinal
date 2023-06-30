@@ -11,7 +11,7 @@ class Api::V1::ListPrefsController < ApplicationController
         if(list_pref.empty?)
             return_http=:not_found
         end
-        render json: serializer(list_pref), status: return_http
+        render json: array_serializer(list_pref), status: return_http
     rescue StandardError => e
         render json: e, status: :not_found
     end

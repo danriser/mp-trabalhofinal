@@ -57,6 +57,7 @@ Rails.application.routes.draw do
         delete "delete/:id",to: "message#delete"
         delete "user_msgs_delete/:user_id",to: "message#user_msgs_delete"
         get "chat_msgs/:chat_id",to: "message#chat_msgs"
+        post "create", to: "message#create"
       end
     end
   end
