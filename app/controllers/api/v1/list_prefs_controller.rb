@@ -14,8 +14,12 @@ class Api::V1::ListPrefsController < ApplicationController
     # @return [JSON] A lista de preferencias em formato JSON.
     # @raise [StandardError] Caso a lista de preferencias nao seja encontrada.
     def show
-      list_pref = ListPreference.find(params[:user_id])
-      render json: list_pref, status: :ok
+      list_pref=ListPreference.where("user_id = ?",params[:user_id])
+      return_http=:ok
+      if(list_pref.empty?)
+          return_http=:not_found
+      end
+      render json: list_pref, status: return_http
     rescue StandardError => e
       render json: e, status: :not_found
     end
@@ -54,8 +58,8 @@ class Api::V1::ListPrefsController < ApplicationController
     # @return [JSON] A lista de preferencias excluida em formato JSON.
     # @raise [StandardError] Caso a lista de preferencias do usuario nao possa ser excluida.
     def delete_user_prefs
-      list_pref = ListPreference.find(params[:user_id])
-      list_pref.destroy!
+      list_pref=ListPreference.find(params[:user_id])
+      ListPreference.where(user_id:(list_pref.user_id)).destroy_all
       render json: list_pref, status: :ok
     rescue StandardError => e
       render json: e, status: :bad_request

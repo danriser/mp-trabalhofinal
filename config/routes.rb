@@ -52,6 +52,11 @@ Rails.application.routes.draw do
       end
       scope "message" do
         get "index",to: "message#index"
+        get "user_msgs/:user_id",to: "message#user_msgs"
+        get "show/:id",to: "message#show"
+        delete "delete/:id",to: "message#delete"
+        delete "user_msgs_delete/:user_id",to: "message#user_msgs_delete"
+        get "chat_msgs/:chat_id",to: "message#chat_msgs"
       end
     end
   end
