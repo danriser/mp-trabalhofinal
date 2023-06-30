@@ -2,7 +2,7 @@ class Api::V1::ListPrefsController < ApplicationController
 
     def index
         list_pref=ListPreference.all
-        render json: list_pref, status: :ok
+        render json: array_serializer(list_pref), status: :ok
     end
 
     def show
@@ -11,7 +11,7 @@ class Api::V1::ListPrefsController < ApplicationController
         if(list_pref.empty?)
             return_http=:not_found
         end
-        render json: list_pref, status: return_http
+        render json: serializer(list_pref), status: return_http
     rescue StandardError => e
         render json: e, status: :not_found
     end
@@ -41,6 +41,15 @@ class Api::V1::ListPrefsController < ApplicationController
     end
 
     private
+
+        def array_serializer(list_pref)
+            Panko::ArraySerializer.new(list_pref,each_serializer: ListPrefsSerializer).to_json
+        end
+
+        def serializer(list_pref)
+            ListPrefsSerializer.new.serialize_to_json(list_pref)
+        end
+
         def list_pref_params
             params.require(:list_preference).permit(:user_id,:preference_id)
         end
