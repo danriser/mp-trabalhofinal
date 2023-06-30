@@ -1,38 +1,59 @@
+# Controller responsavel por lidar com as operacoes relacionadas a chats.
 class Api::V1::ChatController < ApplicationController
+  # Obtem todos os chats.
+  #
+  # @return [JSON] Lista de chats em formato JSON.
+  def index
+    chat = Chat.all
+    render json: chat, status: :ok
+  end
 
-    def index
-        chat=Chat.all
-        render json: chat, status: :ok
-    end
+  # Obtem um chat especefico pelo ID.
+  #
+  # @param id [Int] O ID do chat.
+  # @return [JSON] O chat em formato JSON.
+  # @raise [StandardError] Caso o chat não seja encontrado.
+  def show
+    chat = Chat.find(params[:id])
+    render json: chat, status: :ok
+  rescue StandardError => e
+    render json: e, status: :not_found
+  end
 
-    def show
-        chat=Chat.find(params[:id])
-        render json: chat, status: :ok
-    rescue StandardError => e
-        render json: e, status: :not_found
-    end
+  # Exclui um chat especifico pelo ID.
+  #
+  # @param id [Int] O ID do chat a ser excluído.
+  # @return [JSON] O chat excluído em formato JSON.
+  # @raise [StandardError] Caso o chat não possa ser excluído.
+  def delete
+    chat = Chat.find(params[:id])
+    chat.destroy!
+    render json: chat, status: :ok
+  rescue StandardError => e
+    render json: e, status: :bad_request
+  end
 
-    def delete
-        chat=Chat.find(params[:id])
-        chat.destroy!
-        render json: chat, status: :ok
-    rescue StandardError => e
-        render json: e, status: :bad_request
-    end
+  # Cria um novo chat.
+  #
+  # @param chat_params [String] Parâmetros do chat a ser criado.
+  # @option chat_params [Int] :id_match O ID da correspondência do chat.
+  # @option chat_params [Int] :id_group O ID do grupo do chat.
+  # @return [JSON] O chat criado em formato JSON.
+  # @raise [StandardError] Caso o chat não possa ser criado.
+  def create
+    chat = Chat.new(chat_params)
+    chat.save!
+    render json: chat, status: :created
+  rescue StandardError => e
+    render json: e, status: :bad_request
+  end
 
-    def create 
-        chat=Chat.new(chat_params)
-        chat.save!
-        render json: chat, status: :created
-    rescue StandardError => e
-        render json: e, status: :bad_request
-    end
+  private
 
-
-    private
-        def chat_params
-            params.require(:chat).permit(:id_match,:id_group)
-        end
-
-
+  # Define os parametros permitidos para a criacao do chat.
+  #
+  # @return [String] Os parametros permitidos para a criacao do chat.
+  def chat_params
+    params.require(:chat).permit(:id_match, :id_group)
+  end
 end
