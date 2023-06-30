@@ -2,12 +2,12 @@ class Api::V1::MatchController < ApplicationController
 
     def index
         match=Match.all
-        render json: match, status: :ok
+        render json: array_serializer(match), status: :ok
     end
 
     def show
         match=Match.find(params[:id])
-        render json: match, status: :ok
+        render json: serializer(match), status: :ok
     rescue StandardError => e
         render json: e, status: :not_found
     end
@@ -37,6 +37,15 @@ class Api::V1::MatchController < ApplicationController
     end
 
     private
+
+        def array_serializer(match)
+            Panko::ArraySerializer.new(match,each_serializer: MatchSerializer).to_json
+        end
+
+        def serializer(match)
+            MatchSerializer.new.serialize_to_json(match)
+        end
+
         def match_params
             params.require(:match).permit(:user_id,:user_id2,:match_grade)
         end
