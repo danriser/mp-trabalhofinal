@@ -2,7 +2,7 @@ class Api::V1::ListGroupsController < ApplicationController
 
     def index
         list_group=ListGroupUser.all
-        render json: array_serializer(list_group), status: :ok
+        render json: list_group, status: :ok
     end
 
     def user_groups
@@ -11,7 +11,7 @@ class Api::V1::ListGroupsController < ApplicationController
         if(list_group.empty?)
             return_http=:not_found
         end
-        render json: serializer(list_group), status: return_http
+        render json: list_group, status: return_http
     rescue StandardError => e
         render json: e, status: :not_found
     end
@@ -46,15 +46,6 @@ class Api::V1::ListGroupsController < ApplicationController
 
 
     private
-
-        def array_serializer(list_group)
-            Panko::ArraySerializer.new(list_group,each_serializer: ListGroupsSerializer).to_json
-        end
-
-        def serializer(list_group)
-            ListGroupsSerializer.new.serialize_to_json(list_group)
-        end
-
         def list_group_params
             params.require(:list_group_user).permit(:user_id,:group_id)
         end
