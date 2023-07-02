@@ -1,3 +1,4 @@
+# Enzo
 class Group < ApplicationRecord
   belongs_to :preference
   has_many :list_group_user

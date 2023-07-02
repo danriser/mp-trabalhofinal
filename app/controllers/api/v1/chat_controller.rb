@@ -1,10 +1,18 @@
 class Api::V1::ChatController < ApplicationController
 
+    # Obtem todos os chats.
+    #
+    # @return [JSON] Lista de chats em formato JSON.
     def index
         chat=Chat.all
         render json: array_serializer(chat), status: :ok
     end
 
+    # Obtem um chat especefico pelo ID.
+    #
+    # @param id [Int] O ID do chat.
+    # @return [JSON] O chat em formato JSON.
+    # @raise [StandardError] Caso o chat não seja encontrado.
     def show
         chat=Chat.find(params[:id])
         render json: serializer(chat), status: :ok
@@ -12,6 +20,11 @@ class Api::V1::ChatController < ApplicationController
         render json: e, status: :not_found
     end
 
+    # Exclui um chat especifico pelo ID.
+    #
+    # @param id [Int] O ID do chat a ser excluído.
+    # @return [JSON] O chat excluído em formato JSON.
+    # @raise [StandardError] Caso o chat não possa ser excluído.
     def delete
         chat=Chat.find(params[:id])
         chat.destroy!
@@ -20,6 +33,13 @@ class Api::V1::ChatController < ApplicationController
         render json: e, status: :bad_request
     end
 
+    # Cria um novo chat.
+    #
+    # @param chat_params [String] Parâmetros do chat a ser criado.
+    # @option chat_params [Int] :id_match O ID da correspondência do chat.
+    # @option chat_params [Int] :id_group O ID do grupo do chat.
+    # @return [JSON] O chat criado em formato JSON.
+    # @raise [StandardError] Caso o chat não possa ser criado.
     def create 
         chat=Chat.new(chat_params)
         chat.save!
@@ -38,7 +58,10 @@ class Api::V1::ChatController < ApplicationController
         def serializer(chat)
             ChatSerializer.new.serialize_to_json(chat)
         end
-
+      
+        # Define os parametros permitidos para a criacao do chat.
+        #
+        # @return [String] Os parametros permitidos para a criacao do chat.
         def chat_params
             params.require(:chat).permit(:id_match,:id_group)
         end
