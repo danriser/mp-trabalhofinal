@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 #
-# Model {Preference} 
+# Model {Preference}
 #
 # Responsável por armazenar os dados de uma preferencia
 #
@@ -14,8 +16,8 @@
 #
 #
 class Preference < ApplicationRecord
-    has_many :list_preferences
-    has_one :groups
-    validates :tipo, presence: :true, uniqueness: :true
-    validates :descricao, presence: :true
+  has_many :list_preferences
+  has_one :groups
+  validates :tipo, presence: true, uniqueness: true
+  validates :descricao, presence: true
 end
