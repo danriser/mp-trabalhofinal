@@ -1,9 +1,9 @@
+# frozen_string_literal: true
+
 class GroupSerializer < Panko::Serializer
+  attributes :id, :nome, :descricao, :preference
 
-    attributes :id,:nome,:descricao,:preference
-
-    def preference
-        {id: object.preference.id, tipo: object.preference.tipo, descricao: object.preference.descricao}
-    end
-
+  def preference
+    { id: object.preference.id, tipo: object.preference.tipo, descricao: object.preference.descricao }
+  end
 end
