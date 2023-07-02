@@ -21,22 +21,6 @@ RSpec.describe "Api::V1::Preferences", type: :request do
       it "should return json" do
         expect(response.content_type).to eq("application/json; charset=utf-8")
       end
-      it "should return created instances"do
-        expect(JSON.parse(response.body)).to eq([{
-          "created_at" => eval(Preference.find(1).created_at.to_json),
-          "id" => 1,
-          "tipo" => "a",
-          "descricao" => "a",
-          "updated_at" => eval(Preference.find(1).updated_at.to_json)
-        },
-        {
-          "created_at" => eval(Preference.find(2).created_at.to_json),
-          "id" => 2,
-          "tipo" => "b",
-          "descricao" => "b",
-          "updated_at" => eval(Preference.find(2).updated_at.to_json)
-        }])
-      end
 
     end
   

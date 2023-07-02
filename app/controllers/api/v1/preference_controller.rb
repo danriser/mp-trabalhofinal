@@ -4,8 +4,8 @@ class Api::V1::PreferenceController < ApplicationController
     #
     # @return [JSON] Lista de preferencias em formato JSON.
     def index
-      preference = Preference.all
-      render json: preference, status: :ok
+        preference=Preference.all
+        render json: array_serializer(preference), status: :ok
     end
   
     # Obtem uma preferencia especifica pelo ID.
@@ -14,10 +14,10 @@ class Api::V1::PreferenceController < ApplicationController
     # @return [JSON] A preferencia em formato JSON.
     # @raise [StandardError] Caso a preferencia nao seja encontrada.
     def show
-      preference = Preference.find(params[:id])
-      render json: preference, status: :ok
+        preference=Preference.find(params[:id])
+        render json: serializer(preference), status: :ok
     rescue StandardError => e
-      render json: e, status: :not_found
+        render json: e, status: :not_found
     end
   
     # Cria uma nova preferencia.
@@ -65,12 +65,21 @@ class Api::V1::PreferenceController < ApplicationController
     end
   
     private
+
+        def array_serializer(preferences)
+            Panko::ArraySerializer.new(preferences,each_serializer: PreferenceSerializer).to_json
+        end
+
+        def serializer(preference)
+            PreferenceSerializer.new.serialize_to_json(preference)
+        end
   
-    # Define os parametros permitidos para a criacao ou atualizacao da preferencia.
-    #
-    # @return [String] Os parametros permitidos para a criacao ou atualizacao da preferencia.
-    def preference_params
-      params.require(:preference).permit(:tipo, :descricao)
-    end
-  end
-  
+       # Define os parametros permitidos para a criacao ou atualizacao da preferencia.
+       #
+       # @return [String] Os parametros permitidos para a criacao ou atualizacao da preferencia.
+
+        def preference_params
+            params.require(:preference).permit(:tipo,:descricao)
+        end
+
+end

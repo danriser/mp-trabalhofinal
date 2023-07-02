@@ -60,3 +60,6 @@ gem 'rubocop-rails', require: false
 gem 'rubocop-rspec', require: false
 gem "figaro"
 
+gem 'panko', '~> 0.0.2'
+
+gem "panko_serializer"

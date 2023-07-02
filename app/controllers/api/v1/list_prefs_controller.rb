@@ -4,8 +4,8 @@ class Api::V1::ListPrefsController < ApplicationController
     #
     # @return [JSON] Lista de listas de preferencias em formato JSON.
     def index
-      list_pref = ListPreference.all
-      render json: list_pref, status: :ok
+        list_pref=ListPreference.all
+        render json: array_serializer(list_pref), status: :ok
     end
   
     # Obtem uma lista de preferencias especifica pelo ID do usuario.
@@ -14,14 +14,14 @@ class Api::V1::ListPrefsController < ApplicationController
     # @return [JSON] A lista de preferencias em formato JSON.
     # @raise [StandardError] Caso a lista de preferencias nao seja encontrada.
     def show
-      list_pref=ListPreference.where("user_id = ?",params[:user_id])
-      return_http=:ok
-      if(list_pref.empty?)
-          return_http=:not_found
-      end
-      render json: list_pref, status: return_http
+        list_pref=ListPreference.where("user_id = ?",params[:user_id])
+        return_http=:ok
+        if(list_pref.empty?)
+            return_http=:not_found
+        end
+        render json: array_serializer(list_pref), status: return_http
     rescue StandardError => e
-      render json: e, status: :not_found
+        render json: e, status: :not_found
     end
   
     # Cria uma nova lista de preferencias.
@@ -65,13 +65,22 @@ class Api::V1::ListPrefsController < ApplicationController
       render json: e, status: :bad_request
     end
   
-    private
+        private
+
+        def array_serializer(list_pref)
+            Panko::ArraySerializer.new(list_pref,each_serializer: ListPrefsSerializer).to_json
+        end
+
+        def serializer(list_pref)
+            ListPrefsSerializer.new.serialize_to_json(list_pref)
+        end
   
-    # Define os parametros permitidos para a criacao da lista de preferencias.
-    #
-    # @return [String] Os parametros permitidos para a criacao da lista de preferencias.
-    def list_pref_params
-      params.require(:list_preference).permit(:user_id, :preference_id)
-    end
-  end
-  
+        # Define os parametros permitidos para a criacao da lista de preferencias.
+        #
+        # @return [String] Os parametros permitidos para a criacao da lista de preferencias.
+
+        def list_pref_params
+            params.require(:list_preference).permit(:user_id,:preference_id)
+        end
+
+end

@@ -4,8 +4,8 @@ class Api::V1::MessageController < ApplicationController
     #
     # @return [JSON] Lista de mensagens em formato JSON.
     def index
-      message = Message.all
-      render json: message, status: :ok
+        message=Message.all
+        render json: array_serializer(message), status: :ok
     end
   
     # Obtem as mensagens de um usuario especifico pelo ID.
@@ -14,21 +14,21 @@ class Api::V1::MessageController < ApplicationController
     # @return [JSON] As mensagens do usuario em formato JSON.
     # @raise [StandardError] Caso as mensagens do usuario nao sejam encontradas.
     def user_msgs
-      message=Message.where("user_id = ?",params[:user_id])
-      return_http=:ok
-      if(message.empty?)
-          return_http=:not_found
-      end
-      render json: message, status: return_http
+        message=Message.where("user_id = ?",params[:user_id])
+        return_http=:ok
+        if(message.empty?)
+            return_http=:not_found
+        end
+        render json: array_serializer(message), status: return_http
     rescue StandardError => e
-      render json: e, status: :not_found
+        render json: e, status: :not_found
     end
 
     def show
-      message=Message.find(params[:id])
-      render json: message, status: :ok
+        message=Message.find(params[:id])
+        render json: serializer(message), status: :ok
     rescue StandardError => e
-      render json: e, status: :not_found
+        render json: e, status: :not_found
     end
 
     def delete
@@ -48,11 +48,34 @@ class Api::V1::MessageController < ApplicationController
     end
 
     def chat_msgs
-      message=Message.where("chat_id = ?",params[:chat_id])
-      render json: message, status: :ok
+        message=Message.where("chat_id = ?",params[:chat_id])
+        render json: array_serializer(message), status: :ok
     rescue StandardError => e
-      render json: e, status: :not_found
+        render json: e, status: :not_found
     end
+
+    def create
+        message=Message.new(msg_params)
+        message.save!
+        render json: message, status: :created
+    rescue StandardError => e
+        render json: e, status: :bad_request
+    end
+
+    private 
+
+    def array_serializer(message)
+        Panko::ArraySerializer.new(message,each_serializer: MessageSerializer).to_json
+    end
+
+    def serializer(message)
+        MessageSerializer.new.serialize_to_json(message)
+    end
+
+    def msg_params
+        params.require(:message).permit(:chat_id,:user_id,:hora_de_envio,:conteudo)
+    end
+
 
 end
   
