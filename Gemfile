@@ -65,3 +65,6 @@ gem 'rubocop-rspec', require: false
 gem 'panko', '~> 0.0.2'
 
 gem 'panko_serializer'
+
+gem 'devise'
+gem 'simple_token_authentication'
