@@ -5,8 +5,8 @@ require 'rails_helper'
 RSpec.describe 'Api::V1::Matches', type: :request do
   describe 'GET /index' do
     before do
-      create(:user, id: 1, nome: 'a', senha: 'a')
-      create(:user, id: 2, nome: 'b', senha: 'b')
+      create(:user, id: 1, nome: 'a', password: 'aoinasd', email: 'ola@gmail')
+      create(:user, id: 2, nome: 'b', password: 'baisdnas', email: 'ola2@gmail')
       create(:match, id: 1, user_id: 1, user_id2: 2, match_grade: '3')
     end
 
@@ -29,9 +29,9 @@ RSpec.describe 'Api::V1::Matches', type: :request do
 
   describe 'GET /show' do
     before do
-      create(:user, id: 1, nome: 'a', senha: 'a')
-      create(:user, id: 2, nome: 'b', senha: 'b')
-      create(:user, id: 3, nome: 'c', senha: 'c')
+      create(:user, id: 1, nome: 'a', password: 'aasodn', email: 'ola2@gmail')
+      create(:user, id: 2, nome: 'b', password: 'boiabsd', email: 'ola3@gmail')
+      create(:user, id: 3, nome: 'c', password: 'cpiads', email: 'ola@gmail')
       create(:match, id: 1, user_id: 1, user_id2: 2, match_grade: '3')
       create(:match, id: 2, user_id: 2, user_id2: 3, match_grade: '2')
     end
@@ -53,8 +53,8 @@ RSpec.describe 'Api::V1::Matches', type: :request do
 
   describe 'POST /create' do
     before do
-      create(:user, id: 1, nome: 'a', senha: 'a')
-      create(:user, id: 2, nome: 'b', senha: 'b')
+      create(:user, id: 1, nome: 'a', password: 'ainadsd', email: 'ola@gmail')
+      create(:user, id: 2, nome: 'b', password: 'bpasod', email: 'ola4@gmail')
     end
 
     context 'params are ok' do
@@ -81,9 +81,9 @@ RSpec.describe 'Api::V1::Matches', type: :request do
 
   describe 'DELETE /delete' do
     before do
-      create(:user, id: 1, nome: 'a', senha: 'a')
-      create(:user, id: 2, nome: 'b', senha: 'b')
-      create(:user, id: 3, nome: 'c', senha: 'c')
+      create(:user, id: 1, nome: 'a', password: 'aolsdabn', email: 'ola@gmail')
+      create(:user, id: 2, nome: 'b', password: 'baindas', email: 'ola2@gmail')
+      create(:user, id: 3, nome: 'c', password: 'cpiasndp', email: 'ola3@gmail')
       create(:match, id: 1, user_id: 1, user_id2: 2, match_grade: '3')
       create(:match, id: 2, user_id: 2, user_id2: 3, match_grade: '2')
     end
@@ -105,9 +105,9 @@ RSpec.describe 'Api::V1::Matches', type: :request do
 
   describe 'PATCH /update' do
     before do
-      create(:user, id: 1, nome: 'a', senha: 'a')
-      create(:user, id: 2, nome: 'b', senha: 'b')
-      create(:user, id: 3, nome: 'c', senha: 'c')
+      create(:user, id: 1, nome: 'a', password: 'aoasdou', email: 'ola@gmail')
+      create(:user, id: 2, nome: 'b', password: 'bpiijqpi', email: 'ola2@gmail')
+      create(:user, id: 3, nome: 'c', password: 'cnapnsd', email: 'ola3@gmail')
       create(:match, id: 1, user_id: 1, user_id2: 2, match_grade: '3')
       create(:match, id: 2, user_id: 2, user_id2: 3, match_grade: '2')
     end

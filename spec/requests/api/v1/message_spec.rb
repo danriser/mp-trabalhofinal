@@ -5,7 +5,7 @@ require 'rails_helper'
 RSpec.describe 'Api::V1::Messages', type: :request do
   describe 'GET /index' do
     before do
-      create(:user, id: 1, nome: 'a', senha: 'a')
+      create(:user, id: 1, nome: 'a', password: 'aopqkeoqw', email: 'ola@gmail')
       create(:preference, id: 1, tipo: 'a', descricao: 'a')
       create(:group, id: 1, nome: 'a', tipo: 'a', descricao: 'a', preference_id: 1)
       create(:chat, id: 1, id_match: nil, id_group: 1)
@@ -29,7 +29,7 @@ RSpec.describe 'Api::V1::Messages', type: :request do
 
   describe 'GET /user_msgs' do
     before do
-      create(:user, id: 1, nome: 'a', senha: 'a')
+      create(:user, id: 1, nome: 'a', password: 'aihasdas', email: 'ola@gmail')
       create(:preference, id: 1, tipo: 'a', descricao: 'a')
       create(:group, id: 1, nome: 'a', tipo: 'a', descricao: 'a', preference_id: 1)
       create(:chat, id: 1, id_match: nil, id_group: 1)
@@ -54,7 +54,7 @@ RSpec.describe 'Api::V1::Messages', type: :request do
 
   describe 'GET /show' do
     before do
-      create(:user, id: 1, nome: 'a', senha: 'a')
+      create(:user, id: 1, nome: 'a', password: 'apiasdisa', email: 'ola@gmail')
       create(:preference, id: 1, tipo: 'a', descricao: 'a')
       create(:group, id: 1, nome: 'a', tipo: 'a', descricao: 'a', preference_id: 1)
       create(:chat, id: 1, id_match: nil, id_group: 1)
@@ -79,7 +79,7 @@ RSpec.describe 'Api::V1::Messages', type: :request do
 
   describe 'DELETE /delete' do
     before do
-      create(:user, id: 1, nome: 'a', senha: 'a')
+      create(:user, id: 1, nome: 'a', password: 'an,zxbcnx', email: 'ola@gmail')
       create(:preference, id: 1, tipo: 'a', descricao: 'a')
       create(:group, id: 1, nome: 'a', tipo: 'a', descricao: 'a', preference_id: 1)
       create(:chat, id: 1, id_match: nil, id_group: 1)
@@ -104,8 +104,8 @@ RSpec.describe 'Api::V1::Messages', type: :request do
 
   describe 'DELETE /user_msgs_delete' do
     before do
-      create(:user, id: 1, nome: 'a', senha: 'a')
-      create(:user, id: 2, nome: 'b', senha: 'b')
+      create(:user, id: 1, nome: 'a', password: 'aoaksda', email: 'ola@gmail')
+      create(:user, id: 2, nome: 'b', password: 'boapdoks', email: 'ola2@gmail')
       create(:preference, id: 1, tipo: 'a', descricao: 'a')
       create(:group, id: 1, nome: 'a', tipo: 'a', descricao: 'a', preference_id: 1)
       create(:chat, id: 1, id_match: nil, id_group: 1)
@@ -131,7 +131,7 @@ RSpec.describe 'Api::V1::Messages', type: :request do
 
   describe 'POST /create' do
     before do
-      create(:user, id: 1, nome: 'a', senha: 'a')
+      create(:user, id: 1, nome: 'a', password: 'aqeopqiwoe', email: 'ola@gmail')
       create(:preference, id: 1, tipo: 'a', descricao: 'a')
       create(:group, id: 1, nome: 'a', tipo: 'a', descricao: 'a', preference_id: 1)
       create(:chat, id: 1, id_match: nil, id_group: 1)

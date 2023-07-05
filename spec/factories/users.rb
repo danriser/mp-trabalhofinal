@@ -4,6 +4,7 @@ FactoryBot.define do
   factory :user do
     id { 1 }
     nome { 'MyString' }
-    senha { 'MyString' }
+    encrypted_password { 'MyString' }
+    email { 'MyString' }
   end
 end

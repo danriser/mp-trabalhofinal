@@ -5,7 +5,7 @@ require 'rails_helper'
 RSpec.describe 'Api::V1::ListGroups', type: :request do
   describe 'GET /index' do
     before do
-      create(:user, id: 1, nome: 'a', senha: 'a')
+      create(:user, id: 1, nome: 'a', password: 'abobasud', email: 'ola@gmail')
       create(:preference, id: 1, tipo: 'a', descricao: 'a')
       create(:group, id: 1, nome: 'a', tipo: 'a', descricao: 'a', preference_id: 1)
       create(:list_group_user, id: 1, user_id: 1, group_id: 1)
@@ -28,7 +28,7 @@ RSpec.describe 'Api::V1::ListGroups', type: :request do
 
   describe 'GET /user_groups' do
     before do
-      create(:user, id: 1, nome: 'a', senha: 'a')
+      create(:user, id: 1, nome: 'a', password: 'bblasjasa', email: 'ola@gmail')
       create(:preference, id: 1, tipo: 'a', descricao: 'a')
       create(:preference, id: 2, tipo: 'b', descricao: 'b')
       create(:group, id: 1, nome: 'a', tipo: 'a', descricao: 'a', preference_id: 1)
@@ -54,8 +54,8 @@ RSpec.describe 'Api::V1::ListGroups', type: :request do
 
   describe 'GET /group_users' do
     before do
-      create(:user, id: 1, nome: 'a', senha: 'a')
-      create(:user, id: 2, nome: 'b', senha: 'b')
+      create(:user, id: 1, nome: 'a', password: 'apinasd', email: 'ola@gmail')
+      create(:user, id: 2, nome: 'b', password: 'baskbdoas', email: 'ola2@gmail')
       create(:preference, id: 1, tipo: 'a', descricao: 'a')
       create(:group, id: 1, nome: 'a', tipo: 'a', descricao: 'a', preference_id: 1)
       create(:list_group_user, id: 1, user_id: 1, group_id: 1)
@@ -79,7 +79,7 @@ RSpec.describe 'Api::V1::ListGroups', type: :request do
 
   describe 'POST /create' do
     before do
-      create(:user, id: 1, nome: 'a', senha: 'a')
+      create(:user, id: 1, nome: 'a', password: 'abljasdo', email: 'ola@gmail')
       create(:preference, id: 1, tipo: 'a', descricao: 'a')
       create(:group, id: 1, nome: 'a', tipo: 'a', descricao: 'a', preference_id: 1)
     end
@@ -115,7 +115,7 @@ RSpec.describe 'Api::V1::ListGroups', type: :request do
 
   describe 'DELETE /delete' do
     before do
-      create(:user, id: 1, nome: 'a', senha: 'a')
+      create(:user, id: 1, nome: 'a', password: 'apiashdp', email: 'ola@gmail')
       create(:preference, id: 1, tipo: 'a', descricao: 'a')
       create(:group, id: 1, nome: 'a', tipo: 'a', descricao: 'a', preference_id: 1)
       create(:list_group_user, id: 1, user_id: 1, group_id: 1)

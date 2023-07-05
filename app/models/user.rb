@@ -26,5 +26,5 @@ class User < ApplicationRecord
   has_many :list_group_users
   has_many :messages
   validates :nome, presence: true, uniqueness: true
-  validates :senha, presence: true
+  validates :email, presence: :true, uniqueness: :true
 end
