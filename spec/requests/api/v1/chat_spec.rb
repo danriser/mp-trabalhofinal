@@ -5,8 +5,8 @@ require 'rails_helper'
 RSpec.describe 'Api::V1::Chats', type: :request do
   describe 'GET /index' do
     before do
-      create(:user, id: 1, nome: 'a', senha: 'a')
-      create(:user, id: 2, nome: 'b', senha: 'b')
+      create(:user, id: 1, nome: 'a', password: 'aboasbd', email: 'ola@gmail')
+      create(:user, id: 2, nome: 'b', password: 'bbosdasd', email: 'ola2@gmail')
       create(:match, id: 1, user_id: 1, user_id2: 2, match_grade: '3')
       create(:chat, id: 1, id_match: 1, id_group: nil)
     end
@@ -28,8 +28,8 @@ RSpec.describe 'Api::V1::Chats', type: :request do
 
   describe 'GET /show' do
     before do
-      create(:user, id: 1, nome: 'a', senha: 'a')
-      create(:user, id: 2, nome: 'b', senha: 'b')
+      create(:user, id: 1, nome: 'a', password: 'alnsld', email: 'ola@gmail')
+      create(:user, id: 2, nome: 'b', password: 'bioasbd', email: 'ola2@gmail')
       create(:match, id: 1, user_id: 1, user_id2: 2, match_grade: '3')
       create(:chat, id: 1, id_match: 1, id_group: nil)
     end
@@ -51,8 +51,8 @@ RSpec.describe 'Api::V1::Chats', type: :request do
 
   describe 'DELETE /delete' do
     before do
-      create(:user, id: 1, nome: 'a', senha: 'a')
-      create(:user, id: 2, nome: 'b', senha: 'b')
+      create(:user, id: 1, nome: 'a', password: 'aiaosidhan', email: 'ola@gmail')
+      create(:user, id: 2, nome: 'b', password: 'boansid', email: 'ola2@gmail')
       create(:match, id: 1, user_id: 1, user_id2: 2, match_grade: '3')
       create(:chat, id: 1, id_match: 1, id_group: nil)
     end
@@ -74,8 +74,8 @@ RSpec.describe 'Api::V1::Chats', type: :request do
 
   describe 'POST /create' do
     before do
-      create(:user, id: 1, nome: 'a', senha: 'a')
-      create(:user, id: 2, nome: 'b', senha: 'b')
+      create(:user, id: 1, nome: 'a', password: 'oasbodnia', email: 'ola@gmail')
+      create(:user, id: 2, nome: 'b', password: 'bhpiasd', email: 'ola2@gmail')
       create(:preference, id: 1, tipo: 'a', descricao: 'a')
       create(:group, id: 1, nome: 'a', preference_id: 1, tipo: 'a', descricao: 'a')
       create(:match, id: 1, user_id: 1, user_id2: 2, match_grade: '3')

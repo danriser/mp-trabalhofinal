@@ -8,7 +8,7 @@ RSpec.describe Message, type: :model do
       create(:preference, id: 1)
       create(:group, id: 1, preference_id: 1)
       create(:chat, id: 1, id_group: 1, id_match: nil)
-      create(:user, id: 1, nome: 'david', senha: 'herbert')
+      create(:user, id: 1, nome: 'david', password: 'herbert', email: 'ola@gmail')
       expect(build(:message, id: 1, chat_id: 1, user_id: 1, conteudo: 'a')).to be_valid
     end
   end
@@ -18,7 +18,7 @@ RSpec.describe Message, type: :model do
       create(:preference, id: 1)
       create(:group, id: 1, preference_id: 1)
       create(:chat, id: 1, id_group: 1, id_match: nil)
-      create(:user, id: 1, nome: 'david', senha: 'herbert')
+      create(:user, id: 1, nome: 'david', password: 'herbert', email: 'ola@gmail')
       expect(build(:message, id: 1, chat_id: nil, user_id: 1, conteudo: 'a')).to be_invalid
     end
   end
@@ -28,7 +28,7 @@ RSpec.describe Message, type: :model do
       create(:preference, id: 1)
       create(:group, id: 1, preference_id: 1)
       create(:chat, id: 1, id_group: 1, id_match: nil)
-      create(:user, id: 1, nome: 'david', senha: 'herbert')
+      create(:user, id: 1, nome: 'david', password: 'herbert', email: 'ola@gmail')
       expect(build(:message, id: 1, chat_id: 2, user_id: 1, conteudo: 'a')).to be_invalid
     end
   end
@@ -38,7 +38,7 @@ RSpec.describe Message, type: :model do
       create(:preference, id: 1)
       create(:group, id: 1, preference_id: 1)
       create(:chat, id: 1, id_group: 1, id_match: nil)
-      create(:user, id: 1, nome: 'david', senha: 'herbert')
+      create(:user, id: 1, nome: 'david', password: 'herbert', email: 'ola@gmail')
       expect(build(:message, id: 1, chat_id: 1, user_id: nil, conteudo: 'a')).to be_invalid
     end
   end
@@ -48,7 +48,7 @@ RSpec.describe Message, type: :model do
       create(:preference, id: 1)
       create(:group, id: 1, preference_id: 1)
       create(:chat, id: 1, id_group: 1, id_match: nil)
-      create(:user, id: 1, nome: 'david', senha: 'herbert')
+      create(:user, id: 1, nome: 'david', password: 'herbert', email: 'ola@gmail')
       expect(build(:message, id: 1, chat_id: 1, user_id: 3, conteudo: 'a')).to be_invalid
     end
   end
@@ -58,7 +58,7 @@ RSpec.describe Message, type: :model do
       create(:preference, id: 1)
       create(:group, id: 1, preference_id: 1)
       create(:chat, id: 1, id_group: 1, id_match: nil)
-      create(:user, id: 1, nome: 'david', senha: 'herbert')
+      create(:user, id: 1, nome: 'david', password: 'herbert', email: 'ola@gmail')
       expect(build(:message, id: 1, chat_id: 1, user_id: 1, conteudo: nil)).to be_invalid
     end
   end
