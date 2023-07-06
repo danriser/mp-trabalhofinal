@@ -4,6 +4,8 @@
 module Api
   module V1
     class UserController < ApplicationController
+
+      acts_as_token_authentication_handler_for User, only: [:update, :delete]
       def index
         user = User.all
         render json: array_serializer(user), status: :ok
@@ -16,6 +18,17 @@ module Api
         render json: e, status: :not_found
       end
 
+      def login
+        user = User.find_by(nome: params[:nome])
+        if user.valid_password?(params[:password])
+            render json: user, status: :ok
+        else
+            head :unauthorized
+        end
+      rescue StandardError
+          head :unauthorized
+      end
+
       def create
         user = User.new(user_params)
         user.save!
@@ -23,6 +36,7 @@ module Api
       rescue StandardError => e
         render json: e, status: :bad_request
       end
+      
 
       def delete
         user = User.find(params[:id])
