@@ -11,8 +11,8 @@ module Api
         render json: array_serializer(user), status: :ok
       end
       def index_match
-        user = User.all.select
-        filtro =  
+        # user = User.all.select 
+      end
 
       def show
         user = User.find(params[:id])
