@@ -1,6 +1,9 @@
 # frozen_string_literal: true
 
-# Enzo
+# 
+# Model {ListGroupUser}
+#
+# É responsável pela 
 class ListGroupUser < ApplicationRecord
   belongs_to :user
   belongs_to :group

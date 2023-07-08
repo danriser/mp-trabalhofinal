@@ -11,8 +11,17 @@
 # @attribute nome
 #   @return [String] nome do usuário
 #
+# @attribute email
+#   @return [String] o email do usuário. Usado para o login do usuário
 #
+# @attribute matches
+#   @return [Match] as match que esse usuário possui
 #
+# @!attribute list_preferences
+#   @return [ListPreference] lista de preferencias de usuário
+#
+# @attribute list_group_users
+#   @return [ListGroupUser] lista dos grupos em que o usuário está
 #
 #
 #
