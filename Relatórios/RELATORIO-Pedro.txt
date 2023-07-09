@@ -1,5 +1,28 @@
 # Data | Horas Trabalhadas | Tipo Tarefa | Descrição da Tarefa Realizada 
 14/5   | 2 horas           | especificar módulos | especificar atributos do para o banco de dados
-18/5   | 2 horas           | codificar módulos   | codificar as tabelas para o banco de dados
+18/5   | 2 horas           | codificar módulos | codificar as tabelas para o banco de dados
 18/5   | 2 horas           | redigir casos de teste | redigir testes para registro do bando de dados
-18/5   | 1 hora            | realizar testes | rodar os testes para registro do banco de dados
+18/5   | 2 hora            | realizar testes | rodar os testes para registro do banco de dados
+19/5   | 0.8 hora          | estudar aulas relacionadas | estudar aulas de especificação de funções
+19/5   | 0.5 hora          | especificar funções | especificar funções necessárias para o CRUD do banco de dados
+19/5   | 2 horas           | codificar módulos | codifcar funções necessárias para o crud
+19/5   | 1 hora            | redigir casos de teste | casos de teste para as controllers
+20/5   | 1 hora            | redigir testes | redigir testes para as controllers
+20/5   | 1.5 horas         | codificar módulos | codificar funções para as controllers
+20/5   | 1.5 hora          | realizar testes | testes para as funções feitas neste dia
+21/5   | 2 horas           | codificar módulos | codificar funções para as controllers
+21/5   | 0.5 hora          | redigir casos de teste | casos de teste para as funções feitas neste dia
+21/5   | 1 hora            | realizar testes | rodar teste para funções feitas neste dia
+22/5   | 1 hora            | codificar módulo | codificar funções para controllers
+22/5   | 0.5 hora          | redigir casos de teste | casos de teste para funções feitas neste dia
+22/5   | 0.5 hora          | realizar testes | rodar testes para funções feitas neste dia
+29/5   | 1.5 hora          | revisar código de módulo | revisão e correção das funções em algumas controllers
+29/5   | 0.5 hora          | revisar casos de teste | revisar casos de teste devido à alteração código
+29/5   | 0.5 hora          | estudar aulas relacionadas | estudar serializers para implementação no projeto
+30/5   | 1 hora            | codificar módulos | codificação das serializers
+30/5   | 1 hora            | revisar código | refatoração de algumas funções devido à introdução das serializers
+30/5   | 0.3 hora          | revisar casos de teste | revisão de casos de teste devido à introdução das serializers
+2/6    | 0.2 hora          | revisar código de módulo | revisão de módulos para aplicar padronização de estilo de código
+4/6    | 0.5 hora          | estudar aulas relacionadas | estudar autenticação de usuário para implementação
+4/6    | 1 hora            | revisar código de módulo | alteração do banco de dados e controllers para implementar autenticação
+4/6    | 1 hora            | revisar casos de teste | alteração de casos de teste devido à autenticação
