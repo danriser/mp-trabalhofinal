@@ -8,6 +8,7 @@ Rails.application.routes.draw do
       scope 'user' do
         get 'index', to: 'user#index'
         get 'show/:id', to: 'user#show'
+        get 'login', to: 'user#login'
         post 'create', to: 'user#create'
         delete 'delete/:id', to: 'user#delete'
         patch 'update/:id', to: 'user#update'
