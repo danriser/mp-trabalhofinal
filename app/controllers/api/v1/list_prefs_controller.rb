@@ -4,6 +4,10 @@
 module Api
   module V1
     class ListPrefsController < ApplicationController
+      #acts_as_token_authentication_handler_for User, only: []
+      #before_action :admin_authentication, only: []
+
+
       # Obtem todas as listas de preferencias.
       #
       # @return [JSON] Lista de listas de preferencias em formato JSON.

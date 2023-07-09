@@ -4,8 +4,9 @@
 module Api
   module V1
     class UserController < ApplicationController
-
       acts_as_token_authentication_handler_for User, only: [:update, :delete]
+      before_action :admin_authentication, only: []
+
       def index
         user = User.all
         render json: array_serializer(user), status: :ok

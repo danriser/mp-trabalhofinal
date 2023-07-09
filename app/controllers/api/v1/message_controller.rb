@@ -4,6 +4,9 @@
 module Api
   module V1
     class MessageController < ApplicationController
+      #acts_as_token_authentication_handler_for User, only: []
+      #before_action :admin_authentication, only: []
+      
       # Obtem todas as mensagens.
       #
       # @return [JSON] Lista de mensagens em formato JSON.
