@@ -25,8 +25,8 @@ module Api
         else
             head :unauthorized
         end
-      rescue StandardError
-          head :unauthorized
+      rescue StandardError => e
+          render json: e, status: :unauthorized
       end
 
       def create
