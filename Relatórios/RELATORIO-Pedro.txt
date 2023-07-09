@@ -1,1 +1,5 @@
 # Data | Horas Trabalhadas | Tipo Tarefa | Descrição da Tarefa Realizada 
+14/5   | 2 horas           | especificar módulos | especificar atributos do para o banco de dados
+18/5   | 2 horas           | codificar módulos   | codificar as tabelas para o banco de dados
+18/5   | 2 horas           | redigir casos de teste | redigir testes para registro do bando de dados
+18/5   | 1 hora            | realizar testes | rodar os testes para registro do banco de dados
