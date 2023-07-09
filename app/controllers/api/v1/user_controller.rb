@@ -37,7 +37,6 @@ module Api
       rescue StandardError => e
         render json: e, status: :bad_request
       end
-      
 
       def delete
         user = User.find(params[:id])

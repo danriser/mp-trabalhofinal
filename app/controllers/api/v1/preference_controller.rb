@@ -4,8 +4,8 @@
 module Api
   module V1
     class PreferenceController < ApplicationController
-      #acts_as_token_authentication_handler_for User, only: []
-      #before_action :admin_authentication, only: []
+      #acts_as_token_authentication_handler_for User
+      #before_action :admin_authentication, except: [:index, :show]
 
       # Obtém todas as preferências.
       #

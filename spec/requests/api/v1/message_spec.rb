@@ -5,11 +5,11 @@ require 'rails_helper'
 RSpec.describe 'Api::V1::Messages', type: :request do
   describe 'GET /index' do
     before do
-      create(:user, id: 1, nome: 'a', password: 'aopqkeoqw', email: 'ola@gmail')
-      create(:preference, id: 1, tipo: 'a', descricao: 'a')
-      create(:group, id: 1, nome: 'a', tipo: 'a', descricao: 'a', preference_id: 1)
-      create(:chat, id: 1, id_match: nil, id_group: 1)
-      create(:message, id: 1, chat_id: 1, user_id: 1, hora_de_envio: nil, conteudo: 'ola')
+      user = create(:user, nome: 'afdsafdsa', password: 'aopqkeoqw', email: 'ola@gmail').attributes
+      pref = create(:preference, tipo: 'a', descricao: 'a').attributes
+      group = Group.find_by(preference_id: pref['id']).attributes
+      chat = create(:chat, id_match: nil, id_group: group['id']).attributes
+      create(:message, chat_id: chat['id'], user_id: user['id'], hora_de_envio: nil, conteudo: 'ola')
     end
 
     context 'index return' do
@@ -28,18 +28,19 @@ RSpec.describe 'Api::V1::Messages', type: :request do
   end
 
   describe 'GET /user_msgs' do
+    user = ''
     before do
-      create(:user, id: 1, nome: 'a', password: 'aihasdas', email: 'ola@gmail')
-      create(:preference, id: 1, tipo: 'a', descricao: 'a')
-      create(:group, id: 1, nome: 'a', tipo: 'a', descricao: 'a', preference_id: 1)
-      create(:chat, id: 1, id_match: nil, id_group: 1)
-      create(:message, id: 1, chat_id: 1, user_id: 1, hora_de_envio: nil, conteudo: 'ola')
-      create(:message, id: 2, chat_id: 1, user_id: 1, hora_de_envio: nil, conteudo: 'teste')
+      user = create(:user, nome: 'a', password: 'aihasdas', email: 'ola@gmail').attributes
+      pref = create(:preference, tipo: 'a', descricao: 'a').attributes
+      group = Group.find_by(preference_id: pref['id']).attributes
+      chat = create(:chat, id_match: nil, id_group: group['id']).attributes
+      message = create(:message, chat_id: chat['id'], user_id: user['id'], hora_de_envio: nil, conteudo: 'ola').attributes
+      create(:message, chat_id: chat['id'], user_id: user['id'], hora_de_envio: nil, conteudo: 'teste')
     end
 
     context 'records exist' do
       it 'should return http status ok' do
-        get '/api/v1/message/user_msgs/1'
+        get '/api/v1/message/user_msgs/' + user['id'].to_s
         expect(response).to have_http_status(:ok)
       end
     end
@@ -53,18 +54,19 @@ RSpec.describe 'Api::V1::Messages', type: :request do
   end
 
   describe 'GET /show' do
+    message = ''
     before do
-      create(:user, id: 1, nome: 'a', password: 'apiasdisa', email: 'ola@gmail')
-      create(:preference, id: 1, tipo: 'a', descricao: 'a')
-      create(:group, id: 1, nome: 'a', tipo: 'a', descricao: 'a', preference_id: 1)
-      create(:chat, id: 1, id_match: nil, id_group: 1)
-      create(:message, id: 1, chat_id: 1, user_id: 1, hora_de_envio: nil, conteudo: 'ola')
-      create(:message, id: 2, chat_id: 1, user_id: 1, hora_de_envio: nil, conteudo: 'teste')
+      user = create(:user, nome: 'a', password: 'aihasdas', email: 'ola@gmail').attributes
+      pref = create(:preference, tipo: 'a', descricao: 'a').attributes
+      group = Group.find_by(preference_id: pref['id']).attributes
+      chat = create(:chat, id_match: nil, id_group: group['id']).attributes
+      message = create(:message, chat_id: chat['id'], user_id: user['id'], hora_de_envio: nil, conteudo: 'ola').attributes
+      create(:message, chat_id: chat['id'], user_id: user['id'], hora_de_envio: nil, conteudo: 'teste')
     end
 
     context 'record exists' do
       it 'should return http status ok' do
-        get '/api/v1/message/show/1'
+        get '/api/v1/message/show/' + message['id'].to_s
         expect(response).to have_http_status(:ok)
       end
     end
@@ -78,18 +80,19 @@ RSpec.describe 'Api::V1::Messages', type: :request do
   end
 
   describe 'DELETE /delete' do
+    message = ''
     before do
-      create(:user, id: 1, nome: 'a', password: 'an,zxbcnx', email: 'ola@gmail')
-      create(:preference, id: 1, tipo: 'a', descricao: 'a')
-      create(:group, id: 1, nome: 'a', tipo: 'a', descricao: 'a', preference_id: 1)
-      create(:chat, id: 1, id_match: nil, id_group: 1)
-      create(:message, id: 1, chat_id: 1, user_id: 1, hora_de_envio: nil, conteudo: 'ola')
-      create(:message, id: 2, chat_id: 1, user_id: 1, hora_de_envio: nil, conteudo: 'teste')
+      user = create(:user, nome: 'a', password: 'aihasdas', email: 'ola@gmail').attributes
+      pref = create(:preference, tipo: 'a', descricao: 'a').attributes
+      group = Group.find_by(preference_id: pref['id']).attributes
+      chat = create(:chat, id_match: nil, id_group: group['id']).attributes
+      message = create(:message, chat_id: chat['id'], user_id: user['id'], hora_de_envio: nil, conteudo: 'ola').attributes
+      create(:message, chat_id: chat['id'], user_id: user['id'], hora_de_envio: nil, conteudo: 'teste')
     end
 
     context 'record exists' do
       it 'should return http status ok' do
-        delete '/api/v1/message/delete/1'
+        delete '/api/v1/message/delete/' + message['id'].to_s
         expect(response).to have_http_status(:ok)
       end
     end
@@ -103,20 +106,21 @@ RSpec.describe 'Api::V1::Messages', type: :request do
   end
 
   describe 'DELETE /user_msgs_delete' do
+    message = ''
     before do
-      create(:user, id: 1, nome: 'a', password: 'aoaksda', email: 'ola@gmail')
-      create(:user, id: 2, nome: 'b', password: 'boapdoks', email: 'ola2@gmail')
-      create(:preference, id: 1, tipo: 'a', descricao: 'a')
-      create(:group, id: 1, nome: 'a', tipo: 'a', descricao: 'a', preference_id: 1)
-      create(:chat, id: 1, id_match: nil, id_group: 1)
-      create(:message, id: 1, chat_id: 1, user_id: 1, hora_de_envio: nil, conteudo: 'ola')
-      create(:message, id: 2, chat_id: 1, user_id: 1, hora_de_envio: nil, conteudo: 'teste')
-      create(:message, id: 3, chat_id: 1, user_id: 2, hora_de_envio: nil, conteudo: 'teste')
+      user1 = create(:user, nome: 'a', password: 'aihasdas', email: 'ola@gmail').attributes
+      user2 = create(:user, id: 2, nome: 'b', password: 'boapdoks', email: 'ola2@gmail').attributes
+      pref = create(:preference, tipo: 'a', descricao: 'a').attributes
+      group = Group.find_by(preference_id: pref['id']).attributes
+      chat = create(:chat, id_match: nil, id_group: group['id']).attributes
+      message = create(:message, chat_id: chat['id'], user_id: user1['id'], hora_de_envio: nil, conteudo: 'ola').attributes
+      create(:message, chat_id: chat['id'], user_id: user1['id'], hora_de_envio: nil, conteudo: 'teste')
+      create(:message, chat_id: chat['id'], user_id: user2['id'], hora_de_envio: nil, conteudo: 'teste')
     end
 
     context 'records exist' do
       it 'should return http status ok' do
-        delete '/api/v1/message/user_msgs_delete/1'
+        delete '/api/v1/message/user_msgs_delete/' + message['id'].to_s
         expect(response).to have_http_status(:ok)
       end
     end
@@ -130,17 +134,19 @@ RSpec.describe 'Api::V1::Messages', type: :request do
   end
 
   describe 'POST /create' do
+    user = ''
+    chat = ''
     before do
-      create(:user, id: 1, nome: 'a', password: 'aqeopqiwoe', email: 'ola@gmail')
-      create(:preference, id: 1, tipo: 'a', descricao: 'a')
-      create(:group, id: 1, nome: 'a', tipo: 'a', descricao: 'a', preference_id: 1)
-      create(:chat, id: 1, id_match: nil, id_group: 1)
+      user = create(:user, nome: 'a', password: 'aihasdas', email: 'ola@gmail').attributes
+      pref = create(:preference, tipo: 'a', descricao: 'a').attributes
+      group = Group.find_by(preference_id: pref['id']).attributes
+      chat = create(:chat, id_match: nil, id_group: group['id']).attributes
     end
 
     context 'params are ok' do
       it 'should return http status created' do
         post '/api/v1/message/create',
-             params: { message: { chat_id: 1, user_id: 1, hora_de_envio: nil, conteudo: 'ola' } }
+             params: { message: { chat_id: chat['id'], user_id: user['id'], hora_de_envio: nil, conteudo: 'ola' } }
         expect(response).to have_http_status(:created)
       end
     end
@@ -148,7 +154,7 @@ RSpec.describe 'Api::V1::Messages', type: :request do
     context 'conteudo is invalid' do
       it 'should return http status bad_request' do
         post '/api/v1/message/create',
-             params: { message: { chat_id: 1, user_id: 1, hora_de_envio: nil, conteudo: nil } }
+             params: { message: { chat_id: chat['id'], user_id: user['id'], hora_de_envio: nil, conteudo: nil } }
         expect(response).to have_http_status(:bad_request)
       end
     end
@@ -156,7 +162,7 @@ RSpec.describe 'Api::V1::Messages', type: :request do
     context 'chat_id is invalid' do
       it 'should return http status bad_request' do
         post '/api/v1/message/create',
-             params: { message: { chat_id: 200, user_id: 1, hora_de_envio: nil, conteudo: 'ola' } }
+             params: { message: { chat_id: 2000, user_id: user['id'], hora_de_envio: nil, conteudo: 'ola' } }
         expect(response).to have_http_status(:bad_request)
       end
     end
@@ -164,7 +170,7 @@ RSpec.describe 'Api::V1::Messages', type: :request do
     context 'user_id is invalid' do
       it 'should return http status bad_request' do
         post '/api/v1/message/create',
-             params: { message: { chat_id: 1, user_id: 200, hora_de_envio: nil, conteudo: 'ola' } }
+             params: { message: { chat_id: chat['id'], user_id: 2000, hora_de_envio: nil, conteudo: 'ola' } }
         expect(response).to have_http_status(:bad_request)
       end
     end

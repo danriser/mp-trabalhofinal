@@ -5,8 +5,8 @@ require 'rails_helper'
 RSpec.describe 'Api::V1::Preferences', type: :request do
   describe 'GET /index' do
     before do
-      create(:preference, id: 1, tipo: 'a', descricao: 'a')
-      create(:preference, id: 2, tipo: 'b', descricao: 'b')
+      pref1 = create(:preference, tipo: 'a', descricao: 'a').attributes
+      pref2 = create(:preference, tipo: 'b', descricao: 'b').attributes
     end
 
     context 'index return' do
@@ -24,13 +24,14 @@ RSpec.describe 'Api::V1::Preferences', type: :request do
   end
 
   describe 'GET /show' do
+    pref1 = ''
     before do
-      create(:preference, id: 3, tipo: 'c', descricao: 'c')
+      pref1 = create(:preference, tipo: 'c', descricao: 'c').attributes
     end
 
     context 'preference exists' do
       it 'should return http status ok' do
-        get '/api/v1/preference/show/3'
+        get '/api/v1/preference/show/' + pref1['id'].to_s
         expect(response).to have_http_status(:ok)
       end
     end
@@ -72,11 +73,14 @@ RSpec.describe 'Api::V1::Preferences', type: :request do
   end
 
   describe 'DELETE /delete' do
-    let(:preference) { create(:preference) }
+    pref1 = ''
+    before do
+      pref1 = create(:preference, tipo: 'c', descricao: 'c').attributes
+    end
 
     context 'preference exists' do
       it 'should return http status ok' do
-        delete "/api/v1/preference/delete/#{preference.id}"
+        delete "/api/v1/preference/delete/" + pref1['id'].to_s
         expect(response).to have_http_status(:ok)
       end
     end
@@ -90,28 +94,29 @@ RSpec.describe 'Api::V1::Preferences', type: :request do
   end
 
   describe 'PATCH /update' do
+    pref1 = ''
     before do
-      create(:preference, id: 3, tipo: 'c', descricao: 'c')
-      create(:preference, id: 4, tipo: 'd', descricao: 'd')
+      pref1 = create(:preference, tipo: 'c', descricao: 'c')
+      pref2 = create(:preference, tipo: 'd', descricao: 'd')
     end
 
     context 'params are ok' do
       it 'should return http status ok' do
-        patch '/api/v1/preference/update/3', params: { preference: { tipo: 'teste', descricao: 'teste' } }
+        patch '/api/v1/preference/update/' + pref1['id'].to_s, params: { preference: { tipo: 'teste', descricao: 'teste' } }
         expect(response).to have_http_status(:ok)
       end
     end
 
     context 'params are invalid' do
       it 'should return http status bad_request' do
-        patch '/api/v1/preference/update/3', params: { preference: nil }
+        patch '/api/v1/preference/update/' + pref1['id'].to_s, params: { preference: nil }
         expect(response).to have_http_status(:bad_request)
       end
     end
 
     context 'tipo is repeated' do
       it 'should return http status bad_request' do
-        patch '/api/v1/preference/update/3', params: { preference: { tipo: 'd', descricao: 'd' } }
+        patch '/api/v1/preference/update/' + pref1['id'].to_s, params: { preference: { tipo: 'd', descricao: 'd' } }
         expect(response).to have_http_status(:bad_request)
       end
     end

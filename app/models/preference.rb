@@ -17,7 +17,7 @@
 #
 class Preference < ApplicationRecord
   has_many :list_preferences
-  has_one :groups
+  has_one :groups, dependent: :destroy, class_name: :Group
   validates :tipo, presence: true
   validates :descricao, presence: true, uniqueness: true
 

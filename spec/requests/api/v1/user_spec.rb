@@ -5,8 +5,8 @@ require 'rails_helper'
 RSpec.describe 'Api::V1::Users', type: :request do
   describe 'GET /index' do
     before do
-      create(:user, id: 1, nome: 'tal', password: 'xouasdn', email: 'ola@gmail')
-      create(:user, id: 2, nome: 'ola', password: 'munoubasdo', email: 'ola2@gmail')
+      create(:user, nome: 'tal', password: 'xouasdn', email: 'ola@gmail')
+      create(:user, nome: 'ola', password: 'munoubasdo', email: 'ola2@gmail')
     end
 
     context 'index return' do
@@ -25,7 +25,7 @@ RSpec.describe 'Api::V1::Users', type: :request do
 
   describe 'GET /show' do
     before do
-      create(:user, id: 2, nome: 'ola', password: 'munadsado', email: 'ola@gmail')
+      create(:user, nome: 'ola', password: 'munadsado', email: 'ola@gmail')
     end
 
     context 'user exists' do
@@ -46,7 +46,7 @@ RSpec.describe 'Api::V1::Users', type: :request do
   describe 'POST /create' do
     context 'params are ok' do
       it 'should return http status created' do
-        post '/api/v1/user/create', params: { user: { id: 1, nome: 'joe', password: 'hillary', email: 'teste@gmail' } }
+        post '/api/v1/user/create', params: { user: { nome: 'joe', password: 'hillary', email: 'teste@gmail' } }
         expect(response).to have_http_status(:created)
       end
     end
@@ -60,9 +60,9 @@ RSpec.describe 'Api::V1::Users', type: :request do
 
     context 'repeated name' do
       it 'should return http status bad_request' do
-        post '/api/v1/user/create', params: { user: { id: 1, nome: 'joe', password: 'hillary', email: 'teste@gmail' } }
+        post '/api/v1/user/create', params: { user: { nome: 'joe', password: 'hillary', email: 'teste@gmail' } }
         post '/api/v1/user/create',
-             params: { user: { id: 2, nome: 'joe', password: 'hillknasary', email: 'teste2@gmail' } }
+             params: { user: { nome: 'joe', password: 'hillknasary', email: 'teste2@gmail' } }
         expect(response).to have_http_status(:bad_request)
       end
     end
@@ -71,7 +71,7 @@ RSpec.describe 'Api::V1::Users', type: :request do
   describe 'DELETE /delete' do
     user1 = ''
     before do
-      user1 = create(:user, id: 1, nome: 'tal', password: 'xouasdn', email: 'ola@gmail').attributes
+      user1 = create(:user, nome: 'tal', password: 'xouasdn', email: 'ola@gmail').attributes
     end
 
     context 'user exists' do
@@ -91,10 +91,8 @@ RSpec.describe 'Api::V1::Users', type: :request do
 
   describe 'PATCH /update' do
     user1 = ''
-    user2 = ''
     before do
-      user1 = create(:user, id: 1, nome: 'a', password: 'aaipjdas', email: 'ola2@gmail').attributes
-      user2 = create(:user, id: 2, nome: 'b', password: 'bippiasnid', email: 'ola0@gmail').attributes #Precisa desse segundo usuário?
+      user1 = create(:user, nome: 'a', password: 'aaipjdas', email: 'ola2@gmail').attributes
     end
 
     context 'params are ok' do
