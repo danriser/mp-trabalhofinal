@@ -2,7 +2,7 @@
 
 class UserSerializer < Panko::Serializer
   include Rails.application.routes.url_helpers
-  attributes :id, :nome, :authentication_token, :email, :list_preferences
+  attributes :id, :nome, :email, :list_preferences
 
 
   def list_preferences

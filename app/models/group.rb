@@ -1,6 +1,9 @@
 # frozen_string_literal: true
 
-# Enzo
+# 
+# Model {Group} 
+#
+# Modelo que representa um grupo 
 class Group < ApplicationRecord
   belongs_to :preference
   has_many :list_group_user

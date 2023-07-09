@@ -69,55 +69,58 @@ RSpec.describe 'Api::V1::Users', type: :request do
   end
 
   describe 'DELETE /delete' do
+    user1 = ''
     before do
-      create(:user, id: 1, nome: 'tal', password: 'xouasdn', email: 'ola@gmail')
+      user1 = create(:user, id: 1, nome: 'tal', password: 'xouasdn', email: 'ola@gmail').attributes
     end
 
     context 'user exists' do
       it 'should return http status ok' do
-        delete '/api/v1/user/delete/1'
+        delete '/api/v1/user/delete/1', headers: {'X-User-Email' => user1['email'], 'X-User-Token' => user1['authentication_token'] }
         expect(response).to have_http_status(:ok)
       end
     end
 
     context 'user does not exist' do
       it 'should return http status bad_request' do
-        delete '/api/v1/user/delete/-1'
+        delete '/api/v1/user/delete/-1', headers: {'X-User-Email' => user1['email'], 'X-User-Token' => user1['authentication_token'] }
         expect(response).to have_http_status(:bad_request)
       end
     end
   end
 
   describe 'PATCH /update' do
+    user1 = ''
+    user2 = ''
     before do
-      create(:user, id: 1, nome: 'a', password: 'aaipjdas', email: 'ola2@gmail')
-      create(:user, id: 2, nome: 'b', password: 'bippiasnid', email: 'ola0@gmail')
+      user1 = create(:user, id: 1, nome: 'a', password: 'aaipjdas', email: 'ola2@gmail').attributes
+      user2 = create(:user, id: 2, nome: 'b', password: 'bippiasnid', email: 'ola0@gmail').attributes #Precisa desse segundo usuário?
     end
 
     context 'params are ok' do
       it 'should return http status ok' do
-        patch '/api/v1/user/update/1', params: { user: { nome: 'c', email: 'ola4@gmail' } }
+        patch '/api/v1/user/update/1', params: { user: { nome: 'c', email: 'ola4@gmail' } }, headers: {'X-User-Email' => user1['email'], 'X-User-Token' => user1['authentication_token'] }
         expect(response).to have_http_status(:ok)
       end
     end
 
     context 'params are invalid' do
       it 'should return http status ok' do
-        patch '/api/v1/user/update/1', params: { user: nil }
+        patch '/api/v1/user/update/1', params: { user: nil }, headers: {'X-User-Email' => user1['email'], 'X-User-Token' => user1['authentication_token'] }
         expect(response).to have_http_status(:bad_request)
       end
     end
 
     context 'name already taken' do
       it 'should return http status bad_request' do
-        patch '/api/v1/user/update/1', params: { user: { nome: 'b', password: 'b' } }
+        patch '/api/v1/user/update/1', params: { user: { nome: 'b', password: 'b' } }, headers: {'X-User-Email' => user1['email'], 'X-User-Token' => user1['authentication_token'] }
         expect(response).to have_http_status(:bad_request)
       end
     end
 
     context 'user does not exist' do
       it 'should return http status bad_request' do
-        patch '/api/v1/user/update/-1', params: { user: { nome: 'd', password: 'd' } }
+        patch '/api/v1/user/update/-1', params: { user: { nome: 'd', password: 'd' } }, headers: {'X-User-Email' => user1['email'], 'X-User-Token' => user1['authentication_token'] }
         expect(response).to have_http_status(:bad_request)
       end
     end

@@ -4,6 +4,10 @@
 module Api
   module V1
     class GroupController < ApplicationController
+      #acts_as_token_authentication_handler_for User, only: []
+      #before_action :admin_authentication, only: []
+
+
       def index
         group = Group.all
         render json: array_serializer(group), status: :ok

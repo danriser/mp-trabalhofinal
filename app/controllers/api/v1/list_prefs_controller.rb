@@ -4,6 +4,10 @@
 module Api
   module V1
     class ListPrefsController < ApplicationController
+      #acts_as_token_authentication_handler_for User, only: []
+      #before_action :admin_authentication, only: []
+
+
       # Obtem todas as listas de preferencias.
       #
       # @return [JSON] Lista de listas de preferencias em formato JSON.
@@ -34,9 +38,13 @@ module Api
       # @return [JSON] A lista de preferencias criada em formato JSON.
       # @raise [StandardError] Caso a lista de preferencias não possa ser criada.
       def create
+        user = User.find_by(user_id: current_user.id)
         list_pref = ListPreference.new(list_pref_params)
+        user_list = ListPreference.select{|usr_list_preference| usr_list_preference.user_id == user.id }
+         
         list_pref.save!
         render json: list_pref, status: :created
+        # return_http = :bad_request if user.list_pref.length() >=10
       rescue StandardError => e
         render json: e, status: :bad_request
       end

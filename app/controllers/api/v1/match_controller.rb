@@ -4,6 +4,9 @@
 module Api
   module V1
     class MatchController < ApplicationController
+      #acts_as_token_authentication_handler_for User, only: []
+      #before_action :admin_authentication, only: []
+
       def index
         match = Match.all
         render json: array_serializer(match), status: :ok

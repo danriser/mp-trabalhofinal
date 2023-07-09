@@ -4,6 +4,9 @@
 module Api
   module V1
     class PreferenceController < ApplicationController
+      #acts_as_token_authentication_handler_for User, only: []
+      #before_action :admin_authentication, only: []
+
       # Obtém todas as preferências.
       #
       # @return [JSON] Lista de preferencias em formato JSON.
