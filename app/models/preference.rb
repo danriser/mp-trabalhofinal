@@ -18,6 +18,6 @@
 class Preference < ApplicationRecord
   has_many :list_preferences
   has_one :groups
-  validates :tipo, presence: true, uniqueness: true
-  validates :descricao, presence: true
+  validates :tipo, presence: true
+  validates :descricao, presence: true, uniqueness: true
 end
