@@ -20,4 +20,13 @@ class Preference < ApplicationRecord
   has_one :groups
   validates :tipo, presence: true
   validates :descricao, presence: true, uniqueness: true
+
+  after_create :create_group
+
+  private
+
+  def create_group
+    Group.create(nome: descricao, tipo: tipo, preference_id: id)
+  end
+
 end
