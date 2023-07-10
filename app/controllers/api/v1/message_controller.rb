@@ -4,7 +4,7 @@
 module Api
   module V1
     class MessageController < ApplicationController
-      #acts_as_token_authentication_handler_for User, only: []
+      acts_as_token_authentication_handler_for User
       #before_action :admin_authentication, only: []
       
       # Obtem todas as mensagens.

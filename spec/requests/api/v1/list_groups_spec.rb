@@ -3,6 +3,7 @@
 require 'rails_helper'
 
 RSpec.describe 'Api::V1::ListGroups', type: :request do
+  let(:admin) { create(:user, nome: 'admin_testes2', password: '123456', email: 'admintestes2@teste.com', is_admin: true) }
   describe 'GET /index' do
     before do
       user = create(:user, nome: 'a', password: 'abobasud', email: 'ola@gmail').attributes
@@ -13,7 +14,7 @@ RSpec.describe 'Api::V1::ListGroups', type: :request do
 
     context 'index return' do
       before do
-        get '/api/v1/list_groups/index'
+        get '/api/v1/list_groups/index', headers: {'X-User-Email' => admin['email'], 'X-User-Token' => admin['authentication_token'] }
       end
 
       it 'should return http status ok' do
@@ -41,14 +42,14 @@ RSpec.describe 'Api::V1::ListGroups', type: :request do
 
     context 'records exist' do
       it 'should return http status ok' do
-        get '/api/v1/list_groups/user_groups/' + user['id'].to_s
+        get '/api/v1/list_groups/user_groups/' + user['id'].to_s, headers: {'X-User-Email' => admin['email'], 'X-User-Token' => admin['authentication_token'] }
         expect(response).to have_http_status(:ok)
       end
     end
 
     context 'records do not exist' do
       it 'should return http status not_found' do
-        get '/api/v1/list_groups/user_groups/-1'
+        get '/api/v1/list_groups/user_groups/-1', headers: {'X-User-Email' => admin['email'], 'X-User-Token' => admin['authentication_token'] }
         expect(response).to have_http_status(:not_found)
       end
     end
@@ -68,14 +69,14 @@ RSpec.describe 'Api::V1::ListGroups', type: :request do
 
     context 'records exist' do
       it 'should return http status ok' do
-        get '/api/v1/list_groups/group_users/' + group1['id'].to_s
+        get '/api/v1/list_groups/group_users/' + group1['id'].to_s, headers: {'X-User-Email' => admin['email'], 'X-User-Token' => admin['authentication_token'] }
         expect(response).to have_http_status(:ok)
       end
     end
 
     context 'records do not exist' do
       it 'should return http status not_found' do
-        get '/api/v1/list_groups/group_users/-1'
+        get '/api/v1/list_groups/group_users/-1', headers: {'X-User-Email' => admin['email'], 'X-User-Token' => admin['authentication_token'] }
         expect(response).to have_http_status(:not_found)
       end
     end
@@ -92,28 +93,28 @@ RSpec.describe 'Api::V1::ListGroups', type: :request do
 
     context 'params are ok' do
       it 'should return http status created' do
-        post '/api/v1/list_groups/create', params: { list_group_user: { user_id: user['id'], group_id: group['id'] } }
+        post '/api/v1/list_groups/create', params: { list_group_user: { user_id: user['id'], group_id: group['id'] } }, headers: {'X-User-Email' => admin['email'], 'X-User-Token' => admin['authentication_token'] }
         expect(response).to have_http_status(:created)
       end
     end
 
     context 'params are invalid' do
       it 'should return http status bad_request' do
-        post '/api/v1/list_groups/create', params: { list_group_user: nil }
+        post '/api/v1/list_groups/create', params: { list_group_user: nil }, headers: {'X-User-Email' => admin['email'], 'X-User-Token' => admin['authentication_token'] }
         expect(response).to have_http_status(:bad_request)
       end
     end
 
     context 'group does not exist' do
       it 'should return http status bad_request' do
-        post '/api/v1/list_groups/create', params: { list_group_user: { user_id: user['id'], group_id: 2000 } }
+        post '/api/v1/list_groups/create', params: { list_group_user: { user_id: user['id'], group_id: 2000 } }, headers: {'X-User-Email' => admin['email'], 'X-User-Token' => admin['authentication_token'] }
         expect(response).to have_http_status(:bad_request)
       end
     end
 
     context 'user does not exist' do
       it 'should return http status bad_request' do
-        post '/api/v1/list_groups/create', params: { list_group_user: { user_id: 2000, group_id: group['id'] } }
+        post '/api/v1/list_groups/create', params: { list_group_user: { user_id: 2000, group_id: group['id'] } }, headers: {'X-User-Email' => admin['email'], 'X-User-Token' => admin['authentication_token'] }
         expect(response).to have_http_status(:bad_request)
       end
     end
@@ -130,14 +131,14 @@ RSpec.describe 'Api::V1::ListGroups', type: :request do
 
     context 'record exists' do
       it 'should return http status ok' do
-        delete '/api/v1/list_groups/delete/' + list['id'].to_s
+        delete '/api/v1/list_groups/delete/' + list['id'].to_s, headers: {'X-User-Email' => admin['email'], 'X-User-Token' => admin['authentication_token'] }
         expect(response).to have_http_status(:ok)
       end
     end
 
     context 'record does not exist' do
       it 'should return http status bad_request' do
-        delete '/api/v1/list_groups/delete/-1'
+        delete '/api/v1/list_groups/delete/-1', headers: {'X-User-Email' => admin['email'], 'X-User-Token' => admin['authentication_token'] }
         expect(response).to have_http_status(:bad_request)
       end
     end

@@ -24,13 +24,14 @@ RSpec.describe 'Api::V1::Users', type: :request do
   end
 
   describe 'GET /show' do
+    user = ''
     before do
-      create(:user, nome: 'ola', password: 'munadsado', email: 'ola@gmail')
+      user = create(:user, nome: 'ola', password: 'munadsado', email: 'ola@gmail').attributes
     end
 
     context 'user exists' do
       it 'should return http status ok' do
-        get '/api/v1/user/show/2'
+        get '/api/v1/user/show/' + user['id'].to_s
         expect(response).to have_http_status(:ok)
       end
     end
@@ -71,12 +72,12 @@ RSpec.describe 'Api::V1::Users', type: :request do
   describe 'DELETE /delete' do
     user1 = ''
     before do
-      user1 = create(:user, nome: 'tal', password: 'xouasdn', email: 'ola@gmail').attributes
+      user1 = create(:user, nome: 'tal', password: 'xouasdn', email: 'ola@gmail').attributes # { ..., authentication_token: ArfsdFJrdj343 }
     end
 
     context 'user exists' do
       it 'should return http status ok' do
-        delete '/api/v1/user/delete/1', headers: {'X-User-Email' => user1['email'], 'X-User-Token' => user1['authentication_token'] }
+        delete '/api/v1/user/delete/' + user1['id'].to_s, headers: {'X-User-Email' => user1['email'], 'X-User-Token' => user1['authentication_token'] }
         expect(response).to have_http_status(:ok)
       end
     end
@@ -97,21 +98,21 @@ RSpec.describe 'Api::V1::Users', type: :request do
 
     context 'params are ok' do
       it 'should return http status ok' do
-        patch '/api/v1/user/update/1', params: { user: { nome: 'c', email: 'ola4@gmail' } }, headers: {'X-User-Email' => user1['email'], 'X-User-Token' => user1['authentication_token'] }
+        patch '/api/v1/user/update/' + user1['id'].to_s, params: { user: { nome: 'c', email: 'ola4@gmail' } }, headers: {'X-User-Email' => user1['email'], 'X-User-Token' => user1['authentication_token'] }
         expect(response).to have_http_status(:ok)
       end
     end
 
     context 'params are invalid' do
       it 'should return http status ok' do
-        patch '/api/v1/user/update/1', params: { user: nil }, headers: {'X-User-Email' => user1['email'], 'X-User-Token' => user1['authentication_token'] }
+        patch '/api/v1/user/update/' + user1['id'].to_s, params: { user: nil }, headers: {'X-User-Email' => user1['email'], 'X-User-Token' => user1['authentication_token'] }
         expect(response).to have_http_status(:bad_request)
       end
     end
 
     context 'name already taken' do
       it 'should return http status bad_request' do
-        patch '/api/v1/user/update/1', params: { user: { nome: 'b', password: 'b' } }, headers: {'X-User-Email' => user1['email'], 'X-User-Token' => user1['authentication_token'] }
+        patch '/api/v1/user/update/' + user1['id'].to_s, params: { user: { nome: 'b', password: 'b' } }, headers: {'X-User-Email' => user1['email'], 'X-User-Token' => user1['authentication_token'] }
         expect(response).to have_http_status(:bad_request)
       end
     end

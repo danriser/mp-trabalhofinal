@@ -3,6 +3,7 @@
 require 'rails_helper'
 
 RSpec.describe 'Api::V1::Messages', type: :request do
+  let(:admin) { create(:user, nome: 'admin_testes2', password: '123456', email: 'admintestes2@teste.com', is_admin: true) }
   describe 'GET /index' do
     before do
       user = create(:user, nome: 'afdsafdsa', password: 'aopqkeoqw', email: 'ola@gmail').attributes
@@ -14,7 +15,7 @@ RSpec.describe 'Api::V1::Messages', type: :request do
 
     context 'index return' do
       before do
-        get '/api/v1/message/index'
+        get '/api/v1/message/index', headers: {'X-User-Email' => admin['email'], 'X-User-Token' => admin['authentication_token'] }
       end
 
       it 'should return http status ok' do
@@ -40,14 +41,14 @@ RSpec.describe 'Api::V1::Messages', type: :request do
 
     context 'records exist' do
       it 'should return http status ok' do
-        get '/api/v1/message/user_msgs/' + user['id'].to_s
+        get '/api/v1/message/user_msgs/' + user['id'].to_s, headers: {'X-User-Email' => admin['email'], 'X-User-Token' => admin['authentication_token'] }
         expect(response).to have_http_status(:ok)
       end
     end
 
     context 'record dont exist' do
       it 'should return http status not_found' do
-        get '/api/v1/message/user_msgs/-1'
+        get '/api/v1/message/user_msgs/-1', headers: {'X-User-Email' => admin['email'], 'X-User-Token' => admin['authentication_token'] }
         expect(response).to have_http_status(:not_found)
       end
     end
@@ -66,14 +67,14 @@ RSpec.describe 'Api::V1::Messages', type: :request do
 
     context 'record exists' do
       it 'should return http status ok' do
-        get '/api/v1/message/show/' + message['id'].to_s
+        get '/api/v1/message/show/' + message['id'].to_s, headers: {'X-User-Email' => admin['email'], 'X-User-Token' => admin['authentication_token'] }
         expect(response).to have_http_status(:ok)
       end
     end
 
     context 'record does not exist' do
       it 'should return http status not_found' do
-        get '/api/v1/message/show/-1'
+        get '/api/v1/message/show/-1', headers: {'X-User-Email' => admin['email'], 'X-User-Token' => admin['authentication_token'] }
         expect(response).to have_http_status(:not_found)
       end
     end
@@ -92,14 +93,14 @@ RSpec.describe 'Api::V1::Messages', type: :request do
 
     context 'record exists' do
       it 'should return http status ok' do
-        delete '/api/v1/message/delete/' + message['id'].to_s
+        delete '/api/v1/message/delete/' + message['id'].to_s, headers: {'X-User-Email' => admin['email'], 'X-User-Token' => admin['authentication_token'] }
         expect(response).to have_http_status(:ok)
       end
     end
 
     context 'record does not exist' do
       it 'should return http status bad_request' do
-        delete '/api/v1/message/delete/-1'
+        delete '/api/v1/message/delete/-1', headers: {'X-User-Email' => admin['email'], 'X-User-Token' => admin['authentication_token'] }
         expect(response).to have_http_status(:bad_request)
       end
     end
@@ -120,14 +121,14 @@ RSpec.describe 'Api::V1::Messages', type: :request do
 
     context 'records exist' do
       it 'should return http status ok' do
-        delete '/api/v1/message/user_msgs_delete/' + message['id'].to_s
+        delete '/api/v1/message/user_msgs_delete/' + message['id'].to_s, headers: {'X-User-Email' => admin['email'], 'X-User-Token' => admin['authentication_token'] }
         expect(response).to have_http_status(:ok)
       end
     end
 
     context 'user_id does not exist' do
       it 'should return http status bad_request' do
-        delete '/api/v1/message/user_msgs_delete/-1'
+        delete '/api/v1/message/user_msgs_delete/-1', headers: {'X-User-Email' => admin['email'], 'X-User-Token' => admin['authentication_token'] }
         expect(response).to have_http_status(:bad_request)
       end
     end
@@ -146,7 +147,7 @@ RSpec.describe 'Api::V1::Messages', type: :request do
     context 'params are ok' do
       it 'should return http status created' do
         post '/api/v1/message/create',
-             params: { message: { chat_id: chat['id'], user_id: user['id'], hora_de_envio: nil, conteudo: 'ola' } }
+             params: { message: { chat_id: chat['id'], user_id: user['id'], hora_de_envio: nil, conteudo: 'ola' } }, headers: {'X-User-Email' => admin['email'], 'X-User-Token' => admin['authentication_token'] }
         expect(response).to have_http_status(:created)
       end
     end
@@ -154,7 +155,7 @@ RSpec.describe 'Api::V1::Messages', type: :request do
     context 'conteudo is invalid' do
       it 'should return http status bad_request' do
         post '/api/v1/message/create',
-             params: { message: { chat_id: chat['id'], user_id: user['id'], hora_de_envio: nil, conteudo: nil } }
+             params: { message: { chat_id: chat['id'], user_id: user['id'], hora_de_envio: nil, conteudo: nil } }, headers: {'X-User-Email' => admin['email'], 'X-User-Token' => admin['authentication_token'] }
         expect(response).to have_http_status(:bad_request)
       end
     end
@@ -162,7 +163,7 @@ RSpec.describe 'Api::V1::Messages', type: :request do
     context 'chat_id is invalid' do
       it 'should return http status bad_request' do
         post '/api/v1/message/create',
-             params: { message: { chat_id: 2000, user_id: user['id'], hora_de_envio: nil, conteudo: 'ola' } }
+             params: { message: { chat_id: 2000, user_id: user['id'], hora_de_envio: nil, conteudo: 'ola' } }, headers: {'X-User-Email' => admin['email'], 'X-User-Token' => admin['authentication_token'] }
         expect(response).to have_http_status(:bad_request)
       end
     end
@@ -170,7 +171,7 @@ RSpec.describe 'Api::V1::Messages', type: :request do
     context 'user_id is invalid' do
       it 'should return http status bad_request' do
         post '/api/v1/message/create',
-             params: { message: { chat_id: chat['id'], user_id: 2000, hora_de_envio: nil, conteudo: 'ola' } }
+             params: { message: { chat_id: chat['id'], user_id: 2000, hora_de_envio: nil, conteudo: 'ola' } }, headers: {'X-User-Email' => admin['email'], 'X-User-Token' => admin['authentication_token'] }
         expect(response).to have_http_status(:bad_request)
       end
     end
