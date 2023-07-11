@@ -11,4 +11,10 @@ class MatchSerializer < Panko::Serializer
     obj = User.find(object.user_id2)
     { id: obj.id, nome: obj.nome }
   end
+
+  def usr_list
+    ids_array = ListPreference.select{|usr_list_preference| usr_list_preference.user_id == object.user_id }
+     
+  end 
+
 end
