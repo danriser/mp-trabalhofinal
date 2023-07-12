@@ -5,6 +5,13 @@
 #
 # Responsável por armazenar os dados de um usuário
 #
+# HU006
+# 
+# HU007
+#
+# HU008
+#
+#
 # @attribute id
 #   @return [int] id do usuário
 #
@@ -22,8 +29,6 @@
 #
 # @attribute list_group_users
 #   @return [ListGroupUser] lista dos grupos em que o usuário está
-#
-#
 #
 class User < ApplicationRecord
   acts_as_token_authenticatable
