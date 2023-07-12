@@ -106,7 +106,7 @@
 <h2>Overview</h2><div class="docstring">
   <div class="discussion">
     
-<p>Model <span class='object_link'><a href="" title="Message (class)">Message</a></span> </p>
+<p>Model <span class='object_link'><a href="" title="Message (class)">Message</a></span></p>
 
 <p>Responsavel por armazenar as mensagens</p>
 
@@ -120,12 +120,46 @@
 
 
 
+  <h2>Instance Attribute Summary <small><a href="#" class="summary_toggle">collapse</a></small></h2>
+  <ul class="summary">
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#conteudo-instance_method" title="#conteudo (instance method)">#<strong>conteudo</strong>  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+    
+      <span class="note title readonly">readonly</span>
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Valida a presença do conteúdo da mensagem.</p>
+</div></span>
+  
+</li>
+
+    
+  </ul>
+
 
 
 
   
     <h2>
-      Instance Method Summary
+      Belongs to
       <small><a href="#" class="summary_toggle">collapse</a></small>
     </h2>
 
@@ -190,6 +224,63 @@
   
   
   
+  <div id="instance_attr_details" class="attr_details">
+    <h2>Instance Attribute Details</h2>
+    
+      
+      <span id=""></span>
+      <div class="method_details first">
+  <h3 class="signature first" id="conteudo-instance_method">
+  
+    #<strong>conteudo</strong>  &#x21d2; <tt>Object</tt>  <span class="extras">(readonly)</span>
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Valida a presença do conteúdo da mensagem.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><p class="tag_title">Validations:</p>
+<ul class="validations">
+  
+    
+      <li>
+        
+            <a href="http://edgeguides.rubyonrails.org/active_record_validations.html#presence" target="_parent" title="Presence">Presence</a>
+        
+        
+      </li>
+    
+  
+</ul>
+<table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+17</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'app/models/message.rb', line 17</span>
+
+<span class='id identifier rubyid_validates'>validates</span> <span class='symbol'>:conteudo</span><span class='comma'>,</span> <span class='label'>presence:</span> <span class='kw'>true</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
 
   <div id="instance_method_details" class="method_details_list">
     <h2>Instance Method Details</h2>
@@ -239,10 +330,10 @@
       <pre class="lines">
 
 
-8</pre>
+10</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/message.rb', line 8</span>
+      <pre class="code"><span class="info file"># File 'app/models/message.rb', line 10</span>
 
 <span class='id identifier rubyid_belongs_to'>belongs_to</span> <span class='symbol'>:chat</span></pre>
     </td>
@@ -294,10 +385,10 @@
       <pre class="lines">
 
 
-12</pre>
+14</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/message.rb', line 12</span>
+      <pre class="code"><span class="info file"># File 'app/models/message.rb', line 14</span>
 
 <span class='id identifier rubyid_belongs_to'>belongs_to</span> <span class='symbol'>:user</span></pre>
     </td>
@@ -310,9 +401,9 @@
 </div>
 
       <div id="footer">
-  Generated on Mon Jun 26 14:56:33 2023 by
+  Generated on Wed Jul 12 18:13:08 2023 by
   <a href="https://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.9.34 (ruby-3.0.0).
+  0.9.34 (ruby-3.2.2).
 </div>
 
     </div>

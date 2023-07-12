@@ -106,9 +106,15 @@
 <h2>Overview</h2><div class="docstring">
   <div class="discussion">
     
-<p>Model <span class='object_link'><a href="" title="User (class)">User</a></span> </p>
+<p>Model <span class='object_link'><a href="" title="User (class)">User</a></span></p>
 
 <p>Responsável por armazenar os dados de um usuário</p>
+
+<p>HU006</p>
+
+<p>HU007</p>
+
+<p>HU008</p>
 
 
   </div>
@@ -120,8 +126,115 @@
 
 
 
+  <h2>Has many <small><a href="#" class="summary_toggle">collapse</a></small></h2>
+  <ul class="summary">
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#list_group_users-instance_method" title="#list_group_users (instance method)">#<strong>list_group_users</strong>  &#x21d2; ActiveRecord::Relation&lt;ListGroupUser&gt; </a>
+    
+
+    
+  </span>
+  
+  
+  
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#list_preferences-instance_method" title="#list_preferences (instance method)">#<strong>list_preferences</strong>  &#x21d2; ActiveRecord::Relation&lt;ListPreference&gt; </a>
+    
+
+    
+  </span>
+  
+  
+  
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#matches-instance_method" title="#matches (instance method)">#<strong>matches</strong>  &#x21d2; ActiveRecord::Relation&lt;Match&gt; </a>
+    
+
+    
+  </span>
+  
+  
+  
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+    
+  </ul>
+
   <h2>Instance Attribute Summary <small><a href="#" class="summary_toggle">collapse</a></small></h2>
   <ul class="summary">
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#email-instance_method" title="#email (instance method)">#<strong>email</strong>  &#x21d2; String </a>
+    
+
+    
+  </span>
+  
+  
+  
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>O email do usuário.</p>
+</div></span>
+  
+</li>
+
     
       <li class="public ">
   <span class="summary_signature">
@@ -182,6 +295,39 @@
 
 
 
+  
+    <h2>
+      Has many
+      <small><a href="#" class="summary_toggle">collapse</a></small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#messages-instance_method" title="#messages (instance method)">#<strong>messages</strong>  &#x21d2; ActiveRecord::Relation&lt;Message&gt; </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+    </ul>
+  
+
 
   
   
@@ -194,9 +340,110 @@
     <h2>Instance Attribute Details</h2>
     
       
-      <span id="id=-instance_method"></span>
+      <span id="email=-instance_method"></span>
       <div class="method_details first">
-  <h3 class="signature first" id="id-instance_method">
+  <h3 class="signature first" id="email-instance_method">
+  
+    #<strong>email</strong>  &#x21d2; <tt>String</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Returns o email do usuário. Usado para o login do usuário.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>o email do usuário. Usado para o login do usuário</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><p class="tag_title">Validations:</p>
+<ul class="validations">
+  
+    
+      <li>
+        
+            <a href="http://edgeguides.rubyonrails.org/active_record_validations.html#presence" target="_parent" title="Presence">Presence</a>
+        
+        
+      </li>
+    
+      <li>
+        
+            <a href="http://edgeguides.rubyonrails.org/active_record_validations.html#uniqueness" target="_parent" title="Uniqueness">Uniqueness</a>
+        
+        
+      </li>
+    
+  
+</ul>
+<table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'app/models/user.rb', line 33</span>
+
+<span class='kw'>class</span> <span class='const'><span class='object_link'><a href="" title="User (class)">User</a></span></span> <span class='op'>&lt;</span> <span class='const'><span class='object_link'><a href="ApplicationRecord.html" title="ApplicationRecord (class)">ApplicationRecord</a></span></span>
+  <span class='id identifier rubyid_acts_as_token_authenticatable'>acts_as_token_authenticatable</span>
+  <span class='comment'># Include default devise modules. Others available are:
+</span>  <span class='comment'># :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
+</span>  <span class='id identifier rubyid_devise'>devise</span> <span class='symbol'>:database_authenticatable</span><span class='comma'>,</span> <span class='symbol'>:registerable</span><span class='comma'>,</span>
+         <span class='symbol'>:recoverable</span><span class='comma'>,</span> <span class='symbol'>:rememberable</span><span class='comma'>,</span> <span class='symbol'>:validatable</span>
+  <span class='id identifier rubyid_has_many'>has_many</span> <span class='symbol'>:matches</span>
+  <span class='id identifier rubyid_has_many'>has_many</span> <span class='symbol'>:list_preferences</span>
+  <span class='id identifier rubyid_has_many'>has_many</span> <span class='symbol'>:list_group_users</span>
+  <span class='id identifier rubyid_has_many'>has_many</span> <span class='symbol'>:messages</span>
+  <span class='id identifier rubyid_validates'>validates</span> <span class='symbol'>:nome</span><span class='comma'>,</span> <span class='label'>presence:</span> <span class='kw'>true</span><span class='comma'>,</span> <span class='label'>uniqueness:</span> <span class='kw'>true</span>
+  <span class='id identifier rubyid_validates'>validates</span> <span class='symbol'>:email</span><span class='comma'>,</span> <span class='label'>presence:</span> <span class='symbol'>:true</span><span class='comma'>,</span> <span class='label'>uniqueness:</span> <span class='symbol'>:true</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      
+      <span id="id=-instance_method"></span>
+      <div class="method_details ">
+  <h3 class="signature " id="id-instance_method">
   
     #<strong>id</strong>  &#x21d2; <tt>int</tt> 
   
@@ -239,25 +486,278 @@
       <pre class="lines">
 
 
-17
-18
-19
-20
-21
-22
-23
-24</pre>
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/user.rb', line 17</span>
+      <pre class="code"><span class="info file"># File 'app/models/user.rb', line 33</span>
 
-<span class='kw'>class</span> <span class='const'><span class='object_link'><a href="" title="User (class)">User</a></span></span> <span class='op'>&lt;</span> <span class='const'><span class='object_link'><a href="ApplicationRecord.html" title="ApplicationRecord (class)">ApplicationRecord</a></span></span> 
-    <span class='id identifier rubyid_has_many'>has_many</span> <span class='symbol'>:matches</span>
-    <span class='id identifier rubyid_has_many'>has_many</span> <span class='symbol'>:list_preferences</span>
-    <span class='id identifier rubyid_has_many'>has_many</span> <span class='symbol'>:list_group_users</span>
-    <span class='id identifier rubyid_has_many'>has_many</span> <span class='symbol'>:messages</span>
-    <span class='id identifier rubyid_validates'>validates</span> <span class='symbol'>:nome</span><span class='comma'>,</span> <span class='label'>presence:</span> <span class='symbol'>:true</span><span class='comma'>,</span> <span class='label'>uniqueness:</span> <span class='symbol'>:true</span>
-    <span class='id identifier rubyid_validates'>validates</span> <span class='symbol'>:senha</span><span class='comma'>,</span> <span class='label'>presence:</span> <span class='symbol'>:true</span>
+<span class='kw'>class</span> <span class='const'><span class='object_link'><a href="" title="User (class)">User</a></span></span> <span class='op'>&lt;</span> <span class='const'><span class='object_link'><a href="ApplicationRecord.html" title="ApplicationRecord (class)">ApplicationRecord</a></span></span>
+  <span class='id identifier rubyid_acts_as_token_authenticatable'>acts_as_token_authenticatable</span>
+  <span class='comment'># Include default devise modules. Others available are:
+</span>  <span class='comment'># :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
+</span>  <span class='id identifier rubyid_devise'>devise</span> <span class='symbol'>:database_authenticatable</span><span class='comma'>,</span> <span class='symbol'>:registerable</span><span class='comma'>,</span>
+         <span class='symbol'>:recoverable</span><span class='comma'>,</span> <span class='symbol'>:rememberable</span><span class='comma'>,</span> <span class='symbol'>:validatable</span>
+  <span class='id identifier rubyid_has_many'>has_many</span> <span class='symbol'>:matches</span>
+  <span class='id identifier rubyid_has_many'>has_many</span> <span class='symbol'>:list_preferences</span>
+  <span class='id identifier rubyid_has_many'>has_many</span> <span class='symbol'>:list_group_users</span>
+  <span class='id identifier rubyid_has_many'>has_many</span> <span class='symbol'>:messages</span>
+  <span class='id identifier rubyid_validates'>validates</span> <span class='symbol'>:nome</span><span class='comma'>,</span> <span class='label'>presence:</span> <span class='kw'>true</span><span class='comma'>,</span> <span class='label'>uniqueness:</span> <span class='kw'>true</span>
+  <span class='id identifier rubyid_validates'>validates</span> <span class='symbol'>:email</span><span class='comma'>,</span> <span class='label'>presence:</span> <span class='symbol'>:true</span><span class='comma'>,</span> <span class='label'>uniqueness:</span> <span class='symbol'>:true</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      
+      <span id="list_group_users=-instance_method"></span>
+      <div class="method_details ">
+  <h3 class="signature " id="list_group_users-instance_method">
+  
+    #<strong>list_group_users</strong>  &#x21d2; <tt>ActiveRecord::Relation&lt;<span class='object_link'><a href="ListGroupUser.html" title="ListGroupUser (class)">ListGroupUser</a></span>&gt;</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>ActiveRecord::Relation&lt;<span class='object_link'><a href="ListGroupUser.html" title="ListGroupUser (class)">ListGroupUser</a></span>&gt;</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+  <p class="tag_title">See Also:</p>
+  <ul class="see">
+    
+      <li><a href="http://api.rubyonrails.org/classes/ActiveRecord/Associations/ClassMethods.html" target="_parent" title="ActiveRecord::Associations">ActiveRecord::Associations</a></li>
+    
+  </ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'app/models/user.rb', line 33</span>
+
+<span class='kw'>class</span> <span class='const'><span class='object_link'><a href="" title="User (class)">User</a></span></span> <span class='op'>&lt;</span> <span class='const'><span class='object_link'><a href="ApplicationRecord.html" title="ApplicationRecord (class)">ApplicationRecord</a></span></span>
+  <span class='id identifier rubyid_acts_as_token_authenticatable'>acts_as_token_authenticatable</span>
+  <span class='comment'># Include default devise modules. Others available are:
+</span>  <span class='comment'># :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
+</span>  <span class='id identifier rubyid_devise'>devise</span> <span class='symbol'>:database_authenticatable</span><span class='comma'>,</span> <span class='symbol'>:registerable</span><span class='comma'>,</span>
+         <span class='symbol'>:recoverable</span><span class='comma'>,</span> <span class='symbol'>:rememberable</span><span class='comma'>,</span> <span class='symbol'>:validatable</span>
+  <span class='id identifier rubyid_has_many'>has_many</span> <span class='symbol'>:matches</span>
+  <span class='id identifier rubyid_has_many'>has_many</span> <span class='symbol'>:list_preferences</span>
+  <span class='id identifier rubyid_has_many'>has_many</span> <span class='symbol'>:list_group_users</span>
+  <span class='id identifier rubyid_has_many'>has_many</span> <span class='symbol'>:messages</span>
+  <span class='id identifier rubyid_validates'>validates</span> <span class='symbol'>:nome</span><span class='comma'>,</span> <span class='label'>presence:</span> <span class='kw'>true</span><span class='comma'>,</span> <span class='label'>uniqueness:</span> <span class='kw'>true</span>
+  <span class='id identifier rubyid_validates'>validates</span> <span class='symbol'>:email</span><span class='comma'>,</span> <span class='label'>presence:</span> <span class='symbol'>:true</span><span class='comma'>,</span> <span class='label'>uniqueness:</span> <span class='symbol'>:true</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      
+      <span id="list_preferences=-instance_method"></span>
+      <div class="method_details ">
+  <h3 class="signature " id="list_preferences-instance_method">
+  
+    #<strong>list_preferences</strong>  &#x21d2; <tt>ActiveRecord::Relation&lt;<span class='object_link'><a href="ListPreference.html" title="ListPreference (class)">ListPreference</a></span>&gt;</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>ActiveRecord::Relation&lt;<span class='object_link'><a href="ListPreference.html" title="ListPreference (class)">ListPreference</a></span>&gt;</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+  <p class="tag_title">See Also:</p>
+  <ul class="see">
+    
+      <li><a href="http://api.rubyonrails.org/classes/ActiveRecord/Associations/ClassMethods.html" target="_parent" title="ActiveRecord::Associations">ActiveRecord::Associations</a></li>
+    
+  </ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'app/models/user.rb', line 33</span>
+
+<span class='kw'>class</span> <span class='const'><span class='object_link'><a href="" title="User (class)">User</a></span></span> <span class='op'>&lt;</span> <span class='const'><span class='object_link'><a href="ApplicationRecord.html" title="ApplicationRecord (class)">ApplicationRecord</a></span></span>
+  <span class='id identifier rubyid_acts_as_token_authenticatable'>acts_as_token_authenticatable</span>
+  <span class='comment'># Include default devise modules. Others available are:
+</span>  <span class='comment'># :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
+</span>  <span class='id identifier rubyid_devise'>devise</span> <span class='symbol'>:database_authenticatable</span><span class='comma'>,</span> <span class='symbol'>:registerable</span><span class='comma'>,</span>
+         <span class='symbol'>:recoverable</span><span class='comma'>,</span> <span class='symbol'>:rememberable</span><span class='comma'>,</span> <span class='symbol'>:validatable</span>
+  <span class='id identifier rubyid_has_many'>has_many</span> <span class='symbol'>:matches</span>
+  <span class='id identifier rubyid_has_many'>has_many</span> <span class='symbol'>:list_preferences</span>
+  <span class='id identifier rubyid_has_many'>has_many</span> <span class='symbol'>:list_group_users</span>
+  <span class='id identifier rubyid_has_many'>has_many</span> <span class='symbol'>:messages</span>
+  <span class='id identifier rubyid_validates'>validates</span> <span class='symbol'>:nome</span><span class='comma'>,</span> <span class='label'>presence:</span> <span class='kw'>true</span><span class='comma'>,</span> <span class='label'>uniqueness:</span> <span class='kw'>true</span>
+  <span class='id identifier rubyid_validates'>validates</span> <span class='symbol'>:email</span><span class='comma'>,</span> <span class='label'>presence:</span> <span class='symbol'>:true</span><span class='comma'>,</span> <span class='label'>uniqueness:</span> <span class='symbol'>:true</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      
+      <span id="matches=-instance_method"></span>
+      <div class="method_details ">
+  <h3 class="signature " id="matches-instance_method">
+  
+    #<strong>matches</strong>  &#x21d2; <tt>ActiveRecord::Relation&lt;<span class='object_link'><a href="Match.html" title="Match (class)">Match</a></span>&gt;</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>ActiveRecord::Relation&lt;<span class='object_link'><a href="Match.html" title="Match (class)">Match</a></span>&gt;</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+  <p class="tag_title">See Also:</p>
+  <ul class="see">
+    
+      <li><a href="http://api.rubyonrails.org/classes/ActiveRecord/Associations/ClassMethods.html" target="_parent" title="ActiveRecord::Associations">ActiveRecord::Associations</a></li>
+    
+  </ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'app/models/user.rb', line 33</span>
+
+<span class='kw'>class</span> <span class='const'><span class='object_link'><a href="" title="User (class)">User</a></span></span> <span class='op'>&lt;</span> <span class='const'><span class='object_link'><a href="ApplicationRecord.html" title="ApplicationRecord (class)">ApplicationRecord</a></span></span>
+  <span class='id identifier rubyid_acts_as_token_authenticatable'>acts_as_token_authenticatable</span>
+  <span class='comment'># Include default devise modules. Others available are:
+</span>  <span class='comment'># :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
+</span>  <span class='id identifier rubyid_devise'>devise</span> <span class='symbol'>:database_authenticatable</span><span class='comma'>,</span> <span class='symbol'>:registerable</span><span class='comma'>,</span>
+         <span class='symbol'>:recoverable</span><span class='comma'>,</span> <span class='symbol'>:rememberable</span><span class='comma'>,</span> <span class='symbol'>:validatable</span>
+  <span class='id identifier rubyid_has_many'>has_many</span> <span class='symbol'>:matches</span>
+  <span class='id identifier rubyid_has_many'>has_many</span> <span class='symbol'>:list_preferences</span>
+  <span class='id identifier rubyid_has_many'>has_many</span> <span class='symbol'>:list_group_users</span>
+  <span class='id identifier rubyid_has_many'>has_many</span> <span class='symbol'>:messages</span>
+  <span class='id identifier rubyid_validates'>validates</span> <span class='symbol'>:nome</span><span class='comma'>,</span> <span class='label'>presence:</span> <span class='kw'>true</span><span class='comma'>,</span> <span class='label'>uniqueness:</span> <span class='kw'>true</span>
+  <span class='id identifier rubyid_validates'>validates</span> <span class='symbol'>:email</span><span class='comma'>,</span> <span class='label'>presence:</span> <span class='symbol'>:true</span><span class='comma'>,</span> <span class='label'>uniqueness:</span> <span class='symbol'>:true</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -304,31 +804,61 @@
   
 </ul>
 
-</div><table class="source_code">
+</div><p class="tag_title">Validations:</p>
+<ul class="validations">
+  
+    
+      <li>
+        
+            <a href="http://edgeguides.rubyonrails.org/active_record_validations.html#presence" target="_parent" title="Presence">Presence</a>
+        
+        
+      </li>
+    
+      <li>
+        
+            <a href="http://edgeguides.rubyonrails.org/active_record_validations.html#uniqueness" target="_parent" title="Uniqueness">Uniqueness</a>
+        
+        
+      </li>
+    
+  
+</ul>
+<table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-17
-18
-19
-20
-21
-22
-23
-24</pre>
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/models/user.rb', line 17</span>
+      <pre class="code"><span class="info file"># File 'app/models/user.rb', line 33</span>
 
-<span class='kw'>class</span> <span class='const'><span class='object_link'><a href="" title="User (class)">User</a></span></span> <span class='op'>&lt;</span> <span class='const'><span class='object_link'><a href="ApplicationRecord.html" title="ApplicationRecord (class)">ApplicationRecord</a></span></span> 
-    <span class='id identifier rubyid_has_many'>has_many</span> <span class='symbol'>:matches</span>
-    <span class='id identifier rubyid_has_many'>has_many</span> <span class='symbol'>:list_preferences</span>
-    <span class='id identifier rubyid_has_many'>has_many</span> <span class='symbol'>:list_group_users</span>
-    <span class='id identifier rubyid_has_many'>has_many</span> <span class='symbol'>:messages</span>
-    <span class='id identifier rubyid_validates'>validates</span> <span class='symbol'>:nome</span><span class='comma'>,</span> <span class='label'>presence:</span> <span class='symbol'>:true</span><span class='comma'>,</span> <span class='label'>uniqueness:</span> <span class='symbol'>:true</span>
-    <span class='id identifier rubyid_validates'>validates</span> <span class='symbol'>:senha</span><span class='comma'>,</span> <span class='label'>presence:</span> <span class='symbol'>:true</span>
+<span class='kw'>class</span> <span class='const'><span class='object_link'><a href="" title="User (class)">User</a></span></span> <span class='op'>&lt;</span> <span class='const'><span class='object_link'><a href="ApplicationRecord.html" title="ApplicationRecord (class)">ApplicationRecord</a></span></span>
+  <span class='id identifier rubyid_acts_as_token_authenticatable'>acts_as_token_authenticatable</span>
+  <span class='comment'># Include default devise modules. Others available are:
+</span>  <span class='comment'># :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
+</span>  <span class='id identifier rubyid_devise'>devise</span> <span class='symbol'>:database_authenticatable</span><span class='comma'>,</span> <span class='symbol'>:registerable</span><span class='comma'>,</span>
+         <span class='symbol'>:recoverable</span><span class='comma'>,</span> <span class='symbol'>:rememberable</span><span class='comma'>,</span> <span class='symbol'>:validatable</span>
+  <span class='id identifier rubyid_has_many'>has_many</span> <span class='symbol'>:matches</span>
+  <span class='id identifier rubyid_has_many'>has_many</span> <span class='symbol'>:list_preferences</span>
+  <span class='id identifier rubyid_has_many'>has_many</span> <span class='symbol'>:list_group_users</span>
+  <span class='id identifier rubyid_has_many'>has_many</span> <span class='symbol'>:messages</span>
+  <span class='id identifier rubyid_validates'>validates</span> <span class='symbol'>:nome</span><span class='comma'>,</span> <span class='label'>presence:</span> <span class='kw'>true</span><span class='comma'>,</span> <span class='label'>uniqueness:</span> <span class='kw'>true</span>
+  <span class='id identifier rubyid_validates'>validates</span> <span class='symbol'>:email</span><span class='comma'>,</span> <span class='label'>presence:</span> <span class='symbol'>:true</span><span class='comma'>,</span> <span class='label'>uniqueness:</span> <span class='symbol'>:true</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -338,12 +868,73 @@
   </div>
 
 
+  <div id="instance_method_details" class="method_details_list">
+    <h2>Instance Method Details</h2>
+
+    
+      <div class="method_details first">
+  <h3 class="signature first" id="messages-instance_method">
+  
+    #<strong>messages</strong>  &#x21d2; <tt>ActiveRecord::Relation&lt;<span class='object_link'><a href="Message.html" title="Message (class)">Message</a></span>&gt;</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>ActiveRecord::Relation&lt;<span class='object_link'><a href="Message.html" title="Message (class)">Message</a></span>&gt;</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+  <p class="tag_title">See Also:</p>
+  <ul class="see">
+    
+      <li><a href="http://api.rubyonrails.org/classes/ActiveRecord/Associations/ClassMethods.html" target="_parent" title="ActiveRecord::Associations">ActiveRecord::Associations</a></li>
+    
+  </ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+42</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'app/models/user.rb', line 42</span>
+
+<span class='id identifier rubyid_has_many'>has_many</span> <span class='symbol'>:messages</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
 </div>
 
       <div id="footer">
-  Generated on Mon Jun 26 14:56:33 2023 by
+  Generated on Wed Jul 12 18:13:08 2023 by
   <a href="https://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.9.34 (ruby-3.0.0).
+  0.9.34 (ruby-3.2.2).
 </div>
 
     </div>
