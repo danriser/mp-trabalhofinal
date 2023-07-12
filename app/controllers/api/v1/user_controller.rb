@@ -11,6 +11,9 @@ module Api
         user = User.all
         render json: array_serializer(user), status: :ok
       end
+      def index_match
+        # user = User.all.select 
+      end
 
       def show
         user = User.find(params[:id])

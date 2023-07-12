@@ -102,6 +102,7 @@ Preference.create(tipo: "Livros", descricao: "Cartas de um diabo a seu aprendiz"
 Preference.create(tipo: "Livros", descricao: "Até o verão terminar")
 Preference.create(tipo: "Livros", descricao: "Fahrenheit 451")
 
+
 Preference.create(tipo: "Jogos", descricao: "Minecraft")
 Preference.create(tipo: "Jogos", descricao: "Apex Legends")
 Preference.create(tipo: "Jogos", descricao: "Fortnite")
@@ -314,12 +315,13 @@ Preference.create(tipo: "Programas de TV", descricao: "Loki")
 Preference.create(tipo: "Programas de TV", descricao: "Grey's Anatomy")
 Preference.create(tipo: "Programas de TV", descricao: "O Gambito da Rainha")
 
+
 # User.create(id: 1, nome: 'joe', senha: 'biden')
 # User.create(id: 2, nome: 'barack', senha: 'obama')
 # Preference.create(id: 1, tipo: 'a', descricao: 'a')
 # Preference.create(id: 2, tipo: 'b', descricao: 'b')
-# ListPreference.create(id: 1, user_id: 1, preference_id: 1)
-# ListPreference.create(id: 2, user_id: 1, preference_id: 2)
+ListPreference.create(id: 1, user_id: 1, preference_id: 1)
+ListPreference.create(id: 2, user_id: 1, preference_id: 2)
 # Group.create(id: 1, nome: 'a', tipo: 'a', descricao: 'teste', preference_id: 1)
 # Group.create(id: 2, nome: 'b', tipo: 'b', descricao: 'teste', preference_id: 2)
 # ListGroupUser.create(user_id: 1, group_id: 1)
@@ -330,3 +332,4 @@ Preference.create(tipo: "Programas de TV", descricao: "O Gambito da Rainha")
 # Message.create(id: 1, chat_id: 1, user_id: 1, conteudo: 'kys')
 # Message.create(id: 2, chat_id: 1, user_id: 1, conteudo: 'sorry')
 # Match.create(user_id: 1, user_id2: 2, match_grade: 'a')
+
