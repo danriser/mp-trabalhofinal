@@ -102,6 +102,7 @@ Preference.create(tipo: "Livros", descricao: "Cartas de um diabo a seu aprendiz"
 Preference.create(tipo: "Livros", descricao: "Até o verão terminar")
 Preference.create(tipo: "Livros", descricao: "Fahrenheit 451")
 
+<<<<<<< HEAD
 
 #User.create(id: 1, nome: 'joe', senha: 'biden')
 #User.create(id: 2, nome: 'barack', senha: 'obama')
@@ -119,3 +120,25 @@ ListPreference.create(id: 2, user_id: 1, preference_id: 2)
 #Message.create(id: 1, chat_id: 1, user_id: 1, conteudo: 'kys')
 #Message.create(id: 2, chat_id: 1, user_id: 1, conteudo: 'sorry')
 #Match.create(user_id: 1, user_id2: 2, match_grade: 'a')
+=======
+Preference.create(tipo: "Jogos", descricao: "")
+Preference.create(tipo: "Músicas", descricao: "")
+Preference.create(tipo: "Programas de TV", descricao: "")
+
+# User.create(id: 1, nome: 'joe', senha: 'biden')
+# User.create(id: 2, nome: 'barack', senha: 'obama')
+# Preference.create(id: 1, tipo: 'a', descricao: 'a')
+# Preference.create(id: 2, tipo: 'b', descricao: 'b')
+# ListPreference.create(id: 1, user_id: 1, preference_id: 1)
+# ListPreference.create(id: 2, user_id: 1, preference_id: 2)
+# Group.create(id: 1, nome: 'a', tipo: 'a', descricao: 'teste', preference_id: 1)
+# Group.create(id: 2, nome: 'b', tipo: 'b', descricao: 'teste', preference_id: 2)
+# ListGroupUser.create(user_id: 1, group_id: 1)
+# ListGroupUser.create(user_id: 2, group_id: 1)
+# ListGroupUser.create(user_id: 1, group_id: 2)
+# ListGroupUser.create(user_id: 2, group_id: 2)
+# Chat.create(id: 1, id_match: nil, id_group: 1)
+# Message.create(id: 1, chat_id: 1, user_id: 1, conteudo: 'kys')
+# Message.create(id: 2, chat_id: 1, user_id: 1, conteudo: 'sorry')
+# Match.create(user_id: 1, user_id2: 2, match_grade: 'a')
+>>>>>>> 122eba806abd97a8ba1bb8954224a5c574fc7b1f

@@ -20,7 +20,6 @@ class Preference < ApplicationRecord
   has_one :groups
   validates :tipo, presence: true
   validates :descricao, presence: true, uniqueness: true
-  
 
   after_create :create_group
 
