@@ -8,6 +8,8 @@ module Api
       #before_action :admin_authentication, only: []
 
       # Obtém todos os matchs.
+      # 
+      # HA006 - Eu como admin quero ver todos os matchs
       #
       # @return [JSON] Lista de matchs em formato JSON.
       def index
@@ -42,6 +44,8 @@ module Api
       end
 
       # Deleta o match
+      #
+      # HU015 - Eu como usuário quero deletar um match
       #
       # @param [int] o id do match a ser deletado
       # @raise [StantdardError] Caso o match não seja encontrado

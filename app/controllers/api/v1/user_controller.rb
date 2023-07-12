@@ -9,6 +9,8 @@ module Api
 
       # Obtém todos os usuários.
       #
+      # HA002 - Eu como admin quero ver todos os usuários
+      #
       # @return [JSON] Lista de usuários em formato JSON.
       def index
         user = User.all
@@ -70,6 +72,8 @@ module Api
       # Deleta o usuário - requer autenticação
       #
       # HU004 - Eu como usuário quero deletar a minha conta
+      #
+      # HA005
       #
       # @param id [Int] id do usuário a ser removido
       # @raise [StandardError] Caso o usuário não seja encontardo

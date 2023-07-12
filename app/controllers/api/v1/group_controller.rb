@@ -10,6 +10,8 @@ module Api
 
       # Obtém todos os grupos.
       #
+      # HA003 - Eu como admin quero ver todos os grupos
+      #
       # @return [JSON] Lista de grupos em formato JSON.
       def index
         group = Group.all
@@ -28,9 +30,9 @@ module Api
         render json: e, status: :not_found
       end
 
-            # Deleta o usuário - requer autenticação
+      # Deleta o grupo
       #
-      # HU004 - Eu como usuário quero deletar a minha conta
+      # HA005 
       #
       # @param id [Int] id do usuário a ser removido
       # @raise [StandardError] Caso o usuário não seja encontardo

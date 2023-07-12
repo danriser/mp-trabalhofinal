@@ -17,6 +17,8 @@ module Api
 
       # Obtém os grupos no qual um usuário está
       #
+      # HU011 - Eu como usuário quero saber em quais grupos eu estou
+      #
       # @param [Int] o id do usuário
       # @return [JSON] lista dos grupos no qual um usuário está
       def user_groups
@@ -29,6 +31,8 @@ module Api
       end
 
       # Obtém os usuários que estão em um determinado grupo
+      #
+      # HU012 - Eu como usuário quero saber quem está em determinado grupo
       #
       # @param [Int] o id do grupo
       # @return [JSON] lista dos usuários no grupo

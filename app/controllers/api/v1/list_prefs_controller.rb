@@ -17,6 +17,8 @@ module Api
 
       # Obtem uma lista de preferencias especifica pelo ID do usuario.
       #
+      # HU013 - Eu como usuário quero saber quais preferências eu tenho
+      #
       # @param user_id [Int] O ID do usuario.
       # @return [JSON] A lista de preferencias em formato JSON.
       # @raise [StandardError] Caso a lista de preferencias nao seja encontrada.
