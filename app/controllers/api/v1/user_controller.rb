@@ -9,7 +9,7 @@ module Api
 
       # Obtém todos os usuários.
       #
-      # @return [JSON] Lista de preferencias em formato JSON.
+      # @return [JSON] Lista de usuários em formato JSON.
       def index
         user = User.all
         render json: array_serializer(user), status: :ok

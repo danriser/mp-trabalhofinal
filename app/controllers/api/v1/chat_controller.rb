@@ -8,8 +8,6 @@ module Api
 
       #acts_as_token_authentication_handler_for User
 
-
-
       # Obtem todos os chats.
       #
       # @return [JSON] Lista de chats em formato JSON.

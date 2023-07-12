@@ -1,9 +1,11 @@
+# Controller responsavel por lidar com as operacoes relacionadas as Analytics.
 module Api
     module V1
         class AnalyticController < ApplicationController
             #acts_as_token_authentication_handler_for User, only: []
             #before_action :admin_authentication, only: []
             
+            # 
             def add
                 def create
                     puts params[:title]
