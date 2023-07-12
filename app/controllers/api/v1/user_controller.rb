@@ -14,6 +14,9 @@ module Api
         user = User.all
         render json: array_serializer(user), status: :ok
       end
+      def index_match
+        # user = User.all.select 
+      end
 
       # Obtem um usuário especifico pelo seu id.
       #
