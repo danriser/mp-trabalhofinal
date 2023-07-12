@@ -1,1 +1,6 @@
 # Data | Horas Trabalhadas | Tipo Tarefa | Descrição da Tarefa Realizada 
+# 25/06|      2 horas      | Documentacao  | Realizar documentacao de algumas models e controlls
+# 30/06|      2 horas      | Autenticacao  | Codificar a Autenticacao e token do usuario
+# 01/07|      2 horas      | Autenticacao  | Codificar a Autenticacao e token do usuario
+# 03/07|      2 horas      | Autenticacao  | Codificar a Autenticacao e token do usuario (sem sucesso)
+# 05/07|      2 horas      | povoar_seed   | Povoar a seed do banco de dados
