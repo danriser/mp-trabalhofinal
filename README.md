@@ -1,24 +1,28 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+ESPECIFICAÇÕES PARA RODAR O SERVIDOR RAILS
 
-Things you may want to cover:
-
-* Ruby version
+* Ruby version 3.0.0
 
 * System dependencies
+    Ubuntu
+    Rails 7.0.5
+    PostgreSQL
+    Bundler
+    RVM preferencialmente para baixar as versões ruby
 
-* Configuration
+
 
 * Database creation
+    Verificar se o serviço PSQL está funcionando
+    Rodar Bundle install
+    Rodar rails db:start
+    rodar rails db:migrate
 
 * Database initialization
-
+*   Rails s (colocar -p para especificar a porta, ex: rails s -p 3001)
+  
 * How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
+*   Rodar comando rspec
 
 * ...
