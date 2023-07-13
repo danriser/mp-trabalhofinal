@@ -31,6 +31,7 @@ Rails.application.routes.draw do
         get 'index', to: 'match#index'
         get 'show/:id', to: 'match#show'
         post 'create', to: 'match#create'
+        post 'find', to: 'match#faz_match'
         delete 'delete/:id', to: 'match#delete'
         patch 'update/:id', to: 'match#update'
       end
