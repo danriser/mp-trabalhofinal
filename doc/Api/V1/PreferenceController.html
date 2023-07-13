@@ -37,7 +37,7 @@
         <div id="menu">
   
     <a href="../../_index.html">Index (P)</a> &raquo;
-    <span class='title'>Api</span> &raquo; <span class='title'>V1</span>
+    <span class='title'><span class='object_link'><a href="../../Api.html" title="Api (module)">Api</a></span></span> &raquo; <span class='title'><span class='object_link'><a href="../V1.html" title="Api::V1 (module)">V1</a></span></span>
      &raquo; 
     <span class="title">PreferenceController</span>
   
@@ -69,12 +69,14 @@
   <dl>
     <dt>Inherits:</dt>
     <dd>
-      <span class="inheritName">ApplicationController</span>
+      <span class="inheritName"><span class='object_link'><a href="../../ApplicationController.html" title="ApplicationController (class)">ApplicationController</a></span></span>
       
         <ul class="fullTree">
           <li>Object</li>
           
-            <li class="next">ApplicationController</li>
+            <li class="next">ActionController::API</li>
+          
+            <li class="next"><span class='object_link'><a href="../../ApplicationController.html" title="ApplicationController (class)">ApplicationController</a></span></li>
           
             <li class="next">Api::V1::PreferenceController</li>
           
@@ -101,18 +103,7 @@
   
 </div>
 
-<h2>Overview</h2><div class="docstring">
-  <div class="discussion">
-    
-<p>Controller responsavel por lidar com as operacoes relacionadas a preferencias.</p>
 
-
-  </div>
-</div>
-<div class="tags">
-  
-
-</div>
 
 
 
@@ -252,6 +243,12 @@
 
 
   
+  
+  
+  
+  
+  
+  
 
   <div id="instance_method_details" class="method_details_list">
     <h2>Instance Method Details</h2>
@@ -270,6 +267,8 @@
   <div class="discussion">
     
 <p>Cria uma nova preferencia.</p>
+
+<p>HA007 - Eu como admin quero criar uma nova preferencia</p>
 
 
   </div>
@@ -341,16 +340,16 @@
       <pre class="lines">
 
 
-30
-31
-32
-33
-34
-35
-36</pre>
+43
+44
+45
+46
+47
+48
+49</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/controllers/api/v1/preference_controller.rb', line 30</span>
+      <pre class="code"><span class="info file"># File 'app/controllers/api/v1/preference_controller.rb', line 43</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_create'>create</span>
   <span class='id identifier rubyid_preference'>preference</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="../../Preference.html" title="Preference (class)">Preference</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='id identifier rubyid_preference_params'>preference_params</span><span class='rparen'>)</span>
@@ -377,6 +376,8 @@
   <div class="discussion">
     
 <p>Exclui uma preferencia especifica pelo ID.</p>
+
+<p>HA005 - Eu como admin quero deletar usuários, grupos, preferências</p>
 
 
   </div>
@@ -446,16 +447,16 @@
       <pre class="lines">
 
 
-43
-44
-45
-46
-47
-48
-49</pre>
+58
+59
+60
+61
+62
+63
+64</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/controllers/api/v1/preference_controller.rb', line 43</span>
+      <pre class="code"><span class="info file"># File 'app/controllers/api/v1/preference_controller.rb', line 58</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_delete'>delete</span>
   <span class='id identifier rubyid_preference'>preference</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="../../Preference.html" title="Preference (class)">Preference</a></span></span><span class='period'>.</span><span class='id identifier rubyid_find'>find</span><span class='lparen'>(</span><span class='id identifier rubyid_params'>params</span><span class='lbracket'>[</span><span class='symbol'>:id</span><span class='rbracket'>]</span><span class='rparen'>)</span>
@@ -482,6 +483,10 @@
   <div class="discussion">
     
 <p>Obtém todas as preferências.</p>
+
+<p>HU019 - Eu como usuário quero ver as preferências</p>
+
+<p>HA004 - Eu como admin quero ver todas as preferências</p>
 
 
   </div>
@@ -513,17 +518,17 @@
       <pre class="lines">
 
 
-6
-7
-8
-9</pre>
+17
+18
+19
+20</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/controllers/api/v1/preference_controller.rb', line 6</span>
+      <pre class="code"><span class="info file"># File 'app/controllers/api/v1/preference_controller.rb', line 17</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_index'>index</span>
   <span class='id identifier rubyid_preference'>preference</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="../../Preference.html" title="Preference (class)">Preference</a></span></span><span class='period'>.</span><span class='id identifier rubyid_all'>all</span>
-  <span class='id identifier rubyid_render'>render</span> <span class='label'>json:</span> <span class='id identifier rubyid_preference'>preference</span><span class='comma'>,</span> <span class='label'>status:</span> <span class='symbol'>:ok</span>
+  <span class='id identifier rubyid_render'>render</span> <span class='label'>json:</span> <span class='id identifier rubyid_array_serializer'>array_serializer</span><span class='lparen'>(</span><span class='id identifier rubyid_preference'>preference</span><span class='rparen'>)</span><span class='comma'>,</span> <span class='label'>status:</span> <span class='symbol'>:ok</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -612,19 +617,19 @@
       <pre class="lines">
 
 
-16
-17
-18
-19
-20
-21</pre>
+27
+28
+29
+30
+31
+32</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/controllers/api/v1/preference_controller.rb', line 16</span>
+      <pre class="code"><span class="info file"># File 'app/controllers/api/v1/preference_controller.rb', line 27</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_show'>show</span>
   <span class='id identifier rubyid_preference'>preference</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="../../Preference.html" title="Preference (class)">Preference</a></span></span><span class='period'>.</span><span class='id identifier rubyid_find'>find</span><span class='lparen'>(</span><span class='id identifier rubyid_params'>params</span><span class='lbracket'>[</span><span class='symbol'>:id</span><span class='rbracket'>]</span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_render'>render</span> <span class='label'>json:</span> <span class='id identifier rubyid_preference'>preference</span><span class='comma'>,</span> <span class='label'>status:</span> <span class='symbol'>:ok</span>
+  <span class='id identifier rubyid_render'>render</span> <span class='label'>json:</span> <span class='id identifier rubyid_serializer'>serializer</span><span class='lparen'>(</span><span class='id identifier rubyid_preference'>preference</span><span class='rparen'>)</span><span class='comma'>,</span> <span class='label'>status:</span> <span class='symbol'>:ok</span>
 <span class='kw'>rescue</span> <span class='const'>StandardError</span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_e'>e</span>
   <span class='id identifier rubyid_render'>render</span> <span class='label'>json:</span> <span class='id identifier rubyid_e'>e</span><span class='comma'>,</span> <span class='label'>status:</span> <span class='symbol'>:not_found</span>
 <span class='kw'>end</span></pre>
@@ -646,6 +651,8 @@
   <div class="discussion">
     
 <p>Atualiza uma preferencia existente pelo ID.</p>
+
+<p>HA008 - Eu como admin quero alterar os dados de uma preferência</p>
 
 
   </div>
@@ -733,16 +740,16 @@
       <pre class="lines">
 
 
-59
-60
-61
-62
-63
-64
-65</pre>
+76
+77
+78
+79
+80
+81
+82</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/controllers/api/v1/preference_controller.rb', line 59</span>
+      <pre class="code"><span class="info file"># File 'app/controllers/api/v1/preference_controller.rb', line 76</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_update'>update</span>
   <span class='id identifier rubyid_preference'>preference</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="../../Preference.html" title="Preference (class)">Preference</a></span></span><span class='period'>.</span><span class='id identifier rubyid_find'>find</span><span class='lparen'>(</span><span class='id identifier rubyid_params'>params</span><span class='lbracket'>[</span><span class='symbol'>:id</span><span class='rbracket'>]</span><span class='rparen'>)</span>
@@ -761,9 +768,9 @@
 </div>
 
       <div id="footer">
-  Generated on Mon Jun 26 14:56:33 2023 by
+  Generated on Thu Jul 13 01:22:12 2023 by
   <a href="https://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.9.34 (ruby-3.0.0).
+  0.9.34 (ruby-3.2.2).
 </div>
 
     </div>

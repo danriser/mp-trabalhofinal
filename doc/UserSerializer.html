@@ -176,10 +176,10 @@
       <pre class="code"><span class="info file"># File 'app/serializers/user_serializer.rb', line 8</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_list_preferences'>list_preferences</span>
-  <span class='id identifier rubyid_array_sem_edit'>array_sem_edit</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="ListPreference.html" title="ListPreference (class)">ListPreference</a></span></span><span class='period'>.</span><span class='id identifier rubyid_select'>select</span><span class='lbrace'>{</span><span class='op'>|</span><span class='id identifier rubyid_usr_list_preference'>usr_list_preference</span><span class='op'>|</span> <span class='id identifier rubyid_usr_list_preference'>usr_list_preference</span><span class='period'>.</span><span class='id identifier rubyid_user_id'>user_id</span> <span class='op'>==</span> <span class='id identifier rubyid_object'>object</span><span class='period'>.</span><span class='id identifier rubyid_id'>id</span> <span class='rbrace'>}</span>
-   <span class='id identifier rubyid_array_com_edit'>array_com_edit</span> <span class='op'>=</span> <span class='lbracket'>[</span><span class='rbracket'>]</span>
+  <span class='id identifier rubyid_array_sem_edit'>array_sem_edit</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="ListPreference.html" title="ListPreference (class)">ListPreference</a></span></span><span class='period'>.</span><span class='id identifier rubyid_select'>select</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_usr_list_preference'>usr_list_preference</span><span class='op'>|</span> <span class='id identifier rubyid_usr_list_preference'>usr_list_preference</span><span class='period'>.</span><span class='id identifier rubyid_user_id'>user_id</span> <span class='op'>==</span> <span class='id identifier rubyid_object'>object</span><span class='period'>.</span><span class='id identifier rubyid_id'>id</span> <span class='rbrace'>}</span>
+  <span class='id identifier rubyid_array_com_edit'>array_com_edit</span> <span class='op'>=</span> <span class='lbracket'>[</span><span class='rbracket'>]</span>
   <span class='kw'>for</span> <span class='id identifier rubyid_list_prefs'>list_prefs</span> <span class='kw'>in</span> <span class='id identifier rubyid_array_sem_edit'>array_sem_edit</span>
-     <span class='id identifier rubyid_array_com_edit'>array_com_edit</span><span class='period'>.</span><span class='id identifier rubyid_push'>push</span><span class='lparen'>(</span><span class='lbrace'>{</span><span class='label'>descricao:</span> <span class='id identifier rubyid_list_prefs'>list_prefs</span><span class='period'>.</span><span class='id identifier rubyid_preference'>preference</span><span class='period'>.</span><span class='id identifier rubyid_descricao'>descricao</span><span class='comma'>,</span> <span class='label'>tipo:</span> <span class='id identifier rubyid_list_prefs'>list_prefs</span><span class='period'>.</span><span class='id identifier rubyid_preference'>preference</span><span class='period'>.</span><span class='id identifier rubyid_tipo'>tipo</span><span class='rbrace'>}</span><span class='rparen'>)</span>
+    <span class='id identifier rubyid_array_com_edit'>array_com_edit</span><span class='period'>.</span><span class='id identifier rubyid_push'>push</span><span class='lparen'>(</span><span class='lbrace'>{</span> <span class='label'>descricao:</span> <span class='id identifier rubyid_list_prefs'>list_prefs</span><span class='period'>.</span><span class='id identifier rubyid_preference'>preference</span><span class='period'>.</span><span class='id identifier rubyid_descricao'>descricao</span><span class='comma'>,</span> <span class='label'>tipo:</span> <span class='id identifier rubyid_list_prefs'>list_prefs</span><span class='period'>.</span><span class='id identifier rubyid_preference'>preference</span><span class='period'>.</span><span class='id identifier rubyid_tipo'>tipo</span> <span class='rbrace'>}</span><span class='rparen'>)</span>
   <span class='kw'>end</span>
   <span class='id identifier rubyid_array_com_edit'>array_com_edit</span>
 <span class='kw'>end</span></pre>
@@ -193,7 +193,7 @@
 </div>
 
       <div id="footer">
-  Generated on Wed Jul 12 18:13:09 2023 by
+  Generated on Thu Jul 13 01:22:11 2023 by
   <a href="https://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.34 (ruby-3.2.2).
 </div>

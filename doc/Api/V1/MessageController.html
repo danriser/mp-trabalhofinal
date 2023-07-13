@@ -121,7 +121,7 @@
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#chat_msgs-instance_method" title="#chat_msgs (instance method)">#<strong>chat_msgs</strong>  &#x21d2; Object </a>
+      <a href="#chat_msgs-instance_method" title="#chat_msgs (instance method)">#<strong>chat_msgs</strong>  &#x21d2; JSON </a>
     
 
     
@@ -135,7 +135,9 @@
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'>
+<p>Obtém todas as mensagens de um chat.</p>
+</div></span>
   
 </li>
 
@@ -157,7 +159,9 @@
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'>
+<p>Cria uma nova mensagem.</p>
+</div></span>
   
 </li>
 
@@ -179,7 +183,9 @@
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'>
+<p>Deleta uma mensagem pelo seu id.</p>
+</div></span>
   
 </li>
 
@@ -211,7 +217,7 @@
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#show-instance_method" title="#show (instance method)">#<strong>show</strong>  &#x21d2; Object </a>
+      <a href="#show-instance_method" title="#show (instance method)">#<strong>show</strong>  &#x21d2; JSON </a>
     
 
     
@@ -225,7 +231,9 @@
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'>
+<p>Obtem a mensagem pelo seu id.</p>
+</div></span>
   
 </li>
 
@@ -271,7 +279,9 @@
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'>
+<p>Deleta todas as mensagens de um usuário.</p>
+</div></span>
   
 </li>
 
@@ -295,27 +305,78 @@
       <div class="method_details first">
   <h3 class="signature first" id="chat_msgs-instance_method">
   
-    #<strong>chat_msgs</strong>  &#x21d2; <tt>Object</tt> 
+    #<strong>chat_msgs</strong>  &#x21d2; <tt>JSON</tt> 
   
 
   
 
   
-</h3><table class="source_code">
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Obtém todas as mensagens de um chat</p>
+
+<p>HU018 - Eu como usuário quero ver mensagens</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>o</span>
+      
+      
+        <span class='type'>(<tt>Int</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>id do chat</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>JSON</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>uma lista de mensagens</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-57
-58
-59
-60
-61
-62</pre>
+80
+81
+82
+83
+84
+85</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/controllers/api/v1/message_controller.rb', line 57</span>
+      <pre class="code"><span class="info file"># File 'app/controllers/api/v1/message_controller.rb', line 80</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_chat_msgs'>chat_msgs</span>
   <span class='id identifier rubyid_message'>message</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="../../Message.html" title="Message (class)">Message</a></span></span><span class='period'>.</span><span class='id identifier rubyid_where'>where</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>chat_id = ?</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_params'>params</span><span class='lbracket'>[</span><span class='symbol'>:chat_id</span><span class='rbracket'>]</span><span class='rparen'>)</span>
@@ -337,22 +398,103 @@
   
 
   
-</h3><table class="source_code">
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Cria uma nova mensagem</p>
+
+<p>HU016 - Eu como usuário quero enviar mensagens</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>texto</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>da mensagem</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>hora</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>de envio</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>id</span>
+      
+      
+        <span class='type'>(<tt>Int</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>do usuário quer enviou a mensagem</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>id</span>
+      
+      
+        <span class='type'>(<tt>Int</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>do chat no qual a mensagem foi enviada</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+
+</div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-64
-65
-66
-67
-68
-69
-70</pre>
+95
+96
+97
+98
+99
+100
+101</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/controllers/api/v1/message_controller.rb', line 64</span>
+      <pre class="code"><span class="info file"># File 'app/controllers/api/v1/message_controller.rb', line 95</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_create'>create</span>
   <span class='id identifier rubyid_message'>message</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="../../Message.html" title="Message (class)">Message</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='id identifier rubyid_msg_params'>msg_params</span><span class='rparen'>)</span>
@@ -375,22 +517,73 @@
   
 
   
-</h3><table class="source_code">
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Deleta uma mensagem pelo seu id</p>
+
+<p>HU017 - Eu como usuário quero deletar as minhas mensagens</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>O</span>
+      
+      
+        <span class='type'>(<tt>Int</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>ID da mensagem.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Raises:</p>
+<ul class="raise">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>StandardError</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>Caso a mensagem nao seja encontrada.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-41
-42
-43
-44
-45
-46
-47</pre>
+53
+54
+55
+56
+57
+58
+59</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/controllers/api/v1/message_controller.rb', line 41</span>
+      <pre class="code"><span class="info file"># File 'app/controllers/api/v1/message_controller.rb', line 53</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_delete'>delete</span>
   <span class='id identifier rubyid_message'>message</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="../../Message.html" title="Message (class)">Message</a></span></span><span class='period'>.</span><span class='id identifier rubyid_find'>find</span><span class='lparen'>(</span><span class='id identifier rubyid_params'>params</span><span class='lbracket'>[</span><span class='symbol'>:id</span><span class='rbracket'>]</span><span class='rparen'>)</span>
@@ -448,13 +641,13 @@
       <pre class="lines">
 
 
+14
 15
 16
-17
-18</pre>
+17</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/controllers/api/v1/message_controller.rb', line 15</span>
+      <pre class="code"><span class="info file"># File 'app/controllers/api/v1/message_controller.rb', line 14</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_index'>index</span>
   <span class='id identifier rubyid_message'>message</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="../../Message.html" title="Message (class)">Message</a></span></span><span class='period'>.</span><span class='id identifier rubyid_all'>all</span>
@@ -468,27 +661,96 @@
       <div class="method_details ">
   <h3 class="signature " id="show-instance_method">
   
-    #<strong>show</strong>  &#x21d2; <tt>Object</tt> 
+    #<strong>show</strong>  &#x21d2; <tt>JSON</tt> 
   
 
   
 
   
-</h3><table class="source_code">
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Obtem a mensagem pelo seu id</p>
+
+<p>HU018 - Eu como usuário quero ver mensagens</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>O</span>
+      
+      
+        <span class='type'>(<tt>Int</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>ID da mensagem.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>JSON</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>a mensagem em formato JSON.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Raises:</p>
+<ul class="raise">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>StandardError</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>Caso a mensagem nao seja encontrada.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-34
-35
-36
-37
-38
-39</pre>
+40
+41
+42
+43
+44
+45</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/controllers/api/v1/message_controller.rb', line 34</span>
+      <pre class="code"><span class="info file"># File 'app/controllers/api/v1/message_controller.rb', line 40</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_show'>show</span>
   <span class='id identifier rubyid_message'>message</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="../../Message.html" title="Message (class)">Message</a></span></span><span class='period'>.</span><span class='id identifier rubyid_find'>find</span><span class='lparen'>(</span><span class='id identifier rubyid_params'>params</span><span class='lbracket'>[</span><span class='symbol'>:id</span><span class='rbracket'>]</span><span class='rparen'>)</span>
@@ -533,7 +795,7 @@
       
         &mdash;
         <div class='inline'>
-<p>O ID do usuario.</p>
+<p>O ID do usuário.</p>
 </div>
       
     </li>
@@ -583,17 +845,17 @@
       <pre class="lines">
 
 
+24
 25
 26
 27
 28
 29
 30
-31
-32</pre>
+31</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/controllers/api/v1/message_controller.rb', line 25</span>
+      <pre class="code"><span class="info file"># File 'app/controllers/api/v1/message_controller.rb', line 24</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_user_msgs'>user_msgs</span>
   <span class='id identifier rubyid_message'>message</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="../../Message.html" title="Message (class)">Message</a></span></span><span class='period'>.</span><span class='id identifier rubyid_where'>where</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>user_id = ?</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_params'>params</span><span class='lbracket'>[</span><span class='symbol'>:user_id</span><span class='rbracket'>]</span><span class='rparen'>)</span>
@@ -617,22 +879,55 @@
   
 
   
-</h3><table class="source_code">
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Deleta todas as mensagens de um usuário</p>
+
+<p>HU017 - Eu como usuário quero deletar as minhas mensagens</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>O</span>
+      
+      
+        <span class='type'>(<tt>Int</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>ID da mensagem.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+
+</div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-49
-50
-51
-52
-53
-54
-55</pre>
+66
+67
+68
+69
+70
+71
+72</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/controllers/api/v1/message_controller.rb', line 49</span>
+      <pre class="code"><span class="info file"># File 'app/controllers/api/v1/message_controller.rb', line 66</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_user_msgs_delete'>user_msgs_delete</span>
   <span class='id identifier rubyid_message'>message</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="../../Message.html" title="Message (class)">Message</a></span></span><span class='period'>.</span><span class='id identifier rubyid_find'>find</span><span class='lparen'>(</span><span class='id identifier rubyid_params'>params</span><span class='lbracket'>[</span><span class='symbol'>:user_id</span><span class='rbracket'>]</span><span class='rparen'>)</span>
@@ -651,7 +946,7 @@
 </div>
 
       <div id="footer">
-  Generated on Wed Jul 12 18:13:09 2023 by
+  Generated on Thu Jul 13 01:22:12 2023 by
   <a href="https://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.34 (ruby-3.2.2).
 </div>
