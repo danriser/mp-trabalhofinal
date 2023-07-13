@@ -398,16 +398,16 @@
       <pre class="lines">
 
 
-62
-63
-64
 65
 66
 67
-68</pre>
+68
+69
+70
+71</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/controllers/api/v1/user_controller.rb', line 62</span>
+      <pre class="code"><span class="info file"># File 'app/controllers/api/v1/user_controller.rb', line 65</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_create'>create</span>
   <span class='id identifier rubyid_user'>user</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="../../User.html" title="User (class)">User</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='id identifier rubyid_user_params'>user_params</span><span class='rparen'>)</span>
@@ -436,6 +436,8 @@
 <p>Deleta o usuário - requer autenticação</p>
 
 <p>HU004 - Eu como usuário quero deletar a minha conta</p>
+
+<p>HA005</p>
 
 
   </div>
@@ -487,16 +489,16 @@
       <pre class="lines">
 
 
-76
-77
-78
-79
-80
 81
-82</pre>
+82
+83
+84
+85
+86
+87</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/controllers/api/v1/user_controller.rb', line 76</span>
+      <pre class="code"><span class="info file"># File 'app/controllers/api/v1/user_controller.rb', line 81</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_delete'>delete</span>
   <span class='id identifier rubyid_user'>user</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="../../User.html" title="User (class)">User</a></span></span><span class='period'>.</span><span class='id identifier rubyid_find'>find</span><span class='lparen'>(</span><span class='id identifier rubyid_params'>params</span><span class='lbracket'>[</span><span class='symbol'>:id</span><span class='rbracket'>]</span><span class='rparen'>)</span>
@@ -523,6 +525,8 @@
   <div class="discussion">
     
 <p>Obtém todos os usuários.</p>
+
+<p>HA002 - Eu como admin quero ver todos os usuários</p>
 
 
   </div>
@@ -554,13 +558,13 @@
       <pre class="lines">
 
 
-13
-14
 15
-16</pre>
+16
+17
+18</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/controllers/api/v1/user_controller.rb', line 13</span>
+      <pre class="code"><span class="info file"># File 'app/controllers/api/v1/user_controller.rb', line 15</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_index'>index</span>
   <span class='id identifier rubyid_user'>user</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="../../User.html" title="User (class)">User</a></span></span><span class='period'>.</span><span class='id identifier rubyid_all'>all</span>
@@ -586,15 +590,15 @@
       <pre class="lines">
 
 
-17
-18
-19</pre>
+20
+21
+22</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/controllers/api/v1/user_controller.rb', line 17</span>
+      <pre class="code"><span class="info file"># File 'app/controllers/api/v1/user_controller.rb', line 20</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_index_match'>index_match</span>
-  <span class='comment'># user = User.all.select 
+  <span class='comment'># user = User.all.select
 </span><span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -701,29 +705,29 @@
       <pre class="lines">
 
 
-43
-44
-45
 46
 47
 48
 49
 50
 51
-52</pre>
+52
+53
+54
+55</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/controllers/api/v1/user_controller.rb', line 43</span>
+      <pre class="code"><span class="info file"># File 'app/controllers/api/v1/user_controller.rb', line 46</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_login'>login</span>
   <span class='id identifier rubyid_user'>user</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="../../User.html" title="User (class)">User</a></span></span><span class='period'>.</span><span class='id identifier rubyid_find_by'>find_by</span><span class='lparen'>(</span><span class='label'>nome:</span> <span class='id identifier rubyid_params'>params</span><span class='lbracket'>[</span><span class='symbol'>:nome</span><span class='rbracket'>]</span><span class='rparen'>)</span>
   <span class='kw'>if</span> <span class='id identifier rubyid_user'>user</span><span class='period'>.</span><span class='id identifier rubyid_valid_password?'>valid_password?</span><span class='lparen'>(</span><span class='id identifier rubyid_params'>params</span><span class='lbracket'>[</span><span class='symbol'>:password</span><span class='rbracket'>]</span><span class='rparen'>)</span>
-      <span class='id identifier rubyid_render'>render</span> <span class='label'>json:</span> <span class='id identifier rubyid_user'>user</span><span class='comma'>,</span> <span class='label'>status:</span> <span class='symbol'>:ok</span>
+    <span class='id identifier rubyid_render'>render</span> <span class='label'>json:</span> <span class='id identifier rubyid_user'>user</span><span class='comma'>,</span> <span class='label'>status:</span> <span class='symbol'>:ok</span>
   <span class='kw'>else</span>
-      <span class='id identifier rubyid_head'>head</span> <span class='symbol'>:unauthorized</span>
+    <span class='id identifier rubyid_head'>head</span> <span class='symbol'>:unauthorized</span>
   <span class='kw'>end</span>
 <span class='kw'>rescue</span> <span class='const'>StandardError</span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_e'>e</span>
-    <span class='id identifier rubyid_render'>render</span> <span class='label'>json:</span> <span class='id identifier rubyid_e'>e</span><span class='comma'>,</span> <span class='label'>status:</span> <span class='symbol'>:unauthorized</span>
+  <span class='id identifier rubyid_render'>render</span> <span class='label'>json:</span> <span class='id identifier rubyid_e'>e</span><span class='comma'>,</span> <span class='label'>status:</span> <span class='symbol'>:unauthorized</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -814,15 +818,15 @@
       <pre class="lines">
 
 
-28
-29
-30
 31
 32
-33</pre>
+33
+34
+35
+36</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/controllers/api/v1/user_controller.rb', line 28</span>
+      <pre class="code"><span class="info file"># File 'app/controllers/api/v1/user_controller.rb', line 31</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_show'>show</span>
   <span class='id identifier rubyid_user'>user</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="../../User.html" title="User (class)">User</a></span></span><span class='period'>.</span><span class='id identifier rubyid_find'>find</span><span class='lparen'>(</span><span class='id identifier rubyid_params'>params</span><span class='lbracket'>[</span><span class='symbol'>:id</span><span class='rbracket'>]</span><span class='rparen'>)</span>
@@ -901,16 +905,16 @@
       <pre class="lines">
 
 
-90
-91
-92
-93
-94
 95
-96</pre>
+96
+97
+98
+99
+100
+101</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/controllers/api/v1/user_controller.rb', line 90</span>
+      <pre class="code"><span class="info file"># File 'app/controllers/api/v1/user_controller.rb', line 95</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_update'>update</span>
   <span class='id identifier rubyid_user'>user</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="../../User.html" title="User (class)">User</a></span></span><span class='period'>.</span><span class='id identifier rubyid_find'>find</span><span class='lparen'>(</span><span class='id identifier rubyid_params'>params</span><span class='lbracket'>[</span><span class='symbol'>:id</span><span class='rbracket'>]</span><span class='rparen'>)</span>
@@ -929,7 +933,7 @@
 </div>
 
       <div id="footer">
-  Generated on Wed Jul 12 18:13:09 2023 by
+  Generated on Thu Jul 13 01:22:11 2023 by
   <a href="https://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.34 (ruby-3.2.2).
 </div>

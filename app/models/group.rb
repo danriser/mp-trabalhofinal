@@ -1,9 +1,9 @@
 # frozen_string_literal: true
 
-# 
-# Model {Group} 
 #
-# Modelo que representa um grupo 
+# Model {Group}
+#
+# Modelo que representa um grupo
 class Group < ApplicationRecord
   # @return [int] id da preferencia
   # Associação com preferencia.

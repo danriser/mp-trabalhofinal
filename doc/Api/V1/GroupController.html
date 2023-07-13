@@ -160,7 +160,7 @@
 
   
     <span class="summary_desc"><div class='inline'>
-<p>HU004 - Eu como usuário quero deletar a minha conta.</p>
+<p>Deleta o grupo.</p>
 </div></span>
   
 </li>
@@ -348,16 +348,16 @@
       <pre class="lines">
 
 
-51
 52
 53
 54
 55
 56
-57</pre>
+57
+58</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/controllers/api/v1/group_controller.rb', line 51</span>
+      <pre class="code"><span class="info file"># File 'app/controllers/api/v1/group_controller.rb', line 52</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_create'>create</span>
   <span class='id identifier rubyid_group'>group</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="../../Group.html" title="Group (class)">Group</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='id identifier rubyid_group_params'>group_params</span><span class='rparen'>)</span>
@@ -383,7 +383,9 @@
 </h3><div class="docstring">
   <div class="discussion">
     
-<p>HU004 - Eu como usuário quero deletar a minha conta</p>
+<p>Deleta o grupo</p>
+
+<p>HA005</p>
 
 
   </div>
@@ -435,16 +437,16 @@
       <pre class="lines">
 
 
-37
 38
 39
 40
 41
 42
-43</pre>
+43
+44</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/controllers/api/v1/group_controller.rb', line 37</span>
+      <pre class="code"><span class="info file"># File 'app/controllers/api/v1/group_controller.rb', line 38</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_delete'>delete</span>
   <span class='id identifier rubyid_group'>group</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="../../Group.html" title="Group (class)">Group</a></span></span><span class='period'>.</span><span class='id identifier rubyid_find'>find</span><span class='lparen'>(</span><span class='id identifier rubyid_params'>params</span><span class='lbracket'>[</span><span class='symbol'>:id</span><span class='rbracket'>]</span><span class='rparen'>)</span>
@@ -471,6 +473,8 @@
   <div class="discussion">
     
 <p>Obtém todos os grupos.</p>
+
+<p>HA003 - Eu como admin quero ver todos os grupos</p>
 
 
   </div>
@@ -502,13 +506,13 @@
       <pre class="lines">
 
 
-14
 15
 16
-17</pre>
+17
+18</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/controllers/api/v1/group_controller.rb', line 14</span>
+      <pre class="code"><span class="info file"># File 'app/controllers/api/v1/group_controller.rb', line 15</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_index'>index</span>
   <span class='id identifier rubyid_group'>group</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="../../Group.html" title="Group (class)">Group</a></span></span><span class='period'>.</span><span class='id identifier rubyid_all'>all</span>
@@ -601,15 +605,15 @@
       <pre class="lines">
 
 
-24
 25
 26
 27
 28
-29</pre>
+29
+30</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/controllers/api/v1/group_controller.rb', line 24</span>
+      <pre class="code"><span class="info file"># File 'app/controllers/api/v1/group_controller.rb', line 25</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_show'>show</span>
   <span class='id identifier rubyid_group'>group</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="../../Group.html" title="Group (class)">Group</a></span></span><span class='period'>.</span><span class='id identifier rubyid_find'>find</span><span class='lparen'>(</span><span class='id identifier rubyid_params'>params</span><span class='lbracket'>[</span><span class='symbol'>:id</span><span class='rbracket'>]</span><span class='rparen'>)</span>
@@ -686,16 +690,16 @@
       <pre class="lines">
 
 
-63
 64
 65
 66
 67
 68
-69</pre>
+69
+70</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/controllers/api/v1/group_controller.rb', line 63</span>
+      <pre class="code"><span class="info file"># File 'app/controllers/api/v1/group_controller.rb', line 64</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_update'>update</span>
   <span class='id identifier rubyid_group'>group</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="../../Group.html" title="Group (class)">Group</a></span></span><span class='period'>.</span><span class='id identifier rubyid_find'>find</span><span class='lparen'>(</span><span class='id identifier rubyid_params'>params</span><span class='lbracket'>[</span><span class='symbol'>:id</span><span class='rbracket'>]</span><span class='rparen'>)</span>
@@ -714,7 +718,7 @@
 </div>
 
       <div id="footer">
-  Generated on Wed Jul 12 18:13:09 2023 by
+  Generated on Thu Jul 13 01:22:11 2023 by
   <a href="https://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.34 (ruby-3.2.2).
 </div>

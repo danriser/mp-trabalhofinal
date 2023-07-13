@@ -4,13 +4,14 @@
 module Api
   module V1
     class PreferenceController < ApplicationController
-
-      #acts_as_token_authentication_handler_for User, only: []
-      #before_action :admin_authentication, only: []
-=======
-
+      # acts_as_token_authentication_handler_for User, only: []
+      # before_action :admin_authentication, only: []
 
       # Obtém todas as preferências.
+      #
+      # HU019 - Eu como usuário quero ver as preferências
+      #
+      # HA004 - Eu como admin quero ver todas as preferências
       #
       # @return [JSON] Lista de preferencias em formato JSON.
       def index
@@ -32,6 +33,8 @@ module Api
 
       # Cria uma nova preferencia.
       #
+      # HA007 - Eu como admin quero criar uma nova preferencia
+      #
       # @param preference_params [String] Parametros da preferencia a ser criada.
       # @option preference_params [String] :tipo O tipo da preferencia.
       # @option preference_params [String] :descricao A descricao da preferencia.
@@ -47,6 +50,8 @@ module Api
 
       # Exclui uma preferencia especifica pelo ID.
       #
+      # HA005 - Eu como admin quero deletar usuários, grupos, preferências
+      #
       # @param id [Int] O ID da preferencia a ser excluida.
       # @return [JSON] A preferencia excluida em formato JSON.
       # @raise [StandardError] Caso a preferencia nao possa ser excluida.
@@ -59,6 +64,8 @@ module Api
       end
 
       # Atualiza uma preferencia existente pelo ID.
+      #
+      # HA008 - Eu como admin quero alterar os dados de uma preferência
       #
       # @param id [Int] O ID da preferencia a ser atualizada.
       # @param preference_params [String] Parametros da preferencia a serem atualizados.

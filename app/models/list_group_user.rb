@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-# 
+#
 # Model {ListGroupUser}
 #
 # É responsável por armazenar em quais grupos um usuário está e quais pessoas estão em um grupo

@@ -3,7 +3,9 @@
 require 'rails_helper'
 
 RSpec.describe 'Api::V1::ListPrefs', type: :request do
-  let(:admin) { create(:user, nome: 'admin_testes2', password: '123456', email: 'admintestes2@teste.com', is_admin: true) }
+  let(:admin) {
+    create(:user, nome: 'admin_testes2', password: '123456', email: 'admintestes2@teste.com', is_admin: true)
+  }
   describe 'GET /index' do
     before do
       create(:user, id: 1, nome: 'a', password: 'aoasdni', email: 'ola@gmail')
@@ -13,7 +15,8 @@ RSpec.describe 'Api::V1::ListPrefs', type: :request do
 
     context 'index return' do
       before do
-        get '/api/v1/list_prefs/index', headers: {'X-User-Email' => admin['email'], 'X-User-Token' => admin['authentication_token'] }
+        get '/api/v1/list_prefs/index',
+            headers: { 'X-User-Email' => admin['email'], 'X-User-Token' => admin['authentication_token'] }
       end
 
       it 'should return http status ok' do
@@ -37,14 +40,16 @@ RSpec.describe 'Api::V1::ListPrefs', type: :request do
 
     context 'records exist' do
       it 'should return http status ok' do
-        get '/api/v1/list_prefs/show/1', headers: {'X-User-Email' => admin['email'], 'X-User-Token' => admin['authentication_token'] }
+        get '/api/v1/list_prefs/show/1',
+            headers: { 'X-User-Email' => admin['email'], 'X-User-Token' => admin['authentication_token'] }
         expect(response).to have_http_status(:ok)
       end
     end
 
     context 'records dont exist' do
       it 'should return http status not_found' do
-        get '/api/v1/list_prefs/show/-1', headers: {'X-User-Email' => admin['email'], 'X-User-Token' => admin['authentication_token'] }
+        get '/api/v1/list_prefs/show/-1',
+            headers: { 'X-User-Email' => admin['email'], 'X-User-Token' => admin['authentication_token'] }
         expect(response).to have_http_status(:not_found)
       end
     end
@@ -58,28 +63,32 @@ RSpec.describe 'Api::V1::ListPrefs', type: :request do
 
     context 'params are valid' do
       it 'should return http status created' do
-        post '/api/v1/list_prefs/create', params: { list_preference: { user_id: 1, preference_id: 1 } }, headers: {'X-User-Email' => admin['email'], 'X-User-Token' => admin['authentication_token'] }
+        post '/api/v1/list_prefs/create', params: { list_preference: { user_id: 1, preference_id: 1 } },
+                                          headers: { 'X-User-Email' => admin['email'], 'X-User-Token' => admin['authentication_token'] }
         expect(response).to have_http_status(:created)
       end
     end
 
     context 'params are invalid' do
       it 'should return http status bad_request' do
-        post '/api/v1/list_prefs/create', params: { list_preference: nil }, headers: {'X-User-Email' => admin['email'], 'X-User-Token' => admin['authentication_token'] }
+        post '/api/v1/list_prefs/create', params: { list_preference: nil },
+                                          headers: { 'X-User-Email' => admin['email'], 'X-User-Token' => admin['authentication_token'] }
         expect(response).to have_http_status(:bad_request)
       end
     end
 
     context 'user does not exist' do
       it 'should return http status bad_request' do
-        post '/api/v1/list_prefs/create', params: { list_preference: { user_id: 2, preference_id: 1 } }, headers: {'X-User-Email' => admin['email'], 'X-User-Token' => admin['authentication_token'] }
+        post '/api/v1/list_prefs/create', params: { list_preference: { user_id: 2, preference_id: 1 } },
+                                          headers: { 'X-User-Email' => admin['email'], 'X-User-Token' => admin['authentication_token'] }
         expect(response).to have_http_status(:bad_request)
       end
     end
 
     context 'preference does not exist' do
       it 'should return http status bad_request' do
-        post '/api/v1/list_prefs/create', params: { list_preference: { user_id: 1, preference_id: 2 } }, headers: {'X-User-Email' => admin['email'], 'X-User-Token' => admin['authentication_token'] }
+        post '/api/v1/list_prefs/create', params: { list_preference: { user_id: 1, preference_id: 2 } },
+                                          headers: { 'X-User-Email' => admin['email'], 'X-User-Token' => admin['authentication_token'] }
         expect(response).to have_http_status(:bad_request)
       end
     end
@@ -94,14 +103,16 @@ RSpec.describe 'Api::V1::ListPrefs', type: :request do
 
     context 'record exists' do
       it 'should return http status ok' do
-        delete '/api/v1/list_prefs/delete/1', headers: {'X-User-Email' => admin['email'], 'X-User-Token' => admin['authentication_token'] }
+        delete '/api/v1/list_prefs/delete/1',
+               headers: { 'X-User-Email' => admin['email'], 'X-User-Token' => admin['authentication_token'] }
         expect(response).to have_http_status(:ok)
       end
     end
 
     context 'record does not exist' do
       it 'should return http status bad_request' do
-        delete '/api/v1/list_prefs/delete/-1', headers: {'X-User-Email' => admin['email'], 'X-User-Token' => admin['authentication_token'] }
+        delete '/api/v1/list_prefs/delete/-1',
+               headers: { 'X-User-Email' => admin['email'], 'X-User-Token' => admin['authentication_token'] }
         expect(response).to have_http_status(:bad_request)
       end
     end
@@ -118,14 +129,16 @@ RSpec.describe 'Api::V1::ListPrefs', type: :request do
 
     context 'records exist' do
       it 'should return http status ok' do
-        delete '/api/v1/list_prefs/delete_user_prefs/1', headers: {'X-User-Email' => admin['email'], 'X-User-Token' => admin['authentication_token'] }
+        delete '/api/v1/list_prefs/delete_user_prefs/1',
+               headers: { 'X-User-Email' => admin['email'], 'X-User-Token' => admin['authentication_token'] }
         expect(response).to have_http_status(:ok)
       end
     end
 
     context 'records does not exist' do
       it 'should return http status bad_request' do
-        delete '/api/v1/list_prefs/delete_user_prefs/-1', headers: {'X-User-Email' => admin['email'], 'X-User-Token' => admin['authentication_token'] }
+        delete '/api/v1/list_prefs/delete_user_prefs/-1',
+               headers: { 'X-User-Email' => admin['email'], 'X-User-Token' => admin['authentication_token'] }
         expect(response).to have_http_status(:bad_request)
       end
     end

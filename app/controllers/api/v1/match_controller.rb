@@ -4,10 +4,12 @@
 module Api
   module V1
     class MatchController < ApplicationController
-      #acts_as_token_authentication_handler_for User, only: []
-      #before_action :admin_authentication, only: []
+      # acts_as_token_authentication_handler_for User, only: []
+      # before_action :admin_authentication, only: []
 
       # Obtém todos os matchs.
+      #
+      # HA006 - Eu como admin quero ver todos os matchs
       #
       # @return [JSON] Lista de matchs em formato JSON.
       def index
@@ -41,7 +43,52 @@ module Api
         render json: e, status: :bad_request
       end
 
+      # Encontra usuário disponível para fazer o match
+      #
+      # HU014 - Eu como usuário quero encontrar outros usuários similares via um algoritmo  de match
+      #
+      # @param [int] o id do usuário querendo fazendo o match
+      # @param [JSON] um objeto json conténdo o match grade do match e o id do usuário disponível
+      # @raise [StantdardError] Caso os usuários não sejam encontrados
+      def faz_match
+        user_2_id = 1
+
+        user1 = User.find_by(id: params[:user_id])
+        if user1.nil?
+          raise ActiveRecord::RecordNotFound, "User not found"
+        end
+
+        match_grade = 0.0
+
+        while match_grade < 0.5
+          user2 = User.find_by(id: user_2_id)
+          if user2.nil?
+            raise ActiveRecord::RecordNotFound, "No possible match found"
+          end
+
+          if user_2_id == params[:user_id]
+            user_2_id += 1
+            next
+          end
+
+          match_grade = acha_match_grade(params[:user_id], user_2_id)
+          user_2_id += 1
+        end
+
+        result = {
+          match_grade: match_grade,
+          user_2: user_2_id
+        }
+        render json: result, status: :ok
+      rescue StandardError => e
+        render json: e, status: :bad_request
+      rescue ActiveRecord::RecordNotFound => e
+        render json: e, status: :not_found
+      end
+
       # Deleta o match
+      #
+      # HU015 - Eu como usuário quero deletar um match
       #
       # @param [int] o id do match a ser deletado
       # @raise [StantdardError] Caso o match não seja encontrado
@@ -66,6 +113,31 @@ module Api
       end
 
       private
+
+      def acha_match_grade(user_1, user_2)
+        # user_1 = User.find(user_1)
+        # user_2 = User.find(user_2)
+
+        pref1 = ListPreference.where(user_id: user_1)
+        pref2 = ListPreference.where(user_id: user_2)
+
+        count_same = 0.0
+        count_total = 0.0
+        pref1.each do |obj1|
+          matching_obj = pref2.find { |obj2| obj2.preference_id == obj1.preference_id }
+          count_total += 1
+          count_same += 1 if matching_obj
+        end
+
+        pref2.each do |obj2|
+          matching_obj = pref1.find { |obj1| obj1.preference_id == obj2.preference_id }
+          count_total += 1
+          count_same += 1 if matching_obj
+        end
+
+        match_grade = count_same / count_total
+        match_grade
+      end
 
       def array_serializer(match)
         Panko::ArraySerializer.new(match, each_serializer: MatchSerializer).to_json

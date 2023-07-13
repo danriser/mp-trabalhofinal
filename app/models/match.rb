@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-# 
+#
 # Model {Match}
 #
 # Responsável por armazenar um possível match entre usuários

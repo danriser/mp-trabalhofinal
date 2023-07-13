@@ -13,8 +13,6 @@ class MatchSerializer < Panko::Serializer
   end
 
   def usr_list
-    ids_array = ListPreference.select{|usr_list_preference| usr_list_preference.user_id == object.user_id }
-     
-  end 
-
+    ids_array = ListPreference.select { |usr_list_preference| usr_list_preference.user_id == object.user_id }
+  end
 end

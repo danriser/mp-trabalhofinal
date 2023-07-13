@@ -28,5 +28,4 @@ class Preference < ApplicationRecord
   def create_group
     Group.create(nome: descricao, tipo: tipo, preference_id: id)
   end
-
 end

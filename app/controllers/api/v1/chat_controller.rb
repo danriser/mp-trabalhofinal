@@ -3,10 +3,9 @@
 module Api
   module V1
     class ChatController < ApplicationController
+      # acts_as_token_authentication_handler_for User, only: []
 
-      #acts_as_token_authentication_handler_for User, only: []
-
-      #acts_as_token_authentication_handler_for User
+      # acts_as_token_authentication_handler_for User
 
       # Obtem todos os chats.
       #
@@ -30,6 +29,8 @@ module Api
 
       # Exclui um chat especifico pelo ID.
       #
+      # HU010 - Eu como usuário quero deletar uma conversa
+      #
       # @param id [Int] O ID do chat a ser excluído.
       # @return [JSON] O chat excluído em formato JSON.
       # @raise [StandardError] Caso o chat não possa ser excluído.
@@ -42,6 +43,8 @@ module Api
       end
 
       # Cria um novo chat.
+      #
+      # HU009 - Eu como usuário quero iniciar uma conversa com outros usuários
       #
       # @param chat_params [String] Parâmetros do chat a ser criado.
       # @option chat_params [Int] :id_match O ID da correspondência do chat.

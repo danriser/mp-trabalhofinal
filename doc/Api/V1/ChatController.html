@@ -244,6 +244,8 @@
     
 <p>Cria um novo chat.</p>
 
+<p>HU009 - Eu como usuário quero iniciar uma conversa com outros usuários</p>
+
 
   </div>
 </div>
@@ -314,16 +316,16 @@
       <pre class="lines">
 
 
-51
-52
-53
 54
 55
 56
-57</pre>
+57
+58
+59
+60</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/controllers/api/v1/chat_controller.rb', line 51</span>
+      <pre class="code"><span class="info file"># File 'app/controllers/api/v1/chat_controller.rb', line 54</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_create'>create</span>
   <span class='id identifier rubyid_chat'>chat</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="../../Chat.html" title="Chat (class)">Chat</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='id identifier rubyid_chat_params'>chat_params</span><span class='rparen'>)</span>
@@ -350,6 +352,8 @@
   <div class="discussion">
     
 <p>Exclui um chat especifico pelo ID.</p>
+
+<p>HU010 - Eu como usuário quero deletar uma conversa</p>
 
 
   </div>
@@ -419,16 +423,16 @@
       <pre class="lines">
 
 
-36
 37
 38
 39
 40
 41
-42</pre>
+42
+43</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/controllers/api/v1/chat_controller.rb', line 36</span>
+      <pre class="code"><span class="info file"># File 'app/controllers/api/v1/chat_controller.rb', line 37</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_delete'>delete</span>
   <span class='id identifier rubyid_chat'>chat</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="../../Chat.html" title="Chat (class)">Chat</a></span></span><span class='period'>.</span><span class='id identifier rubyid_find'>find</span><span class='lparen'>(</span><span class='id identifier rubyid_params'>params</span><span class='lbracket'>[</span><span class='symbol'>:id</span><span class='rbracket'>]</span><span class='rparen'>)</span>
@@ -486,13 +490,13 @@
       <pre class="lines">
 
 
+13
 14
 15
-16
-17</pre>
+16</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/controllers/api/v1/chat_controller.rb', line 14</span>
+      <pre class="code"><span class="info file"># File 'app/controllers/api/v1/chat_controller.rb', line 13</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_index'>index</span>
   <span class='id identifier rubyid_chat'>chat</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="../../Chat.html" title="Chat (class)">Chat</a></span></span><span class='period'>.</span><span class='id identifier rubyid_all'>all</span>
@@ -585,15 +589,15 @@
       <pre class="lines">
 
 
+23
 24
 25
 26
 27
-28
-29</pre>
+28</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app/controllers/api/v1/chat_controller.rb', line 24</span>
+      <pre class="code"><span class="info file"># File 'app/controllers/api/v1/chat_controller.rb', line 23</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_show'>show</span>
   <span class='id identifier rubyid_chat'>chat</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="../../Chat.html" title="Chat (class)">Chat</a></span></span><span class='period'>.</span><span class='id identifier rubyid_find'>find</span><span class='lparen'>(</span><span class='id identifier rubyid_params'>params</span><span class='lbracket'>[</span><span class='symbol'>:id</span><span class='rbracket'>]</span><span class='rparen'>)</span>
@@ -611,7 +615,7 @@
 </div>
 
       <div id="footer">
-  Generated on Wed Jul 12 18:13:09 2023 by
+  Generated on Thu Jul 13 01:22:11 2023 by
   <a href="https://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.34 (ruby-3.2.2).
 </div>

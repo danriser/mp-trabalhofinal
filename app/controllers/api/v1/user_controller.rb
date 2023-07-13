@@ -9,13 +9,16 @@ module Api
 
       # Obtém todos os usuários.
       #
+      # HA002 - Eu como admin quero ver todos os usuários
+      #
       # @return [JSON] Lista de usuários em formato JSON.
       def index
         user = User.all
         render json: array_serializer(user), status: :ok
       end
+
       def index_match
-        # user = User.all.select 
+        # user = User.all.select
       end
 
       # Obtem um usuário especifico pelo seu id.
@@ -38,17 +41,17 @@ module Api
       #
       # @param nome [String] o nome do usuário
       # @param senha [String] a senha do usuário
-      # @return [JSON] o usuário com um authentication token 
+      # @return [JSON] o usuário com um authentication token
       # @raise [StandardError] Caso o usuário não seja encontrado ou a senha esteja errada.
       def login
         user = User.find_by(nome: params[:nome])
         if user.valid_password?(params[:password])
-            render json: user, status: :ok
+          render json: user, status: :ok
         else
-            head :unauthorized
+          head :unauthorized
         end
       rescue StandardError => e
-          render json: e, status: :unauthorized
+        render json: e, status: :unauthorized
       end
 
       # Cria usuário
@@ -70,6 +73,8 @@ module Api
       # Deleta o usuário - requer autenticação
       #
       # HU004 - Eu como usuário quero deletar a minha conta
+      #
+      # HA005
       #
       # @param id [Int] id do usuário a ser removido
       # @raise [StandardError] Caso o usuário não seja encontardo
