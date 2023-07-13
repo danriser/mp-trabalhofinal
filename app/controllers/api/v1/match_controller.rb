@@ -53,14 +53,14 @@ module Api
       def faz_match
         user_2_id = 1
 
-        user1 = User.find(params[:user_id])
+        user1 = User.find_by(id: params[:user_id])
         if user1.nil?
           raise ActiveRecord::RecordNotFound, "User not found"
         end
         match_grade = 0.0
 
         while match_grade < 0.5
-          user2 = User.find(user_2_id)
+          user2 = User.find_by(id: user_2_id)
           if user2.nil?
             raise ActiveRecord::RecordNotFound, "No possible match found"
           end
@@ -79,6 +79,10 @@ module Api
           user_2: user_2_id
         }
         render json: result, status: :ok
+        rescue StandardError => e
+          render json: e, status: :bad_request
+        rescue ActiveRecord::RecordNotFound => e
+          render json: e, status: :not_found
       end
 
       # Deleta o match
