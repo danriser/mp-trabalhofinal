@@ -1,1 +1,5 @@
 # Data | Horas Trabalhadas | Tipo Tarefa | Descrição da Tarefa Realizada 
+
+# 25/06| 2 Horas           | Tela de Login| Criação de HTML e CSS para esta tela
+# 25/06| 2 Horas           | Tela de Cadastro| Criação de HTML e CSS para esta tela
+# 10/06| 3 Horas           | Integração Back-End/Front-End| Criação de código em react para integração
