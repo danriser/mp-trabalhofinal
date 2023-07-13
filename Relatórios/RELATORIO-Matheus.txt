@@ -1,1 +1,8 @@
-# Data | Horas Trabalhadas | Tipo Tarefa | Descrição da Tarefa Realizada 
+# Data  | Horas Trabalhadas | Tipo Tarefa              | Descrição da Tarefa Realizada 
+# 31/05 |      3 horas      |           Estudos        | Comecei a estudar HTML e CSS
+# 06/07 |      3 horas      |           Estudos        | Estudos sobre frontend (HTML e CSS)
+# 07/07 |      3 horas      |           Estudos        | Comecei a estudar HTML e CSS
+# 12/06 |      1 horas      |           Estudos        | Aulas sobre backend (Ruby) e ReactJs
+# 25/06 |      3 horas      |          Programação     | Produção da Página Home
+# 07/07 |      1 horas      |          Programação     | Produção da Página de Perfil
+# 09/07 |      2 hora       |            Debug         | Tentativa de consertar a parte de editar perfil

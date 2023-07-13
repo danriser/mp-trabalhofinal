@@ -1,1 +1,5 @@
 # Data | Horas Trabalhadas | Tipo Tarefa | Descrição da Tarefa Realizada 
+
+30/06  |      7 horas      |   Revisão   | Revisão e checagem das serializers
+09/07  |      6 horas      |Implementação| Povoamento das seeds do banco de dados(filmes, livros, artistas musicais, jogos e programas de TV)
+12/07  |     10 minutos    |Apresentação | Apresentação do projeto do site em sala de aula

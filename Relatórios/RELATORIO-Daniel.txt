@@ -1,1 +1,20 @@
 # Data | Horas Trabalhadas | Tipo Tarefa | Descrição da Tarefa Realizada 
+ 06/06 | 1H | Gestão| Definição de especificações
+ 08/06 | 1H | Gestão | primeira reunião 
+ 9/06 | 1h| Gestão de projeto |Abrir repositório e kanban
+12/06| 45 min | Implementação backend | Criando Projeto Rails
+13/06 | 30 min | arquitetura| Recriação diagrama de modules
+14/06 | 1H | Gestão | reunião 2 
+19/06 
+21/06 | 1H | Gestão | reunião 3
+22/06 | 1h | Implementação frontend | Abrir repositório e aplicação react
+26/06 | 30 min | revisão | revisão de controllers e especificação de serializers
+28/06 | 1H | Gestão | reunião 4
+28/06 | 3H | integração | adaptação paginas pro react
+30/06 | 2H | integração backend | tentativa implementação de autenticação 
+5/ 07 | 30 min | Gestão | reunião presencial 
+começo~fim| 3h | gestão | Tirando dúvidas
+8 /07 | 4h | implementação | editando serializers / montando lógica match
+9 /07 | 3H | integração | adaptação paginas para react
+11 /07| 4H | integração | adaptação páginas para react
+12 /07| 2H | revisão | revisão e merges pra preparar para Apresentação
