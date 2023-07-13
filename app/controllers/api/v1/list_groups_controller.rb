@@ -4,8 +4,7 @@
 module Api
   module V1
     class ListGroupsController < ApplicationController
-
-      #acts_as_token_authentication_handler_for User, only: []
+      # acts_as_token_authentication_handler_for User, only: []
 
       # Obtém todos os list_group_user.
       #

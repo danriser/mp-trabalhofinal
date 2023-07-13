@@ -6,12 +6,11 @@ class UserSerializer < Panko::Serializer
 
 
   def list_preferences
-    array_sem_edit = ListPreference.select{|usr_list_preference| usr_list_preference.user_id == object.id }
-     array_com_edit = []
+    array_sem_edit = ListPreference.select { |usr_list_preference| usr_list_preference.user_id == object.id }
+    array_com_edit = []
     for list_prefs in array_sem_edit
-       array_com_edit.push({descricao: list_prefs.preference.descricao, tipo: list_prefs.preference.tipo})
+      array_com_edit.push({ descricao: list_prefs.preference.descricao, tipo: list_prefs.preference.tipo })
     end
     array_com_edit
-  end 
-
+  end
 end

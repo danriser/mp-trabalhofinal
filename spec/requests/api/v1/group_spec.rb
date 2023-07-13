@@ -7,8 +7,8 @@ RSpec.describe 'Api::V1::Groups', type: :request do
     before do
       create(:preference, tipo: 'a', descricao: 'a')
       create(:preference, tipo: 'b', descricao: 'b')
-      #create(:group, id: 1, nome: 'a', tipo: 'a', descricao: 'a', preference_id: 1)
-      #create(:group, id: 2, nome: 'b', tipo: 'b', descricao: 'b', preference_id: 2)
+      # create(:group, id: 1, nome: 'a', tipo: 'a', descricao: 'a', preference_id: 1)
+      # create(:group, id: 2, nome: 'b', tipo: 'b', descricao: 'b', preference_id: 2)
     end
 
     context 'index return' do
@@ -65,19 +65,19 @@ RSpec.describe 'Api::V1::Groups', type: :request do
 
   # Como agora os grupos estão sendo criados juntos quando uma preferencia é criada, não dá mais para fazer o teste de criação de grupo isoladamente
   describe 'POST /create' do
-    #pref1 = ''
-    #pref2 = ''
+    # pref1 = ''
+    # pref2 = ''
     before do
-      #pref1 = create(:preference, tipo: 'c', descricao: 'c').attributes
-      #pref2 = create(:preference, tipo: 'd', descricao: 'd').attributes
+      # pref1 = create(:preference, tipo: 'c', descricao: 'c').attributes
+      # pref2 = create(:preference, tipo: 'd', descricao: 'd').attributes
     end
 
-    #context 'params are ok' do
+    # context 'params are ok' do
     #  it 'should return http status created' do
     #    post '/api/v1/group/create', params: { group: { nome: 'c', tipo: 'c', descricao: 'c' } }
     #    expect(response).to have_http_status(:created)
     #  end
-    #end
+    # end
 
     context 'params are invalid' do
       it 'should return http status bad_request' do
@@ -146,7 +146,8 @@ RSpec.describe 'Api::V1::Groups', type: :request do
 
     context 'preference_id already taken' do
       it 'should return http status bad_request' do
-        patch '/api/v1/group/update/' + group1['id'].to_s, params: { group: { nome: 'a', tipo: 'g3', descricao: 'g3', preference_id: group2['id'] } }
+        patch '/api/v1/group/update/' + group1['id'].to_s,
+              params: { group: { nome: 'a', tipo: 'g3', descricao: 'g3', preference_id: group2['id'] } }
         expect(response).to have_http_status(:bad_request)
       end
     end

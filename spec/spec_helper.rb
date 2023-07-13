@@ -16,12 +16,10 @@
 #
 # See https://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
 RSpec.configure do |config|
-
-
   def get_admin
-    #admin = User.create(nome: "admin_testes", password: "123456", email: "admintestes@teste.com", is_admin: true)
-    #puts admin.attributes # { ..., authentication_token: nil }
-    #admin.attributes
+    # admin = User.create(nome: "admin_testes", password: "123456", email: "admintestes@teste.com", is_admin: true)
+    # puts admin.attributes # { ..., authentication_token: nil }
+    # admin.attributes
   end
 
 

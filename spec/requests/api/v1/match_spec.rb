@@ -14,16 +14,15 @@ RSpec.describe 'Api::V1::Matches', type: :request do
       before do
         get '/api/v1/match/index'
       end
-    
+
       it 'should return http status ok' do
-          expect(response).to have_http_status(:ok)
+        expect(response).to have_http_status(:ok)
       end
 
       it 'should return json' do
-          expect(response.content_type).to eq('application/json; charset=utf-8')
+        expect(response.content_type).to eq('application/json; charset=utf-8')
       end
     end
-    
   end
 
   describe 'GET /show' do
@@ -80,51 +79,50 @@ RSpec.describe 'Api::V1::Matches', type: :request do
 
   describe 'POST /find' do
     before do
-        create(:user, id: 1, nome: 'a', password: 'aolsdabn', email: 'ola@gmail')
-        create(:user, id: 2, nome: 'b', password: 'baindas', email: 'ola2@gmail')
-        create(:user, id: 3, nome: 'c', password: 'cpiasndp', email: 'ola3@gmail')
-        create(:user, id: 4, nome: 'd', password: 'fdsafdas', email: 'ola4@gmail')
-        create(:user, id: 90, nome: 'e', password: 'fdsafdas', email: 'ola5@gmail')
-        create(:preference, id: 1, tipo: 'a', descricao: 'a')
-        create(:preference, id: 2, tipo: 'b', descricao: 'b')
-        create(:preference, id: 3, tipo: 'c', descricao: 'c')
-        create(:preference, id: 4, tipo: 'd', descricao: 'd')
-        create(:preference, id: 5, tipo: 'e', descricao: 'e')
-        create(:preference, id: 5050, tipo: 'f', descricao: 'f')
-        create(:list_preference, user_id: 1, preference_id: 1)
-        create(:list_preference, user_id: 1, preference_id: 2)
-        create(:list_preference, user_id: 2, preference_id: 1)
-        create(:list_preference, user_id: 2, preference_id: 2)
-        create(:list_preference, user_id: 2, preference_id: 3)
-        create(:list_preference, user_id: 2, preference_id: 4)
-        create(:list_preference, user_id: 3, preference_id: 1)
-        create(:list_preference, user_id: 4, preference_id: 5)
-        create(:list_preference, user_id: 90, preference_id: 5050)
+      create(:user, id: 1, nome: 'a', password: 'aolsdabn', email: 'ola@gmail')
+      create(:user, id: 2, nome: 'b', password: 'baindas', email: 'ola2@gmail')
+      create(:user, id: 3, nome: 'c', password: 'cpiasndp', email: 'ola3@gmail')
+      create(:user, id: 4, nome: 'd', password: 'fdsafdas', email: 'ola4@gmail')
+      create(:user, id: 90, nome: 'e', password: 'fdsafdas', email: 'ola5@gmail')
+      create(:preference, id: 1, tipo: 'a', descricao: 'a')
+      create(:preference, id: 2, tipo: 'b', descricao: 'b')
+      create(:preference, id: 3, tipo: 'c', descricao: 'c')
+      create(:preference, id: 4, tipo: 'd', descricao: 'd')
+      create(:preference, id: 5, tipo: 'e', descricao: 'e')
+      create(:preference, id: 5050, tipo: 'f', descricao: 'f')
+      create(:list_preference, user_id: 1, preference_id: 1)
+      create(:list_preference, user_id: 1, preference_id: 2)
+      create(:list_preference, user_id: 2, preference_id: 1)
+      create(:list_preference, user_id: 2, preference_id: 2)
+      create(:list_preference, user_id: 2, preference_id: 3)
+      create(:list_preference, user_id: 2, preference_id: 4)
+      create(:list_preference, user_id: 3, preference_id: 1)
+      create(:list_preference, user_id: 4, preference_id: 5)
+      create(:list_preference, user_id: 90, preference_id: 5050)
     end
 
     context 'params are ok' do
-        it 'should find similar user' do
-            post '/api/v1/match/find', params: { user_id: 1 }
-            expect(response).to have_http_status(:ok)
-        end
+      it 'should find similar user' do
+        post '/api/v1/match/find', params: { user_id: 1 }
+        expect(response).to have_http_status(:ok)
+      end
     end
 
     context 'params are invalid' do
-        it 'should return http status bad_request' do
-          post '/api/v1/match/find', params: { user_id: 0 }
-          expect(response).to have_http_status(:bad_request)
-        end
+      it 'should return http status bad_request' do
+        post '/api/v1/match/find', params: { user_id: 0 }
+        expect(response).to have_http_status(:bad_request)
       end
-  
-      context 'no possible match' do
-        it 'should return http status not_found' do
-          post '/api/v1/match/find', params: { user_id: 90 }
-          puts response.body
-          expect(response).to have_http_status(:bad_request)
-        end
-      end
+    end
 
-end
+    context 'no possible match' do
+      it 'should return http status not_found' do
+        post '/api/v1/match/find', params: { user_id: 90 }
+        puts response.body
+        expect(response).to have_http_status(:bad_request)
+      end
+    end
+  end
 
   describe 'DELETE /delete' do
     before do

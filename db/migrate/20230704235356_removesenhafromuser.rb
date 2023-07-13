@@ -1,5 +1,5 @@
 class Removesenhafromuser < ActiveRecord::Migration[7.0]
   def change
-    remove_column :users,:senha
+    remove_column :users, :senha
   end
 end

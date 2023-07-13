@@ -6,7 +6,7 @@
 # Responsável por armazenar os dados de um usuário
 #
 # HU006
-# 
+#
 # HU007
 #
 # HU008

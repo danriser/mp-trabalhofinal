@@ -4,11 +4,10 @@
 module Api
   module V1
     class MessageController < ApplicationController
+      # acts_as_token_authentication_handler_for User, only: []
 
-      #acts_as_token_authentication_handler_for User, only: []
+      # before_action :admin_authentication, only: []
 
-      #before_action :admin_authentication, only: []
-      
       # Obtem todas as mensagens.
       #
       # @return [JSON] Lista de mensagens em formato JSON.
@@ -48,7 +47,7 @@ module Api
       # Deleta uma mensagem pelo seu id
       #
       # HU017 - Eu como usuário quero deletar as minhas mensagens
-      # 
+      #
       # @param [Int] O ID da mensagem.
       # @raise [StandardError] Caso a mensagem nao seja encontrada.
       def delete

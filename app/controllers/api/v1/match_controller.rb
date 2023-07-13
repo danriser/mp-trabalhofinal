@@ -4,11 +4,11 @@
 module Api
   module V1
     class MatchController < ApplicationController
-      #acts_as_token_authentication_handler_for User, only: []
-      #before_action :admin_authentication, only: []
+      # acts_as_token_authentication_handler_for User, only: []
+      # before_action :admin_authentication, only: []
 
       # Obtém todos os matchs.
-      # 
+      #
       # HA006 - Eu como admin quero ver todos os matchs
       #
       # @return [JSON] Lista de matchs em formato JSON.
@@ -57,6 +57,7 @@ module Api
         if user1.nil?
           raise ActiveRecord::RecordNotFound, "User not found"
         end
+
         match_grade = 0.0
 
         while match_grade < 0.5
@@ -79,10 +80,10 @@ module Api
           user_2: user_2_id
         }
         render json: result, status: :ok
-        rescue StandardError => e
-          render json: e, status: :bad_request
-        rescue ActiveRecord::RecordNotFound => e
-          render json: e, status: :not_found
+      rescue StandardError => e
+        render json: e, status: :bad_request
+      rescue ActiveRecord::RecordNotFound => e
+        render json: e, status: :not_found
       end
 
       # Deleta o match
@@ -114,8 +115,8 @@ module Api
       private
 
       def acha_match_grade(user_1, user_2)
-        #user_1 = User.find(user_1)
-        #user_2 = User.find(user_2)
+        # user_1 = User.find(user_1)
+        # user_2 = User.find(user_2)
 
         pref1 = ListPreference.where(user_id: user_1)
         pref2 = ListPreference.where(user_id: user_2)
@@ -134,10 +135,9 @@ module Api
           count_same += 1 if matching_obj
         end
 
-        match_grade = count_same/count_total
+        match_grade = count_same / count_total
         match_grade
       end
-
 
       def array_serializer(match)
         Panko::ArraySerializer.new(match, each_serializer: MatchSerializer).to_json

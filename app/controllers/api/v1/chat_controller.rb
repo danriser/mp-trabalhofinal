@@ -3,10 +3,9 @@
 module Api
   module V1
     class ChatController < ApplicationController
+      # acts_as_token_authentication_handler_for User, only: []
 
-      #acts_as_token_authentication_handler_for User, only: []
-
-      #acts_as_token_authentication_handler_for User
+      # acts_as_token_authentication_handler_for User
 
       # Obtem todos os chats.
       #

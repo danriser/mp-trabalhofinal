@@ -332,4 +332,3 @@ ListPreference.create(id: 2, user_id: 1, preference_id: 2)
 # Message.create(id: 1, chat_id: 1, user_id: 1, conteudo: 'kys')
 # Message.create(id: 2, chat_id: 1, user_id: 1, conteudo: 'sorry')
 # Match.create(user_id: 1, user_id2: 2, match_grade: 'a')
-

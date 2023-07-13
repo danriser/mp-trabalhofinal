@@ -4,9 +4,8 @@
 module Api
   module V1
     class GroupController < ApplicationController
-
-      #acts_as_token_authentication_handler_for User
-      #before_action :admin_authentication, except: [:index, :show]
+      # acts_as_token_authentication_handler_for User
+      # before_action :admin_authentication, except: [:index, :show]
 
       # Obtém todos os grupos.
       #
@@ -32,7 +31,7 @@ module Api
 
       # Deleta o grupo
       #
-      # HA005 
+      # HA005
       #
       # @param id [Int] id do usuário a ser removido
       # @raise [StandardError] Caso o usuário não seja encontardo

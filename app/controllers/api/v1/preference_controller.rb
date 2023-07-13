@@ -4,9 +4,8 @@
 module Api
   module V1
     class PreferenceController < ApplicationController
-
-      #acts_as_token_authentication_handler_for User, only: []
-      #before_action :admin_authentication, only: []
+      # acts_as_token_authentication_handler_for User, only: []
+      # before_action :admin_authentication, only: []
 
       # Obtém todas as preferências.
       #
@@ -33,7 +32,7 @@ module Api
       end
 
       # Cria uma nova preferencia.
-      # 
+      #
       # HA007 - Eu como admin quero criar uma nova preferencia
       #
       # @param preference_params [String] Parametros da preferencia a ser criada.
