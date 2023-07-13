@@ -1,1 +1,11 @@
 # Data | Horas Trabalhadas | Tipo Tarefa | Descrição da Tarefa Realizada 
+12/07 | 1h | controllers | criação do algorítimo de match
+12/07 | 1h | testes | criação de testes para o algorítimo de match
+12/07 | 2h | documentacao | docuemntacao de models e controllers
+10/07 | 2h | testes | mais refatoração de testes para funcionar com a autenticação
+09/07 | 3h | testes | refatoração de testes para funcionar com funcionalidade de criação automática de grupo quando se cria uma preferencia
+09/07 | 0.5h | controllers | criação automática de grupo quando se cria uma preferencia
+09/07 | 2h | testes | refatoração de testes para funcionar com a autenticação
+09/07 | 1h | controllers | implementação de algumas partes da autenticação
+08/07 | 0.5h | docuemntacao | docuemntacao de models e controllers
+22/06 | 1h | documentacao | setup da ferramenta de documentacao
