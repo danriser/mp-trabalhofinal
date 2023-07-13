@@ -1,1 +1,2 @@
 # Data | Horas Trabalhadas | Tipo Tarefa | Descrição da Tarefa Realizada 
+22/06>>>11/07 20horas  front end    pagina de match, admin page e mensagens
